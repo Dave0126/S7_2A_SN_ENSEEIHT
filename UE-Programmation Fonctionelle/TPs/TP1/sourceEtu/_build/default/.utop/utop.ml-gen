@@ -40,6 +40,6 @@ Clflags.include_dirs :=
   ; "/applications/opam/ocaml-base-compiler/lib/trie"
   ; "/applications/opam/ocaml-base-compiler/lib/utop"
   ; "/applications/opam/ocaml-base-compiler/lib/zed"
-  ; "/home/gdai/2SN/S7/UE-PF/TPs/TP01/sourceEtu/_build/default/.tp1.objs/byte"
+  ; "/home/gdai/2SN/S7/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP1/sourceEtu/_build/default/.tp1.objs/byte"
   ];
 UTop_main.main ();

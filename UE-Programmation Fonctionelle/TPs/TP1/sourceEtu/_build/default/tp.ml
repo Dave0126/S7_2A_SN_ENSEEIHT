@@ -101,6 +101,13 @@ Résultat : l'information de si n est premier ou pas
 *)
 
 let estPremier n = failwith "TO DO"
+   (*
+   for i = 2 to n do
+      if n mod i == 0 then false
+      else let i = i+1
+   done
+   true
+   *)
 
 let%test _ = estPremier 2
 let%test _ = estPremier 3 
