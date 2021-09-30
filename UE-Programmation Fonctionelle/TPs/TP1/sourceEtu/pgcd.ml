@@ -7,7 +7,7 @@ Résultat : un entier positive de la résultat de PGCD
 *)
 let rec pgcd a b = 
 if a = 0 then b else
-if b = 0 then b else
+if b = 0 then a else
 if a >= b then pgcd (a mod b) b
 else pgcd a (b mod a)
 
