@@ -100,14 +100,19 @@ Précondition : n >= 0
 Résultat : l'information de si n est premier ou pas
 *)
 
-let estPremier n = failwith "TO DO"
-   (*
-   for i = 2 to n do
-      if n mod i == 0 then false
-      else let i = i+1
-   done
-   true
-   *)
+let estPremier n =
+match n with
+| 0 -> false
+| 1 -> false
+| _ -> let i = (n - 1) in
+         let rec remainderIsZero i n =
+         match i with
+         | 1 -> true
+         | _ -> match n mod i with
+                  | 0 -> false
+                  | _ -> remainderIsZero (i - 1) n
+                  in
+                  remainderIsZero i n
 
 let%test _ = estPremier 2
 let%test _ = estPremier 3 

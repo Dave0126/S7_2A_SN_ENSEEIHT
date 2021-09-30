@@ -106,7 +106,7 @@ match n with
 | 1 -> false
 | _ -> let i = (n - 1) in
          let rec remainderIsZero i n =
-         match a with
+         match i with
          | 1 -> true
          | _ -> match n mod i with
                   | 0 -> false
