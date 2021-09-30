@@ -1,0 +1,14 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+/*deux noeuds differents =>deux noms diffrents */
+
+
+/*Un arc ne doit jamais relier deux places ou deux transitions */
+
+
+/* le jeton d'une place doit toujours etre positifs*/
+
+ 
+endpackage
