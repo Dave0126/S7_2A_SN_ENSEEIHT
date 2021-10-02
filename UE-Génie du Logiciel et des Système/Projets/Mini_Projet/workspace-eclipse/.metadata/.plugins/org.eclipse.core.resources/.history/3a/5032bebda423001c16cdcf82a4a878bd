@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:PetriNet 
+	xmi:version="2.0" 
+	xmlns:xmi="http://www.omg.org/XMI" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="http://petrinet" 
+    xsi:schemaLocation="http://petrinet PetriNet.ecore">
+
+<Elements
+	xsi:type="PetriNet:Place"
+	name="testPlaceName1"/>
+	
+<Elements
+	xsi:type="PetriNet:Place"
+	name="testPlaceName2"/>
+	
+<Elements
+	xsi:type="PetriNet:Place"
+	name="testPlaceName1"
+	marking="-1"/>
+	
+<Elements
+	xsi:type="PetriNet:Place"
+	name="%^&^$testPlaceName"/>
+	
+<Elements
+	xsi:type="PetriNet:Transition"
+	name="testTransitionName1"/>
+	
+<Elements
+	xsi:type="PetriNet:Noeud"
+	name="testNodeName1"/>
+
+<Elements
+	xsi:type="PetriNet:Noeud"
+	name="testNodeName1"/>
+	
+<Elements
+	xsi:type="PetriNet:Arc"
+	name="testArcName1"
+	source="//@Element.0"
+	target="//@Element.1"/>
+	
+</petrinet:PetriNet>

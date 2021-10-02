@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Running Platform">
+	<locations>
+		<location configuration="/home/gdai/.eclipse/org.eclipse.platform_4.17.0_630142970_linux_gtk_x86_64/configuration/" path="${eclipse_home}" type="Profile"/>
+	</locations>
+	<environment>
+		<arch>x86_64</arch>
+		<os>linux</os>
+		<ws>gtk</ws>
+		<nl>fr_FR</nl>
+	</environment>
+</target>
