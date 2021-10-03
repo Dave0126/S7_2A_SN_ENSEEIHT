@@ -1,6 +1,8 @@
 content_assist_proposals_background=242,241,240
 content_assist_proposals_foreground=76,76,76
 eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
 org.eclipse.jdt.ui.formatterprofiles.version=20
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
