@@ -1,7 +1,11 @@
+package TP02;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class Peterson {
 
     static int tour = 0;
-    static boolean [] demande = {false,false};
+    static AtomicBoolean [] demande = {new AtomicBoolean(true),new AtomicBoolean(false)};
 
     public static void main(String[] args) {
         Thread t1 = new Thread(new Proc(),"1");
@@ -25,15 +29,16 @@ class Proc implements Runnable {
         }
     }
 
-    void entrer() {
-        Peterson.demande[id] = true;
+    synchronized void entrer() {
+        Peterson.demande[id].set(true);
         Peterson.tour = di ;
-        while ((Peterson.tour != id) && (Peterson.demande[di])) {
-            ;//System.out.println(".."+id+"..");
+        while ((Peterson.tour != id) && (Peterson.demande[di].compareAndSet(true, true))) {
+        	;
+        	//System.out.println("["+id+"] is waiting...");
         }
     }
 
-    void sortir() {
-        Peterson.demande[id] =false;
+    synchronized void sortir() {
+        Peterson.demande[id].set(false);
     }
 }
