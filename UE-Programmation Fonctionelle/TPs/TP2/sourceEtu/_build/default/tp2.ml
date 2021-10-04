@@ -51,15 +51,12 @@ Paramètre : l, la liste à couper en deux
 Retour : deux listes
 *)
 
-let rec scinde l = 
-let rec loop w l =
+let rec scinde l =
   match l with
-  | [] -> [w]
-  | []::ls -> w::(loop [] ls)
-  | c::ls -> loop (w@[c]) ls 
-                in loop [] l
-
-
+  | [] -> ([],[])
+  | [hd] -> ([hd],[])
+  | hd::e::tl -> let (l1,l2) = scinde (tl)
+                  in (hd::l1,e::l2)
 
 
 (* TESTS *)
@@ -70,13 +67,21 @@ let%test _ = scinde [1] = ([1],[])
 let%test _ = scinde [] = ([],[])
 
 
+
 (* Fusionne deux listes triées pour en faire une seule triée
 Paramètre : ordre  ('a->'a->bool), un ordre sur les éléments de la liste
 Paramètre : l1 et l2, les deux listes triées
 Résultat : une liste triée avec les éléments de l1 et l2
 *)
 
-let rec fusionne ordre l1 l2 = failwith "TO DO"
+let rec fusionne ordre l1 l2 = 
+  match (l1,l2) with
+  | ([],[]) -> []
+  | (l1,[]) -> l1
+  | ([],l2) -> l2
+  | (hd1::tl1,hd2::tl2) -> if ordre hd1 hd2 then hd1::(fusionne ordre tl1 l2)
+                                 else hd2::(fusionne ordre l1 tl2)
+
 
 (*TESTS*)
 let%test _ = fusionne (fun x y -> x<y) [1;2;4;5;6] [3;4] = [1;2;3;4;4;5;6]
@@ -97,7 +102,12 @@ Paramètre : l, la liste à trier
 Résultat : une liste triée avec les éléments de l
 *)
 
-let rec tri_fusion ordre l =failwith "TO DO"
+let rec tri_fusion ordre l =
+  match l with
+  | [] -> []
+  | [hd] -> [hd]
+  | hd::tl -> (insert ordre hd (tri_insertion ordre tl))
+
 
 
 (* TESTS *)
