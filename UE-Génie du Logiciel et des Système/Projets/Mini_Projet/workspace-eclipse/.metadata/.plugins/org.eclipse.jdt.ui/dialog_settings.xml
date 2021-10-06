@@ -2,4 +2,8 @@
 <section name="Workbench">
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
 </section>

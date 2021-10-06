@@ -1,0 +1,180 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>Configuring Acceptors (CDO Model Repository Documentation)</title>
+
+<link rel="stylesheet" href="../book.css" charset="UTF-8" type="text/css">
+
+<noscript></noscript>
+<script type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Configuring Acceptors (CDO Model Repository Documentation)";
+    }
+}
+</script>
+
+<link rel="stylesheet" href="../editor.css" charset="UTF-8" type="text/css">
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+
+<script>
+$(function() {
+$( ".resizable" ).resizable({ handles:"s,e,se", autoHide:true });
+});
+</script>
+
+<script type="text/javascript">
+function maximize(id)
+{
+  e = document.getElementById('max_' + id);
+  c1 = document.getElementById('editor_content_1_' + id);
+  c2 = document.getElementById('editor_content_2_' + id);
+  pv = document.getElementById('max_pv_' + id);
+  if (e.className == 'max')
+  {
+    e.className = 'rst';
+    e.setAttribute('title', 'Restore');
+    c1.setAttribute('style_orig', c1.getAttribute('style'));
+    c1.setAttribute('style', 'border:2px solid #99b4d1; border-top:none;');
+    c2.setAttribute('style', '');
+    if (pv != null)
+    {
+      pv.setAttribute('width_orig', pv.getAttribute('width'));
+      pv.setAttribute('width', '');
+    }
+  }
+  else
+  {
+    e.className = 'max';
+    e.setAttribute('title', 'Maximize');
+    c1.setAttribute('style', c1.getAttribute('style_orig'));
+    c1.setAttribute('style_orig', '');
+    c2.setAttribute('style', 'overflow:scroll; width:100%; height:100%;');
+    if (pv != null)
+    {
+      pv.setAttribute('width', pv.getAttribute('width_orig'));
+      pv.setAttribute('width_orig', '');
+    }
+  }
+}
+</script>
+</head>
+
+<body bgcolor="white" onload="windowTitle();">
+<!-- <div class="help_breadcrumbs breadcrumbs_top"><a href="../Overview.html" title="CDO Model Repository Documentation">CDO Model Repository Documentation</a> > <a href="index.html" title="Category in CDO Model Repository Documentation">Operator's Guide</a></div> -->
+
+<table border="0">
+	<tr>
+		<td width="100%"><h1>Configuring Acceptors</h1></td>
+		<td align="right" valign="middle" nowrap><a href="Doc01_ConfiguringRepositories.html" title="Backward to Configuring Repositories"><img src="../../images/backward.png" border="0"></a>&nbsp;<a href="http://wiki.eclipse.org/CDO/Security_Manager" title="Forward to Managing Security"><img src="../../images/forward.png" border="0"></a></td>
+	</tr>
+</table>
+<p class="author">Author: Eike Stepper</p>
+<p>
+ The acceptors of a CDO Server are configured in the cdo-server.xml file. Here's an example:
+ 
+
+<div class="snippet" style="margin-left:24px;" align="left">
+  <a name="snippet_Doc02_ConfiguringAcceptors_1"></a>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="25px"><div style="position:relative;"><img src="../../images/editor-1.png"><img style="position:absolute; top:5px; left:5px;" src="../../images/formatter-xml.gif"></div></td>
+      <td style="background-image:url(../../images/editor-2.png); background-repeat:repeat-x;" width="1px"><font face="Segoe UI,Arial" size="-1">cdo&#8209;server.xml</font></td>
+      <td width="1px"><img src="../../images/editor-3.png"></td>
+      <td style="background-image:url(../../images/editor-4.png); background-repeat:repeat-x;" align="right"></td>
+      <td style="background-image:url(../../images/editor-4.png); background-repeat:repeat-x;" align="center" width="16"><a href="javascript:maximize('Doc02_ConfiguringAcceptors_1')" id="max_Doc02_ConfiguringAcceptors_1" class="max" title="Maximize">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+      <td width="6px"><img src="../../images/editor-5.png"></td>
+    </tr>
+    <tr>
+      <td colspan="6" align="left" valign="top" style="border:1px solid #a0a0a0; border-top:none;" nowrap>
+        <div id="editor_content_1_Doc02_ConfiguringAcceptors_1" class="ui-widget-content resizable" style="width:600px; height:300px; border:2px solid #99b4d1; border-top:none;">
+          <div id="editor_content_2_Doc02_ConfiguringAcceptors_1" style="overflow:scroll; width:100%; height:100%;">
+            <code>
+<font color="#0000e1">&lt;?xml&nbsp;version=</font><font color="#000080">"1.0"<font color="#0000e1">&nbsp;encoding=</font><font color="#000080">"UTF-8"<font color="#0000e1">?&gt;</font><font color="#000080"><br/>
+</font><font color="#0000e1">&lt;cdoServer&gt;</font><font color="#000080"><br/>
+<br/>
+&nbsp;&nbsp;</font><font color="#0000e1">&lt;acceptor&nbsp;type=</font><font color="#000080">"tcp"<font color="#0000e1">&nbsp;listenAddr=</font><font color="#000080">"0.0.0.0"<font color="#0000e1">&nbsp;port=</font><font color="#000080">"2036"<font color="#0000e1">/&gt;</font><font color="#000080"><br/>
+<br/>
+&nbsp;&nbsp;</font><font color="#3f7f5f">&lt;!--&nbsp;other&nbsp;acceptors&nbsp;and&nbsp;repositories&nbsp;--&gt;</font><font color="#000080"><br/>
+<br/>
+</font><font color="#0000e1">&lt;/cdoServer&gt;</font><font color="#000080"><br/>
+</font>            </code>
+
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<p>
+
+ <p>
+ The following sections describe the various elements and properties.
+ <p>
+ <b>Table of Contents</b> <p>
+<table border="0">
+<tr><td>1&nbsp;</td><td class="te" colspan="3"><a href="Doc02_ConfiguringAcceptors.html#Element_acceptor" title="Chapter in CDO Model Repository Documentation">Element acceptor</a></td></tr>
+<tr><td>2&nbsp;</td><td class="te" colspan="3"><a href="Doc02_ConfiguringAcceptors.html#Element_negotiator" title="Chapter in CDO Model Repository Documentation">Element negotiator</a></td></tr>
+</table>
+</p>
+
+
+<h2><a name="Element_acceptor"></a>1&nbsp;&nbsp;Element acceptor</h2>
+<p>
+ Defines an <a href="../../../org.eclipse.net4j.doc/javadoc/org/eclipse/net4j/acceptor/IAcceptor.html" title="Interface in org.eclipse.net4j.acceptor"><code>IAcceptor</code></a> instance.
+ Please refer to the Net4j Signalling Platform documentation for details about acceptors and connectors.
+ <p>
+ The <code>type</code> attribute corresponds to the type of an acceptor factory that is contributed via the
+ <code>org.eclipse.net4j.util.factories</code> extension point with a product group of
+ <code>org.eclipse.net4j.acceptors</code>.
+ <p>
+ The remaining attributes depend on the specified <code>type</code> attribute value.
+ The following values are possible with the shipped distribution (subject to user-supplied extension):
+ <ul>
+ <li> <b>tcp</b>: <a href="../../../org.eclipse.net4j.doc/javadoc/org/eclipse/net4j/tcp/ITCPAcceptor.html" title="Interface in org.eclipse.net4j.tcp"><code>ITCPAcceptor</code></a> for fast, new I/O based socket connections. The following additional attributes are recognized:
+      <ul>
+      <li> <b>listenAddr</b>: The network address the server socket shall be bound to.
+           A value of <code>"0.0.0.0"</code> is the default (whole attribute can be omitted) and
+           tells the socket to listen on <b>all</b> available addresses.
+      <li> <b>port</b>: The network port the server socket shall be bound to.
+           A value of <code>2036</code> is the default (whole attribute can be omitted).
+      </ul>
+ <li> <b>ssl</b>: Similar to tcp but with transport-level security (TLS).
+ <li> <b>jvm</b>: <a href="../../../org.eclipse.net4j.doc/javadoc/org/eclipse/net4j/jvm/IJVMAcceptor.html" title="Interface in org.eclipse.net4j.jvm"><code>IJVMAcceptor</code></a> for JVM internal (non-socket based ) connections.
+ <li> <b>http</b>: Experimental <a href="../../../org.eclipse.net4j.doc/javadoc/org/eclipse/net4j/http/server/IHTTPAcceptor.html" title="Interface in org.eclipse.net4j.http.server"><code>IHTTPAcceptor</code></a>.
+ </ul>
+
+<h2><a name="Element_negotiator"></a>2&nbsp;&nbsp;Element negotiator</h2>
+<p>
+ Defines an <a href="../../../org.eclipse.net4j.util.doc/javadoc/org/eclipse/net4j/util/security/INegotiator.html" title="Interface in org.eclipse.net4j.util.security"><code>INegotiator</code></a> instance to be used by the enclosing <a href="Doc02_ConfiguringAcceptors.html#Element_acceptor" title="Chapter in CDO Model Repository Documentation">acceptor</a> element.
+ Please refer to the Net4j Signalling Platform documentation for details about negotiators and the pluggable security concept
+ that can be used for authentication and authorization on the transport-level.
+ <p>
+ The <code>type</code> attribute corresponds to the type of a negotiator factory that is contributed via the
+ <code>org.eclipse.net4j.util.factories</code> extension point with a product group of <code>org.eclipse.net4j.negotiators</code>.
+ <p>
+ The remaining attributes depend on the specified type attribute value.
+ The following values are possible with the shipped distribution (subject to user-supplied extension):
+ <ul>
+ <li> <b>challenge</b>: Negotiator for simple yet effective and cryptographically secure challenge/response-based negotiations.
+      The following additional attributes are recognized:
+      <ul>
+      <li> <b>description</b>: The absolute path to a file in the local file system that contains
+           the credentials of the users in the form <code>user-id: password</code>.
+      </ul>
+ </ul>
+
+<p align="right">
+<a href="Doc01_ConfiguringRepositories.html" title="Backward to Configuring Repositories"><img src="../../images/backward.png" border="0"></a>&nbsp;<a href="http://wiki.eclipse.org/CDO/Security_Manager" title="Forward to Managing Security"><img src="../../images/forward.png" border="0"></a></p>
+<!-- <div class="help_breadcrumbs breadcrumbs_bottom"><a href="../Overview.html" title="CDO Model Repository Documentation">CDO Model Repository Documentation</a> > <a href="index.html" title="Category in CDO Model Repository Documentation">Operator's Guide</a></div> -->
+
+<div class="copyright">Copyright (c) 2014 Eike Stepper (Berlin, Germany) and others.<br>All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html</div>
+</body>
+</html>
