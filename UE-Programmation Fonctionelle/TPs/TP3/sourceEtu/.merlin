@@ -1,0 +1,19 @@
+EXCLUDE_QUERY_DIR
+B /home/hurault/.opam/4.07.1/lib/base
+B /home/hurault/.opam/4.07.1/lib/base/base_internalhash_types
+B /home/hurault/.opam/4.07.1/lib/base/caml
+B /home/hurault/.opam/4.07.1/lib/base/shadow_stdlib
+B /home/hurault/.opam/4.07.1/lib/ppx_inline_test/config
+B /home/hurault/.opam/4.07.1/lib/ppx_inline_test/runtime-lib
+B /home/hurault/.opam/4.07.1/lib/sexplib0
+B _build/default/.tp3.objs/byte
+S /home/hurault/.opam/4.07.1/lib/base
+S /home/hurault/.opam/4.07.1/lib/base/base_internalhash_types
+S /home/hurault/.opam/4.07.1/lib/base/caml
+S /home/hurault/.opam/4.07.1/lib/base/shadow_stdlib
+S /home/hurault/.opam/4.07.1/lib/ppx_inline_test/config
+S /home/hurault/.opam/4.07.1/lib/ppx_inline_test/runtime-lib
+S /home/hurault/.opam/4.07.1/lib/sexplib0
+S .
+FLG -ppx '/home/hurault/Documents/Cours/PFCompil/PF/git/ProgFonctionnelle-SN/TP/TP3/sourceEtu/_build/default/.ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --as-ppx --cookie '\''library-name="tp3"'\'''
+FLG -w -40
