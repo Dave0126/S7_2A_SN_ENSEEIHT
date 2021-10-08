@@ -1,0 +1,2 @@
+(** @canonical Tp3.Tp3_rendu *)
+module Tp3_rendu = Tp3__Tp3_rendu

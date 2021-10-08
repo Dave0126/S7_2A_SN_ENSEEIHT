@@ -34,7 +34,7 @@ let%test _ = gray_code 3 = [[0; 0; 0]; [0; 0; 1]; [0; 1; 1]; [0; 1; 0]; [1; 1; 0
 Fonction qui peut engendrer toutes les combinaisons de k éléments choisis dans une liste l . Une combinaison
 sera représentée par une liste de ses éléments. Chaque combinaison devra respecter l'ordre des éléments
 tels qu'ils apparaissent dans l .
-Type: int -> 'a list -> 'a list list
+Type: 'a list -> int -> 'a list list
 Paramètre k : un entier
 Paramètre l : une liste
 Résultat : la liste des permutatiions de l (toutes différentes si les élements de l sont différents deux à deux 
