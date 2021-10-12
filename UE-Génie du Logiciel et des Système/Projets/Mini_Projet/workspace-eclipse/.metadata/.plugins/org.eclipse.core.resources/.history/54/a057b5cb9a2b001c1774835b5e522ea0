@@ -1,0 +1,56 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://petrinet')]
+
+
+[template public petrinetToTina(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name, false, 'UTF-8')]
+[for (p : Place | aPetriNet.noeud -> getPlace())]
+		p1 [p.name/] ['('/] [p.jeton/] [')'/]
+[/for]
+[for (t : Transition | aPetriNet.noeud -> getTransition())]
+		p1 [t.name/]
+[/for]
+net [aPetriNet.name/]
+[/file]
+[/template]
+
+[query public getPlace (elements : OrderedSet(Noeud)): 
+OrderedSet(Place)=
+	elements->select(e | e.oclIsTypeOf(Place))
+			->collect(e | e.oclAsType(Place))
+			->asOrderedSet()
+/]
+
+[query public getTransition (elements : OrderedSet(Noeud)): 
+OrderedSet(Transition)=
+	elements->select(e | e.oclIsTypeOf(Transition))
+			->collect(e | e.oclAsType(Transition))
+			->asOrderedSet()
+/]
+
+[query public getArc (elements : OrderedSet(Arc)): 
+OrderedSet(Arc)=
+	elements->select(e | e.oclIsTypeOf(Arc))
+			->collect(e | e.oclAsType(Arc))
+			->asOrderedSet()
+/]
+
+[template public nextPlace(tr : Transition)]
+[for (a : Arc | tr.name)]
+	[a.target.name/]
+	[a.getPoid()/]
+[/for]
+[/template]
+
+[template public previousPlace(arc:Arc)]
+[arc.source.name/]
+[arc.getPoid()/]
+[/template]
+
+[template public getPoid(arc:Arc)]
+[if(arc.type = ArcType)]?[arc.poid/][elseif(arc.poid>1)]*[arc.poid/]
+[/if]
+[/template]
+
+

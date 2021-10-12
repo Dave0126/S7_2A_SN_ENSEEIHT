@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.n7.feature.pdl1_1.0.0.202110121742.jar" id="fr.n7.feature.pdl1" version="1.0.0.202110121742">
+      <category name="fr.n7.pdl1"/>
+   </feature>
+   <feature url="features/fr.n7.feature.simplePDL.PDL_1.0.0.202110121758.jar" id="fr.n7.feature.simplePDL.PDL" version="1.0.0.202110121758">
+      <category name="fr.n7.PDL"/>
+   </feature>
+   <feature url="features/fr.n7.eclipse.feature.simplePDL_1.0.0.202110121931.jar" id="fr.n7.eclipse.feature.simplePDL" version="1.0.0.202110121931">
+      <category name="fr.n7.simplePDL"/>
+   </feature>
+   <category-def name="fr.n7.pdl1" label="fr.n7.pdl1"/>
+   <category-def name="fr.n7.PDL" label="fr.n7.PDL"/>
+   <category-def name="fr.n7.simplePDL" label="fr.n7.simplePDL"/>
+</site>

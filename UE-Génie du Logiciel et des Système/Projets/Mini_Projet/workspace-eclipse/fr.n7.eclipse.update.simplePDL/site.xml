@@ -6,6 +6,18 @@
    <feature url="features/fr.n7.feature.simplePDL.PDL_1.0.0.202110121758.jar" id="fr.n7.feature.simplePDL.PDL" version="1.0.0.202110121758">
       <category name="fr.n7.PDL"/>
    </feature>
+   <feature url="features/fr.n7.eclipse.feature.simplePDL_1.0.0.202110121931.jar" id="fr.n7.eclipse.feature.simplePDL" version="1.0.0.202110121931">
+      <category name="fr.n7.simplePDL"/>
+   </feature>
+   <feature url="features/fr.n7.feature.simplePDL.toHTML_1.0.0.202110122002.jar" id="fr.n7.feature.simplePDL.toHTML" version="1.0.0.202110122002">
+      <category name="fr.n7.simplePDL.toHTML"/>
+   </feature>
+   <feature url="features/fr.n7.feature.PetriNet.toTina_1.0.0.202110122236.jar" id="fr.n7.feature.PetriNet.toTina" version="1.0.0.202110122236">
+      <category name="fr.n7.PetriNet.toTina"/>
+   </feature>
    <category-def name="fr.n7.pdl1" label="fr.n7.pdl1"/>
    <category-def name="fr.n7.PDL" label="fr.n7.PDL"/>
+   <category-def name="fr.n7.simplePDL" label="fr.n7.simplePDL"/>
+   <category-def name="fr.n7.simplePDL.toHTML" label="fr.n7.simplePDL.toHTML"/>
+   <category-def name="fr.n7.PetriNet.toTina" label="fr.n7.PetriNet.toTina"/>
 </site>
