@@ -10,4 +10,8 @@
   <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.3"/>
   <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.2" successor="//@processElements.3"/>
   <processElements xsi:type="simplepdl:Guidance" text="GuidanceTEST"/>
+  <processElements xsi:type="simplepdl:WorkSequence"/>
+  <processElements xsi:type="simplepdl:WorkSequence"/>
+  <processElements xsi:type="simplepdl:WorkSequence"/>
+  <processElements xsi:type="simplepdl:WorkSequence"/>
 </simplepdl:Process>

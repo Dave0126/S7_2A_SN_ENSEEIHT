@@ -4,9 +4,10 @@
     <semanticResources>My.simplepdl</semanticResources>
     <semanticResources>exemple.simplepdl</semanticResources>
     <semanticResources>developpement.simplepdl</semanticResources>
+    <semanticResources>ex1.pdl</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_6EzkcCanEeyQYujFiU6wIQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/fr.n7.simplepdl.design/description/simplepdl.odesign#//@ownedViewpoints[name='simplepdlViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OydfQCaoEeyQYujFiU6wIQ" name="new ProcessDiagram" repPath="#_OyEdsCaoEeyQYujFiU6wIQ" changeId="fd58b7a8-962b-4d54-821a-161038e6e29d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OydfQCaoEeyQYujFiU6wIQ" name="new ProcessDiagram" repPath="#_OyEdsCaoEeyQYujFiU6wIQ" changeId="62e4fd3b-db0e-4c37-a3c7-784c6edd0417">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/fr.n7.simplepdl.design/description/simplepdl.odesign#//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']"/>
         <target xmi:type="simplepdl:Process" href="developpement.simplepdl#/"/>
       </ownedRepresentationDescriptors>
@@ -24,7 +25,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v2I7cigwEeyQWqdGiT9PnQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_v18HISgwEeyQWqdGiT9PnQ" fontName="Ubuntu" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v18HIigwEeyQWqdGiT9PnQ" x="-24" y="-24" width="43" height="55"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v18HIigwEeyQWqdGiT9PnQ" y="12" width="43" height="55"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_v2FRECgwEeyQWqdGiT9PnQ" type="2001" element="_v1y9MCgwEeyQWqdGiT9PnQ">
           <children xmi:type="notation:Node" xmi:id="_v2F4ICgwEeyQWqdGiT9PnQ" type="5002">
@@ -95,33 +96,33 @@
         <styles xmi:type="notation:DiagramStyle" xmi:id="_Oy2g0iaoEeyQYujFiU6wIQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_KXVFsCgyEeyQWqdGiT9PnQ" type="4001" element="_KVrf4CgyEeyQWqdGiT9PnQ" source="_v18HICgwEeyQWqdGiT9PnQ" target="_v2FRECgwEeyQWqdGiT9PnQ">
           <children xmi:type="notation:Node" xmi:id="_KXVswCgyEeyQWqdGiT9PnQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXVswSgyEeyQWqdGiT9PnQ" x="-10" y="-7"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXVswSgyEeyQWqdGiT9PnQ" x="-8" y="-7"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_KXWT0CgyEeyQWqdGiT9PnQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXWT0SgyEeyQWqdGiT9PnQ" x="8" y="7"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXWT0SgyEeyQWqdGiT9PnQ" x="5" y="6"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_KXW64CgyEeyQWqdGiT9PnQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXW64SgyEeyQWqdGiT9PnQ" x="8" y="6"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXW64SgyEeyQWqdGiT9PnQ" x="4" y="6"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_KXVFsSgyEeyQWqdGiT9PnQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_KXVFsigyEeyQWqdGiT9PnQ" fontName="Ubuntu" fontHeight="12"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KXVFsygyEeyQWqdGiT9PnQ" points="[28, 25, -110, -101]$[123, 112, -15, -14]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KXVFsygyEeyQWqdGiT9PnQ" points="[28, 22, -86, -68]$[99, 78, -15, -12]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KXcacCgyEeyQWqdGiT9PnQ" id="(0.3488372093023256,0.2727272727272727)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KXcacSgyEeyQWqdGiT9PnQ" id="(0.2727272727272727,0.22388059701492538)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_KXcacigyEeyQWqdGiT9PnQ" type="4001" element="_KVujMigyEeyQWqdGiT9PnQ" source="_v2FRECgwEeyQWqdGiT9PnQ" target="_v18HICgwEeyQWqdGiT9PnQ">
           <children xmi:type="notation:Node" xmi:id="_KXdBgCgyEeyQWqdGiT9PnQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBgSgyEeyQWqdGiT9PnQ" x="9" y="5"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBgSgyEeyQWqdGiT9PnQ" x="-1" y="12"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_KXdBgigyEeyQWqdGiT9PnQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBgygyEeyQWqdGiT9PnQ" x="14" y="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBgygyEeyQWqdGiT9PnQ" x="12" y="9"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_KXdBhCgyEeyQWqdGiT9PnQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBhSgyEeyQWqdGiT9PnQ" x="-18" y="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KXdBhSgyEeyQWqdGiT9PnQ" x="7" y="-5"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_KXcacygyEeyQWqdGiT9PnQ"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_KXcadCgyEeyQWqdGiT9PnQ" fontName="Ubuntu" fontHeight="12"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KXcadSgyEeyQWqdGiT9PnQ" points="[-9, -15, 129, 111]$[-69, -117, 69, 9]$[-110, -123, 28, 3]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KXcadSgyEeyQWqdGiT9PnQ" points="[-9, -15, 105, 75]$[-20, -68, 94, 22]$[-86, -84, 28, 6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KXdBhigyEeyQWqdGiT9PnQ" id="(0.2727272727272727,0.22388059701492538)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KXdBhygyEeyQWqdGiT9PnQ" id="(0.3488372093023256,0.2727272727272727)"/>
         </edges>

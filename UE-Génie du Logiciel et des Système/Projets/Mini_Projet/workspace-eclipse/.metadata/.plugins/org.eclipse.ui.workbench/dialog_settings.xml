@@ -2,16 +2,20 @@
 <section name="Workbench">
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.FileSystem"/>
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.pde.ui.featureExportWizard"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
+		</list>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.eclipse.pde.ui.PluginDevelopment"/>
 		</list>
 	</section>
 	<section name="EditorSelectionDialog">
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.sirius.ui.specificationproject.wizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.pde.ui.NewFeatureProjectWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.sirius.category"/>
+			<item value="org.eclipse.pde.PDE"/>
 		</list>
 	</section>
 	<section name="FileSystemImportWizard">
@@ -20,5 +24,12 @@
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
 			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Matière IDM/TPs/TP05"/>
 		</list>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="-127"/>
+		<item key="DIALOG_Y_ORIGIN" value="-201"/>
+		<item key="DIALOG_WIDTH" value="804"/>
+		<item key="DIALOG_HEIGHT" value="779"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 	</section>
 </section>

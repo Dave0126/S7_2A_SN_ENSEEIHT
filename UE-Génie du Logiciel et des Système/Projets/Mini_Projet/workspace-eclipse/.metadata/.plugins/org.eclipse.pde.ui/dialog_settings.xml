@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="org.eclipse.pde.ui.synchronizeFeatueEnvironment.mode" value="1"/>
+	<item key="initLaunch" value="false"/>
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="FeatureExportWizard">
@@ -31,8 +32,19 @@
 		<section name="DialogBoundsSettings">
 			<item key="DIALOG_HEIGHT" value="500"/>
 			<item key="DIALOG_WIDTH" value="600"/>
-			<item key="DIALOG_X_ORIGIN" value="471"/>
-			<item key="DIALOG_Y_ORIGIN" value="38"/>
+			<item key="DIALOG_X_ORIGIN" value="689"/>
+			<item key="DIALOG_Y_ORIGIN" value="304"/>
+			<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
+		</section>
+	</section>
+	<section name="org.eclipse.pde.ui.dialogs.FeatureSelectionDialog">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History/&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="663"/>
+			<item key="DIALOG_Y_ORIGIN" value="180"/>
 			<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 		</section>
 	</section>

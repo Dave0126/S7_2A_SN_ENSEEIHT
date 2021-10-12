@@ -1,0 +1,7 @@
+process ex1 {
+wd a
+wd b
+wd c
+ws s2s from a to b
+ws f2f from b to c
+}
