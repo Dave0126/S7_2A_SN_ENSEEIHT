@@ -4,25 +4,25 @@
 
 [template public petrinetToTina(aPetriNet : PetriNet)]
 [comment @main/]
-[file (aPetriNet.name, false, 'UTF-8')]
-[for (p : Place | aPetriNet.noeud -> getPlace())]
+[file (aPetriNet.toString(), false, 'UTF-8')]
+[for (p : Place | aPetriNet.nodes-> getPlace())]
 		p1 [p.name/] ['('/] [p.jeton/] [')'/]
 [/for]
-[for (t : Transition | aPetriNet.noeud -> getTransition())]
+[for (t : Transition | aPetriNet.nodes -> getTransition())]
 		p1 [t.name/]
 [/for]
-net [aPetriNet.name/]
+net [aPetriNet/]
 [/file]
 [/template]
 
-[query public getPlace (elements : OrderedSet(Noeud)): 
+[query public getPlace (elements : OrderedSet(Node)): 
 OrderedSet(Place)=
 	elements->select(e | e.oclIsTypeOf(Place))
 			->collect(e | e.oclAsType(Place))
 			->asOrderedSet()
 /]
 
-[query public getTransition (elements : OrderedSet(Noeud)): 
+[query public getTransition (elements : OrderedSet(Node)): 
 OrderedSet(Transition)=
 	elements->select(e | e.oclIsTypeOf(Transition))
 			->collect(e | e.oclAsType(Transition))

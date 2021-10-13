@@ -13,15 +13,18 @@
 	<section name="EditorSelectionDialog">
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.pde.ui.NewFeatureProjectWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="atlProjectWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.pde.PDE"/>
+			<item value="atlWizard"/>
+			<item value="org.eclipse.ui.Examples"/>
+			<item value="org.eclipse.ui.Examples/org.eclipse.m2m.atl.examples.category"/>
 		</list>
 	</section>
 	<section name="FileSystemImportWizard">
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Matière IDM/TPs/TP08"/>
 			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Matière IDM/TPs/TP05"/>
 		</list>
 	</section>
