@@ -87,7 +87,7 @@ rule WorkSequence2PetriNet {
 					endif)
 }
 
---ajouter la transformation des ressources .....
+
 
 rule Ressource2PetriNet {
 	from res: simplepdl!Ressource
@@ -104,7 +104,7 @@ def: wdOfPar(): petrinet!Arc = simplepdl!WorkDefinition =
 	
 	
 rule Parameter2PetriNet {
-	from par : simplepdl!parametre
+	for par : simplepdl!parametre
 	to 
 		arc_demande_par : petrinet!Arc (
 			type <- #normal,

@@ -13,6 +13,7 @@
     <genClasses ecoreClass="PetriNet.ecore#//PetriNet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetriNet.ecore#//PetriNet/nodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetriNet.ecore#//PetriNet/arcs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNet.ecore#//PetriNet/name"/>
     </genClasses>
     <genClasses ecoreClass="PetriNet.ecore#//Arc">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNet.ecore#//Arc/poid"/>
