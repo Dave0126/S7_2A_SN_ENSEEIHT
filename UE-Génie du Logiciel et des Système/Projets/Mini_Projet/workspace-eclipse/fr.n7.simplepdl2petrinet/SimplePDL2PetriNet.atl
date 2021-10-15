@@ -22,7 +22,7 @@ def: arcOfPetriNet(): petrinet!Arc =
 rule Process2PetriNet {
 	from p: simplepdl!Process
 	to pn: petrinet!PetriNet (
-		name <- p.name,
+	--	name <- p.name,
 		nodes <- p.nodeOfPetriNet(),
 		arcs <- p.arcOfPetriNet())
 }
@@ -34,23 +34,23 @@ rule WorkDefinition2PetriNet {
 		-- PLACES d'une WorkDefinition
 		p_ready: petrinet!Place(
 				name <- wd.name + '_ready',
-				jeton <- 1,
-				net <- wd.getProcess()), --*
+				jeton <- 1),
+			--	net <- wd.getProcess()), --*
 				
 		p_running: petrinet!Place(
 				name <- wd.name + '_running',
-				jeton <- 0,
-				net <- wd.getProcess()), --*
+				jeton <- 0),
+			--	net <- wd.getProcess()), --*
 				
 		p_started: petrinet!Place(
 				name <- wd.name + '_started',
-				jeton <- 0,
-				net <- wd.getProcess()), --*
+				jeton <- 0),
+			--	net <- wd.getProcess()), --*
 				
 		p_finished: petrinet!Place(
 				name <- wd.name + '_finished',
-				jeton <- 0,
-				net <- wd.getProcess()), --*
+				jeton <- 0),
+			--	net <- wd.getProcess()), --*
 				
 		--transition
 		tr_start:petrinet!Transition(
@@ -84,7 +84,7 @@ rule WorkSequence2PetriNet {
 				if ((ws.linkType = #finishToStart) or (ws.linkType = #startToStart))
 					then 'tr_start'
 					else 'tr_finish'
-					endif)
+					endif))
 }
 
 --ajouter la transformation des ressources .....
@@ -97,26 +97,27 @@ rule Ressource2PetriNet {
 }
 
 helper context simplepdl!parametre
-def: wdOfPar(): petrinet!Arc = simplepdl!WorkDefinition =
+def: wdOfPar(): simplepdl!WorkDefinition =
 	let allWD : Sequence(simplepdl!WorkDefinition) = 
 		simplepdl!WorkDefinition.allInstances() -> asSquence() in
 		allWD -> select(e|e.parametres -> includes(self)) -> frist();
 	
 	
 rule Parameter2PetriNet {
+	-- comme le prof a dit "RU2PN"
 	from par : simplepdl!parametre
 	to 
-		arc_demande_par : petrinet!Arc (
+		arc_take : petrinet!Arc(
 			type <- #normal,
 			poid <- par.Qte,
-			source <- par.ressource
+			source <- par.ressource,
 			target <- thisModule.resolveTemp(par.wdOfPar(),'tr_start')
 		),
 		
-		arc_libere_par : petrinet!Arc (
+		arc_giveBack : petrinet!Arc (
 			type <- #normal,
 			poid <- par.Qte,
-			source <- par.ressource
+			source <- par.ressource,
 			target <- thisModule.resolveTemp(par.wdOfPar(),'tr_finish')
 		)
 }

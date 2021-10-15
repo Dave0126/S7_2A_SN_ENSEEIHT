@@ -35,4 +35,39 @@ Guohao:
     Guohao
     ----------------------------------------------------
     
+    Hey Chaima! How are you? 
+    
+    tp08: I have already finished, you could check "fr.n7.simplepdl2petrinet" and "SinplePDL2PetriNet.xmi" in "fr.n7.petriNet"
+    
+    Ne pas encore faire:
+    
+    tp07: Exercice 4.5 : to finish "ex1.pdl" in the document fr.n7.simplePDL.exemples
+    
+    tp06: at the end of this tp, we can not create Guidances and WSEdges between the nodes by clicking. but the prof said maybe it is the problem of eclipse ...
+    
+    tp05: exercice 4. I have done "fr.n7.petrinet.toTina" and "fr.n7.petrinet.toTina.ui". but they don't work
+    
+    tp04: maybe we finished, but I am not sure...
+    
+    tp03: maybe we finished, but I am not sure...
+    
+    tp02: maybe we finished, but I am not sure...
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     

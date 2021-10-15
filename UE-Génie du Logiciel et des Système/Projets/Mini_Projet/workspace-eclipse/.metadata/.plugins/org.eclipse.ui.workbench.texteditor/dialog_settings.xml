@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="processElements"/>
+		<item key="selection" value="Place"/>
 		<list key="findhistory">
+			<item value="place"/>
+			<item value="net place"/>
+			<item value="net"/>
 			<item value="processElements"/>
 			<item value="ecore:EReference"/>
 			<item value="Place"/>
@@ -17,8 +20,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="159"/>
-		<item key="DIALOG_Y_ORIGIN" value="353"/>
+		<item key="DIALOG_X_ORIGIN" value="724"/>
+		<item key="DIALOG_Y_ORIGIN" value="197"/>
 		<item key="DIALOG_WIDTH" value="392"/>
 		<item key="DIALOG_HEIGHT" value="474"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
