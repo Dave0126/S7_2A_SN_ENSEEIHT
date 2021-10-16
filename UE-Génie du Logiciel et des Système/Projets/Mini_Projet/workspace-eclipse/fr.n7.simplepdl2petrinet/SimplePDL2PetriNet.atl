@@ -22,7 +22,7 @@ def: arcOfPetriNet(): petrinet!Arc =
 rule Process2PetriNet {
 	from p: simplepdl!Process
 	to pn: petrinet!PetriNet (
-	--	name <- p.name,
+		name <- p.name,
 		nodes <- p.nodeOfPetriNet(),
 		arcs <- p.arcOfPetriNet())
 }

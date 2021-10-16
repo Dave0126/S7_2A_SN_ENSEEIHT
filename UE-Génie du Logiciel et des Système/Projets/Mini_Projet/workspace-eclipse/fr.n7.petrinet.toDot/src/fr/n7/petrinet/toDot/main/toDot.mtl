@@ -1,0 +1,25 @@
+[comment encoding = UTF-8 /]
+[module toDot('http://petrinet')]
+
+
+[template public petrinetToDot(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name.concat('.dot'), false, 'UTF-8')]
+diagragh [aPetriNet.name/]{
+	[for (tr : Transition | aPetriNet.nodes -> getTransition())]
+		[for (a : Arc | tr.exit)]
+			[tr.name/] -> [a.target.name/]
+		[/for]
+		[for (a : Arc | tr.entrence)]
+			[a.source.name/] -> [tr.name/]
+		[/for]
+	[/for]
+[/file]
+[/template]
+
+[query public getTransition (elements : OrderedSet(Node)): 
+OrderedSet(Transition)=
+	elements->select(e | e.oclIsTypeOf(Transition))
+			->collect(e | e.oclAsType(Transition))
+			->asOrderedSet()
+/]

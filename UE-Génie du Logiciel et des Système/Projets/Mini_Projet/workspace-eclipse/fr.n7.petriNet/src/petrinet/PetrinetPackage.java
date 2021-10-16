@@ -86,13 +86,22 @@ public interface PetrinetPackage extends EPackage {
 	int PETRI_NET__ARCS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__NAME = 2;
+
+	/**
 	 * The number of structural features of the '<em>Petri Net</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PETRI_NET_FEATURE_COUNT = 2;
+	int PETRI_NET_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Petri Net</em>' class.
@@ -187,13 +196,31 @@ public interface PetrinetPackage extends EPackage {
 	int NODE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Entrence</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ENTRENCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__EXIT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 1;
+	int NODE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -222,6 +249,24 @@ public interface PetrinetPackage extends EPackage {
 	 * @ordered
 	 */
 	int PLACE__NAME = NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Entrence</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__ENTRENCE = NODE__ENTRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__EXIT = NODE__EXIT;
 
 	/**
 	 * The feature id for the '<em><b>Jeton</b></em>' attribute.
@@ -268,6 +313,24 @@ public interface PetrinetPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION__NAME = NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Entrence</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ENTRENCE = NODE__ENTRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Exit</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__EXIT = NODE__EXIT;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -329,6 +392,17 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPetriNet_Arcs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link petrinet.PetriNet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see petrinet.PetriNet#getName()
+	 * @see #getPetriNet()
+	 * @generated
+	 */
+	EAttribute getPetriNet_Name();
 
 	/**
 	 * Returns the meta object for class '{@link petrinet.Arc <em>Arc</em>}'.
@@ -404,6 +478,28 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNode_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Node#getEntrence <em>Entrence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Entrence</em>'.
+	 * @see petrinet.Node#getEntrence()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Entrence();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Node#getExit <em>Exit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exit</em>'.
+	 * @see petrinet.Node#getExit()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Exit();
 
 	/**
 	 * Returns the meta object for class '{@link petrinet.Place <em>Place</em>}'.
@@ -496,6 +592,14 @@ public interface PetrinetPackage extends EPackage {
 		EReference PETRI_NET__ARCS = eINSTANCE.getPetriNet_Arcs();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PETRI_NET__NAME = eINSTANCE.getPetriNet_Name();
+
+		/**
 		 * The meta object literal for the '{@link petrinet.impl.ArcImpl <em>Arc</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -554,6 +658,22 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE__NAME = eINSTANCE.getNode_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Entrence</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__ENTRENCE = eINSTANCE.getNode_Entrence();
+
+		/**
+		 * The meta object literal for the '<em><b>Exit</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__EXIT = eINSTANCE.getNode_Exit();
 
 		/**
 		 * The meta object literal for the '{@link petrinet.impl.PlaceImpl <em>Place</em>}' class.

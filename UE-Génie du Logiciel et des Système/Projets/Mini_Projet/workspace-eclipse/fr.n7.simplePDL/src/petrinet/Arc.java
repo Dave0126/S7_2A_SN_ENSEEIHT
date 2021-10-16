@@ -73,12 +73,14 @@ public interface Arc extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link petrinet.Node#getExit <em>Exit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Node)
 	 * @see petrinet.PetrinetPackage#getArc_Source()
-	 * @model required="true"
+	 * @see petrinet.Node#getExit
+	 * @model opposite="exit" required="true"
 	 * @generated
 	 */
 	Node getSource();
@@ -95,12 +97,14 @@ public interface Arc extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link petrinet.Node#getEntrence <em>Entrence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Node)
 	 * @see petrinet.PetrinetPackage#getArc_Target()
-	 * @model required="true"
+	 * @see petrinet.Node#getEntrence
+	 * @model opposite="entrence" required="true"
 	 * @generated
 	 */
 	Node getTarget();

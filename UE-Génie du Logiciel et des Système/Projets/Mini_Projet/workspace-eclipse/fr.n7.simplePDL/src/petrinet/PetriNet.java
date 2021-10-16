@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link petrinet.PetriNet#getNodes <em>Nodes</em>}</li>
  *   <li>{@link petrinet.PetriNet#getArcs <em>Arcs</em>}</li>
+ *   <li>{@link petrinet.PetriNet#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see petrinet.PetrinetPackage#getPetriNet()
@@ -47,5 +48,27 @@ public interface PetriNet extends EObject {
 	 * @generated
 	 */
 	EList<Arc> getArcs();
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see petrinet.PetrinetPackage#getPetriNet_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link petrinet.PetriNet#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // PetriNet

@@ -4,6 +4,7 @@ package petrinet.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -184,11 +185,33 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(Node newSource) {
+	public NotificationChain basicSetSource(Node newSource, NotificationChain msgs) {
 		Node oldSource = source;
 		source = newSource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__SOURCE, oldSource, source));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__SOURCE, oldSource, newSource);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSource(Node newSource) {
+		if (newSource != source) {
+			NotificationChain msgs = null;
+			if (source != null)
+				msgs = ((InternalEObject)source).eInverseRemove(this, PetrinetPackage.NODE__EXIT, Node.class, msgs);
+			if (newSource != null)
+				msgs = ((InternalEObject)newSource).eInverseAdd(this, PetrinetPackage.NODE__EXIT, Node.class, msgs);
+			msgs = basicSetSource(newSource, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__SOURCE, newSource, newSource));
 	}
 
 	/**
@@ -222,11 +245,69 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(Node newTarget) {
+	public NotificationChain basicSetTarget(Node newTarget, NotificationChain msgs) {
 		Node oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TARGET, oldTarget, target));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TARGET, oldTarget, newTarget);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTarget(Node newTarget) {
+		if (newTarget != target) {
+			NotificationChain msgs = null;
+			if (target != null)
+				msgs = ((InternalEObject)target).eInverseRemove(this, PetrinetPackage.NODE__ENTRENCE, Node.class, msgs);
+			if (newTarget != null)
+				msgs = ((InternalEObject)newTarget).eInverseAdd(this, PetrinetPackage.NODE__ENTRENCE, Node.class, msgs);
+			msgs = basicSetTarget(newTarget, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TARGET, newTarget, newTarget));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PetrinetPackage.ARC__SOURCE:
+				if (source != null)
+					msgs = ((InternalEObject)source).eInverseRemove(this, PetrinetPackage.NODE__EXIT, Node.class, msgs);
+				return basicSetSource((Node)otherEnd, msgs);
+			case PetrinetPackage.ARC__TARGET:
+				if (target != null)
+					msgs = ((InternalEObject)target).eInverseRemove(this, PetrinetPackage.NODE__ENTRENCE, Node.class, msgs);
+				return basicSetTarget((Node)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PetrinetPackage.ARC__SOURCE:
+				return basicSetSource(null, msgs);
+			case PetrinetPackage.ARC__TARGET:
+				return basicSetTarget(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;test.petrinet&apos; to &apos;fr.n7.petriNet.tests&apos;&#x0A;- Original project: &apos;fr.n7.simplePDL.exemples&apos;&#x0A;- Destination element: &apos;fr.n7.petriNet.tests&apos;&#x0A;- Original element: &apos;test.petrinet&apos;" description="Copy file" element1="test.petrinet" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1634417394864" target="/fr.n7.petriNet.tests" units="0" version="1.0"/>
+</session>

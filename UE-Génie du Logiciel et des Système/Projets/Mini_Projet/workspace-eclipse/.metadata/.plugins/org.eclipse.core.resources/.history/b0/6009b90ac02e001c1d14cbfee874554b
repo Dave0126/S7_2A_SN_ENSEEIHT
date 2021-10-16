@@ -1,0 +1,69 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://petrinet')]
+
+
+[template public petrinetToTina(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name.concat('.net'), false, 'UTF-8')]
+
+[for (p : Place | aPetriNet.nodes-> getPlace())]
+		p1 [p.name/] ['('/] [p.jeton/] [')'/]
+[/for]
+
+[for (t : Transition | aPetriNet.nodes -> getTransition())]
+		p1 [t.name/] [t.getTransitionsPredecessors()/] -> [t.getTransitionsSucessors()/]
+[/for]
+
+net [aPetriNet.name/]
+
+[/file]
+[/template]
+
+[query public getPlace (elements : OrderedSet(Node)): 
+OrderedSet(Place)=
+	elements->select(e | e.oclIsTypeOf(Place))
+			->collect(e | e.oclAsType(Place))
+			->asOrderedSet()
+/]
+
+[query public getTransition (elements : OrderedSet(Node)): 
+OrderedSet(Transition)=
+	elements->select(e | e.oclIsTypeOf(Transition))
+			->collect(e | e.oclAsType(Transition))
+			->asOrderedSet()
+/]
+
+[query public getArc (elements : OrderedSet(Arc)): 
+OrderedSet(Arc)=
+	elements->select(e | e.oclIsTypeOf(Arc))
+			->collect(e | e.oclAsType(Arc))
+			->asOrderedSet()
+/]
+
+[template public getTransitionsPredecessors()(t : Transition)]
+[for (a : Arc | t.entrence)]
+	[a.target.name/]
+	[a.getPoid()/]
+[/for]
+[/template]
+
+[template public nextPlace(t : Transition)]
+[for (a : Arc | t.name)]
+	[a.target.name/]
+	[a.getPoid()/]
+[/for]
+[/template]
+
+[template public previousPlace(t : Transition)]
+[for (a : Arc | t.name)]
+	[a.source.name/]
+	[a.getPoid()/]
+[/for]
+[/template]
+
+[template public getPoid(arc:Arc)]
+[if(arc.type = ArcType)]?[arc.poid/][elseif(arc.poid>1)]*[arc.poid/]
+[/if]
+[/template]
+
+

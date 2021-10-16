@@ -4,14 +4,18 @@
 
 [template public petrinetToTina(aPetriNet : PetriNet)]
 [comment @main/]
-[file (aPetriNet.toString(), false, 'UTF-8')]
+[file (aPetriNet.name.concat('.net'), false, 'UTF-8')]
+
 [for (p : Place | aPetriNet.nodes-> getPlace())]
 		p1 [p.name/] ['('/] [p.jeton/] [')'/]
 [/for]
+
 [for (t : Transition | aPetriNet.nodes -> getTransition())]
-		p1 [t.name/]
+		p1 [t.name/] [t.getTransitionsPredecessors()/] -> [t.getTransitionsSucessors()/]
 [/for]
-net [aPetriNet/]
+
+net [aPetriNet.name/]
+
 [/file]
 [/template]
 
@@ -36,18 +40,29 @@ OrderedSet(Arc)=
 			->asOrderedSet()
 /]
 
-[template public nextPlace(t : Transition)]
-[for (a : Arc | t.name)]
-	[a.target.name/]
-	[a.getPoid()/]
+[template public getTransitionsPredecessors (tr : Transition)]
+[for (a : Arc | tr.entrence)]
+	[a.getPredecessorPlace()/]
 [/for]
 [/template]
 
-[template public previousPlace(t : Transition)]
-[for (a : Arc | t.name)]
-	[a.source.name/]
-	[a.getPoid()/]
+[template public getTransitionsSucessors (tr : Transition)]
+[for (a : Arc | tr.exit)]
+	[a.getSuccessorPlace()/]
 [/for]
+[/template]
+
+[template public getPredecessorPlace (a : Arc)]
+[a.source.name/]
+[if (a.type = ArcType::read_arc)]?[a.poid/]
+	[elseif (a.poid > 1)] * [a.poid/]
+[/if]
+[/template]
+
+[template public getSuccessorPlace (a : Arc)]
+[a.target.name/]
+[if (a.poid > 1)] * [a.poid/]
+[/if]
 [/template]
 
 [template public getPoid(arc:Arc)]

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:PetriNet
+	xmi:version="2.0" 
+	xmlns:xmi="http://www.omg.org/XMI" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="http://petrinet" 
+    xsi:schemaLocation="http://petrinet PetriNet.ecore">
+
+<nodes
+	xsi:type="petrinet:Transition"
+	name="t0"
+	exit="//@arcs.1"
+	entrence="//@arcs.0"/>
+	
+<nodes
+	xsi:type="petrinet:Place"
+	name="q0"
+	exit="//@arcs.0"
+	entrence="//@arcs.5"/>
+	
+<nodes
+	xsi:type="petrinet:Place"
+	name="q1"
+	exit="//@arcs.2"
+	entrence="//@arcs.1"/>
+	
+<nodes
+	xsi:type="petrinet:Place"
+	name="q2"
+	exit="//@arcs.4"
+	entrence="//@arcs.3"/>
+	
+<nodes
+	xsi:type="petrinet:Transition"
+	name="t1"
+	exit="//@arcs.3"
+	entrence="//@arcs.2"/>
+	
+<nodes
+	xsi:type="petrinet:Transition"
+	name="t2"
+	exit="//@arcs.5"
+	entrence="//@arcs.4"/>
+	
+<nodes name="petrinet2tina"/>
+	
+<arcs source="//@nodes.1"
+		target="//@nodes.0"/>
+			
+<arcs source="//@nodes.0"
+		target="//@nodes.2"/>
+			
+<arcs source="//@nodes.2"
+		target="//@nodes.4"/>
+			
+<arcs source="//@nodes.4"
+		target="//@nodes.3"/>
+			
+<arcs source="//@nodes.3"
+		target="//@nodes.5"/>
+			
+<arcs source="//@nodes.5"
+		target="//@nodes.1"/>
+	
+</petrinet:PetriNet>

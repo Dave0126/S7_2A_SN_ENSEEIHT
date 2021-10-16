@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;fr.n7.petrinet.exemples/pertinetToTina&apos; to &apos;pertinetToTina.petrinet&apos;" description="Rename resource &apos;pertinetToTina&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pertinetToTina" name="pertinetToTina.petrinet" stamp="1634419324067" updateReferences="true"/>
+</session>

@@ -23,6 +23,8 @@
     </genClasses>
     <genClasses ecoreClass="PetriNet.ecore#//Node">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNet.ecore#//Node/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNet.ecore#//Node/entrence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNet.ecore#//Node/exit"/>
     </genClasses>
     <genClasses ecoreClass="PetriNet.ecore#//Place">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNet.ecore#//Place/jeton"/>

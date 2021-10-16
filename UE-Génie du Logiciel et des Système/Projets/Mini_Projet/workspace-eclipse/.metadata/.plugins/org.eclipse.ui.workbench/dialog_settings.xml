@@ -13,11 +13,9 @@
 	<section name="EditorSelectionDialog">
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="atlProjectWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.pde.ui.NewFeatureProjectWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="atlWizard"/>
-			<item value="org.eclipse.ui.Examples"/>
-			<item value="org.eclipse.ui.Examples/org.eclipse.m2m.atl.examples.category"/>
+			<item value="org.eclipse.pde.PDE"/>
 		</list>
 	</section>
 	<section name="FileSystemImportWizard">
@@ -30,9 +28,9 @@
 	</section>
 	<section name="InstallationDialogSettings">
 		<item key="DIALOG_X_ORIGIN" value="-127"/>
-		<item key="DIALOG_Y_ORIGIN" value="-201"/>
+		<item key="DIALOG_Y_ORIGIN" value="-48"/>
 		<item key="DIALOG_WIDTH" value="804"/>
-		<item key="DIALOG_HEIGHT" value="779"/>
+		<item key="DIALOG_HEIGHT" value="741"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 	</section>
 </section>

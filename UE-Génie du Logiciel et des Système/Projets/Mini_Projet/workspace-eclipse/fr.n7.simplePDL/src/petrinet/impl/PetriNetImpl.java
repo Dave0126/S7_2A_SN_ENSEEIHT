@@ -4,6 +4,7 @@ package petrinet.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,6 +33,7 @@ import petrinet.PetrinetPackage;
  * <ul>
  *   <li>{@link petrinet.impl.PetriNetImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link petrinet.impl.PetriNetImpl#getArcs <em>Arcs</em>}</li>
+ *   <li>{@link petrinet.impl.PetriNetImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,6 +58,26 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 	 * @ordered
 	 */
 	protected EList<Arc> arcs;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +127,27 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.PETRI_NET__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -127,6 +171,8 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 				return getNodes();
 			case PetrinetPackage.PETRI_NET__ARCS:
 				return getArcs();
+			case PetrinetPackage.PETRI_NET__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +194,9 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 				getArcs().clear();
 				getArcs().addAll((Collection<? extends Arc>)newValue);
 				return;
+			case PetrinetPackage.PETRI_NET__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +215,9 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 			case PetrinetPackage.PETRI_NET__ARCS:
 				getArcs().clear();
 				return;
+			case PetrinetPackage.PETRI_NET__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,8 +234,26 @@ public class PetriNetImpl extends MinimalEObjectImpl.Container implements PetriN
 				return nodes != null && !nodes.isEmpty();
 			case PetrinetPackage.PETRI_NET__ARCS:
 				return arcs != null && !arcs.isEmpty();
+			case PetrinetPackage.PETRI_NET__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //PetriNetImpl

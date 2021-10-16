@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.n7.petrinet.feautre_1.0.0.202110162324.jar" id="fr.n7.petrinet.feautre" version="1.0.0.202110162324">
+      <category name="N7_GLS_PetiNet_Feature"/>
+   </feature>
+   <feature url="features/fr.n7.feature.PetriNet.toTina_1.0.0.202110162345.jar" id="fr.n7.feature.PetriNet.toTina" version="1.0.0.202110162345">
+      <category name="PeteiNet_toTina"/>
+   </feature>
+   <category-def name="N7_GLS_PetiNet_Feature" label="N7_GLS_PetiNet_Feature"/>
+   <category-def name="PeteiNet_toTina" label="PeteiNet_toTina"/>
+</site>
