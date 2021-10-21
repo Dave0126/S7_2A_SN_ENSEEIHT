@@ -12,9 +12,9 @@
 # 13 "lexerJava.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
-   "\000\000\205\255\206\255\078\000\160\000\235\000\036\001\037\000\
-    \064\001\141\001\153\001\219\255\020\000\223\255\224\255\012\000\
-    \226\255\227\255\002\000\003\000\031\000\033\000\228\001\047\002\
+   "\000\000\207\255\208\255\078\000\160\000\235\000\036\001\037\000\
+    \064\001\141\001\153\001\221\255\020\000\225\255\226\255\012\000\
+    \228\255\229\255\002\000\003\000\031\000\033\000\228\001\047\002\
     \122\002\239\255\240\255\241\255\242\255\243\255\244\255\245\255\
     \246\255\197\002\016\003\091\003\166\003\241\003\060\004\095\000\
     \003\000\160\000\127\000\252\000\063\001\064\001\180\001\181\001\
@@ -24,27 +24,27 @@ let __ocaml_lex_tables = {
     \099\010\174\010\249\010\068\011\143\011\218\011\037\012\112\012\
     \187\012\006\013\081\013\156\013\231\013\050\014\125\014\200\014\
     \019\015\094\015\169\015\244\015\063\016\138\016\213\016\032\017\
-    \107\017\229\255\231\255\230\255\228\255\225\255\221\255\163\001\
+    \107\017\232\255\233\255\231\255\230\255\227\255\223\255\163\001\
     \090\000\184\001\192\001\182\017\217\001\092\000\205\017\215\017\
-    \034\018\057\000\212\255\211\255\039\000\091\018\119\018\194\018\
+    \034\018\057\000\214\255\213\255\039\000\091\018\119\018\194\018\
     \027\019\102\019\177\019";
   Lexing.lex_backtrk =
-   "\255\255\255\255\255\255\048\000\047\000\047\000\050\000\050\000\
-    \047\000\037\000\037\000\255\255\050\000\255\255\255\255\050\000\
-    \255\255\255\255\035\000\023\000\022\000\021\000\047\000\047\000\
-    \047\000\255\255\255\255\255\255\255\255\255\255\255\255\255\255\
-    \255\255\048\000\047\000\047\000\047\000\047\000\047\000\033\000\
+   "\255\255\255\255\255\255\046\000\045\000\045\000\048\000\048\000\
+    \045\000\035\000\035\000\255\255\048\000\255\255\255\255\048\000\
+    \255\255\255\255\033\000\048\000\048\000\021\000\045\000\045\000\
+    \045\000\255\255\255\255\255\255\255\255\255\255\255\255\255\255\
+    \255\255\046\000\045\000\045\000\045\000\045\000\045\000\031\000\
     \000\000\001\000\255\255\255\255\001\000\255\255\255\255\001\000\
-    \255\255\255\255\255\255\001\000\017\000\047\000\047\000\047\000\
-    \047\000\047\000\002\000\003\000\047\000\047\000\047\000\047\000\
-    \004\000\047\000\047\000\042\000\047\000\047\000\047\000\047\000\
-    \047\000\005\000\047\000\047\000\006\000\047\000\047\000\007\000\
-    \048\000\048\000\048\000\048\000\008\000\047\000\047\000\018\000\
-    \047\000\047\000\047\000\019\000\047\000\047\000\047\000\047\000\
+    \255\255\255\255\255\255\001\000\017\000\045\000\045\000\045\000\
+    \045\000\045\000\002\000\003\000\045\000\045\000\045\000\045\000\
+    \004\000\045\000\045\000\040\000\045\000\045\000\045\000\045\000\
+    \045\000\005\000\045\000\045\000\006\000\045\000\045\000\007\000\
+    \046\000\046\000\046\000\046\000\008\000\045\000\045\000\018\000\
+    \045\000\045\000\045\000\019\000\045\000\045\000\045\000\045\000\
     \020\000\255\255\255\255\255\255\255\255\255\255\255\255\255\255\
-    \255\255\255\255\255\255\038\000\039\000\040\000\041\000\047\000\
-    \047\000\255\255\255\255\255\255\255\255\255\255\047\000\047\000\
-    \047\000\045\000\046\000";
+    \255\255\255\255\255\255\036\000\037\000\038\000\039\000\045\000\
+    \045\000\255\255\255\255\255\255\255\255\255\255\045\000\045\000\
+    \045\000\043\000\044\000";
   Lexing.lex_default =
    "\001\000\000\000\000\000\255\255\255\255\255\255\117\000\113\000\
     \255\255\255\255\255\255\000\000\255\255\000\000\000\000\255\255\
@@ -70,7 +70,7 @@ let __ocaml_lex_tables = {
     \040\000\018\000\006\000\040\000\000\000\013\000\012\000\007\000\
     \028\000\027\000\014\000\017\000\030\000\016\000\011\000\039\000\
     \010\000\009\000\009\000\009\000\009\000\009\000\009\000\009\000\
-    \009\000\009\000\102\000\029\000\020\000\021\000\019\000\100\000\
+    \009\000\009\000\102\000\029\000\020\000\019\000\021\000\100\000\
     \099\000\003\000\003\000\003\000\003\000\003\000\003\000\003\000\
     \003\000\003\000\003\000\003\000\003\000\003\000\003\000\003\000\
     \003\000\003\000\003\000\033\000\003\000\003\000\003\000\003\000\
@@ -1510,221 +1510,211 @@ and __ocaml_lex_main_rec lexbuf __ocaml_lex_state =
 
   | 20 ->
 # 48 "lexerJava.mll"
-                   ( RETOUR )
+                  (	PARFERINF )
 # 1515 "lexerJava.ml"
 
   | 21 ->
 # 49 "lexerJava.mll"
-                     ( ASSIGN )
+              ( OPSUP )
 # 1520 "lexerJava.ml"
 
   | 22 ->
 # 50 "lexerJava.mll"
-              ( OPINF )
+                 ( OPINFEG )
 # 1525 "lexerJava.ml"
 
   | 23 ->
 # 51 "lexerJava.mll"
-              ( OPSUP )
+               ( OPSUPEG )
 # 1530 "lexerJava.ml"
 
   | 24 ->
 # 52 "lexerJava.mll"
-                 ( OPINFEG )
+                      ( OPEG )
 # 1535 "lexerJava.ml"
 
   | 25 ->
 # 53 "lexerJava.mll"
-               ( OPSUPEG )
+               ( OPNONEG )
 # 1540 "lexerJava.ml"
 
   | 26 ->
 # 54 "lexerJava.mll"
-                      ( OPEG )
+                     ( OPPLUS )
 # 1545 "lexerJava.ml"
 
   | 27 ->
 # 55 "lexerJava.mll"
-               ( OPNONEG )
+                     ( OPMOINS )
 # 1550 "lexerJava.ml"
 
   | 28 ->
 # 56 "lexerJava.mll"
-                     ( OPPLUS )
+               ( OPOU )
 # 1555 "lexerJava.ml"
 
   | 29 ->
 # 57 "lexerJava.mll"
-                     ( OPMOINS )
+                 ( OPMULT )
 # 1560 "lexerJava.ml"
 
   | 30 ->
 # 58 "lexerJava.mll"
-               ( OPOU )
+              ( OPMOD )
 # 1565 "lexerJava.ml"
 
   | 31 ->
 # 59 "lexerJava.mll"
-                 ( OPMULT )
+                     ( OPDIV )
 # 1570 "lexerJava.ml"
 
   | 32 ->
 # 60 "lexerJava.mll"
-              ( OPMOD )
+               ( OPET )
 # 1575 "lexerJava.ml"
 
   | 33 ->
 # 61 "lexerJava.mll"
-                     ( OPDIV )
+              ( OPNON )
 # 1580 "lexerJava.ml"
 
   | 34 ->
 # 62 "lexerJava.mll"
-               ( OPET )
+              ( OPPT )
 # 1585 "lexerJava.ml"
 
   | 35 ->
+let
 # 63 "lexerJava.mll"
-              ( OPNON )
-# 1590 "lexerJava.ml"
+                texte
+# 1591 "lexerJava.ml"
+= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
+# 63 "lexerJava.mll"
+                          ( (ENTIER (int_of_string texte)) )
+# 1595 "lexerJava.ml"
 
   | 36 ->
+let
 # 64 "lexerJava.mll"
-              ( OPPT )
-# 1595 "lexerJava.ml"
+                         texte
+# 1601 "lexerJava.ml"
+= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
+# 64 "lexerJava.mll"
+                                  ( (ENTIER (int_of_string texte)) )
+# 1605 "lexerJava.ml"
 
   | 37 ->
 let
 # 65 "lexerJava.mll"
-                texte
-# 1601 "lexerJava.ml"
+                   texte
+# 1611 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 65 "lexerJava.mll"
-                          ( (ENTIER (int_of_string texte)) )
-# 1605 "lexerJava.ml"
+                            ( (ENTIER (int_of_string texte)) )
+# 1615 "lexerJava.ml"
 
   | 38 ->
 let
 # 66 "lexerJava.mll"
-                         texte
-# 1611 "lexerJava.ml"
+                     texte
+# 1621 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 66 "lexerJava.mll"
-                                  ( (ENTIER (int_of_string texte)) )
-# 1615 "lexerJava.ml"
+                              ( (ENTIER (int_of_string texte)) )
+# 1625 "lexerJava.ml"
 
   | 39 ->
 let
 # 67 "lexerJava.mll"
-                   texte
-# 1621 "lexerJava.ml"
+                           texte
+# 1631 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 67 "lexerJava.mll"
-                            ( (ENTIER (int_of_string texte)) )
-# 1625 "lexerJava.ml"
+                                   ( (FLOTTANT (float_of_string texte)))
+# 1635 "lexerJava.ml"
 
   | 40 ->
 let
 # 68 "lexerJava.mll"
-                     texte
-# 1631 "lexerJava.ml"
+                          texte
+# 1641 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 68 "lexerJava.mll"
-                              ( (ENTIER (int_of_string texte)) )
-# 1635 "lexerJava.ml"
+                                   ( (BOOLEEN (bool_of_string texte)) )
+# 1645 "lexerJava.ml"
 
   | 41 ->
 let
 # 69 "lexerJava.mll"
-                           texte
-# 1641 "lexerJava.ml"
-= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
+                   texte
+# 1651 "lexerJava.ml"
+= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos (lexbuf.Lexing.lex_start_pos + 3) in
 # 69 "lexerJava.mll"
-                                   ( (FLOTTANT (float_of_string texte)))
-# 1645 "lexerJava.ml"
+                            ( (CARACTERE texte.[1]) )
+# 1655 "lexerJava.ml"
 
   | 42 ->
 let
 # 70 "lexerJava.mll"
-                          texte
-# 1651 "lexerJava.ml"
+                                             texte
+# 1661 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 70 "lexerJava.mll"
-                                   ( (BOOLEEN (bool_of_string texte)) )
-# 1655 "lexerJava.ml"
-
-  | 43 ->
-let
-# 71 "lexerJava.mll"
-                   texte
-# 1661 "lexerJava.ml"
-= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos (lexbuf.Lexing.lex_start_pos + 3) in
-# 71 "lexerJava.mll"
-                            ( (CARACTERE texte.[1]) )
+                                                    ( (CHAINE texte) )
 # 1665 "lexerJava.ml"
 
+  | 43 ->
+# 71 "lexerJava.mll"
+                ( VIDE )
+# 1670 "lexerJava.ml"
+
   | 44 ->
-let
 # 72 "lexerJava.mll"
-                                             texte
-# 1671 "lexerJava.ml"
-= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 72 "lexerJava.mll"
-                                                    ( (CHAINE texte) )
+               ( NOUVEAU )
 # 1675 "lexerJava.ml"
 
   | 45 ->
+let
 # 73 "lexerJava.mll"
-                ( VIDE )
-# 1680 "lexerJava.ml"
-
-  | 46 ->
-# 74 "lexerJava.mll"
-               ( NOUVEAU )
+                                   texte
+# 1681 "lexerJava.ml"
+= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
+# 73 "lexerJava.mll"
+                                          ( (IDENT texte) )
 # 1685 "lexerJava.ml"
 
-  | 47 ->
+  | 46 ->
 let
-# 75 "lexerJava.mll"
-                                   texte
+# 74 "lexerJava.mll"
+                           texte
 # 1691 "lexerJava.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 75 "lexerJava.mll"
-                                          ( (IDENT texte) )
+# 74 "lexerJava.mll"
+                                   ( (TYPEIDENT texte) )
 # 1695 "lexerJava.ml"
+
+  | 47 ->
+# 75 "lexerJava.mll"
+              ( FIN )
+# 1700 "lexerJava.ml"
 
   | 48 ->
 let
 # 76 "lexerJava.mll"
-                           texte
-# 1701 "lexerJava.ml"
-= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 76 "lexerJava.mll"
-                                   ( (TYPEIDENT texte) )
-# 1705 "lexerJava.ml"
-
-  | 49 ->
-# 77 "lexerJava.mll"
-              ( FIN )
-# 1710 "lexerJava.ml"
-
-  | 50 ->
-let
-# 78 "lexerJava.mll"
          texte
-# 1716 "lexerJava.ml"
+# 1706 "lexerJava.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 78 "lexerJava.mll"
+# 76 "lexerJava.mll"
                      ( (print_string "Erreur lexicale : ");(print_char texte);(print_newline ()); VIDE )
-# 1720 "lexerJava.ml"
+# 1710 "lexerJava.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_main_rec lexbuf __ocaml_lex_state
 
 ;;
 
-# 80 "lexerJava.mll"
+# 78 "lexerJava.mll"
  
 
 
-# 1731 "lexerJava.ml"
+# 1721 "lexerJava.ml"

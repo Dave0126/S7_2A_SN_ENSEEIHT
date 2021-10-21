@@ -45,9 +45,7 @@ rule main = parse
   | "if"						{ SI }
   | "else"						{ SINON }
   | "while"				       		{ TANTQUE }
-  | "return" 						{ RETOUR }
-  | "=" 			       			{ ASSIGN }
-  | "<" 						{ OPINF }
+  | "return" 					{	PARFERINF }
   | ">"							{ OPSUP }
   | "<="   						{ OPINFEG }
   | ">=" 						{ OPSUPEG }
