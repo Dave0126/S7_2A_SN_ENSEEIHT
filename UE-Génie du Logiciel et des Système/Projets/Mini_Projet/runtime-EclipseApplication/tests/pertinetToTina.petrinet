@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" name="pdl-sujet">
+  <nodes xsi:type="petrinet:Place" name="conception_ready" exit="//@arcs.0" jeton="1"/>
+  <nodes xsi:type="petrinet:Place" name="conception_running" entrence="//@arcs.1" exit="//@arcs.3"/>
+  <nodes xsi:type="petrinet:Place" name="conception_started" entrence="//@arcs.2" exit="//@arcs.20 //@arcs.23"/>
+  <nodes xsi:type="petrinet:Place" name="conception_finished" entrence="//@arcs.4" exit="//@arcs.21 //@arcs.22"/>
+  <nodes xsi:type="petrinet:Transition" name="conception_start" entrence="//@arcs.0" exit="//@arcs.1 //@arcs.2"/>
+  <nodes xsi:type="petrinet:Transition" name="conception_finish" entrence="//@arcs.3" exit="//@arcs.4"/>
+  <nodes xsi:type="petrinet:Place" name="programmation_ready" exit="//@arcs.5" jeton="1"/>
+  <nodes xsi:type="petrinet:Place" name="programmation_running" entrence="//@arcs.6" exit="//@arcs.8"/>
+  <nodes xsi:type="petrinet:Place" name="programmation_started" entrence="//@arcs.7"/>
+  <nodes xsi:type="petrinet:Place" name="programmation_finished" entrence="//@arcs.9" exit="//@arcs.24"/>
+  <nodes xsi:type="petrinet:Transition" name="programmation_start" entrence="//@arcs.5 //@arcs.22" exit="//@arcs.6 //@arcs.7"/>
+  <nodes xsi:type="petrinet:Transition" name="programmation_finish" entrence="//@arcs.8" exit="//@arcs.9"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionTest_ready" exit="//@arcs.10" jeton="1"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionTest_running" entrence="//@arcs.11" exit="//@arcs.13"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionTest_started" entrence="//@arcs.12"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionTest_finished" entrence="//@arcs.14"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionTest_start" entrence="//@arcs.10 //@arcs.23" exit="//@arcs.11 //@arcs.12"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionTest_finish" entrence="//@arcs.13 //@arcs.24" exit="//@arcs.14"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionDoc_ready" exit="//@arcs.15" jeton="1"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionDoc_running" entrence="//@arcs.16" exit="//@arcs.18"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionDoc_started" entrence="//@arcs.17"/>
+  <nodes xsi:type="petrinet:Place" name="RedactionDoc_finished" entrence="//@arcs.19"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_start" entrence="//@arcs.15 //@arcs.20" exit="//@arcs.16 //@arcs.17"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_finish" entrence="//@arcs.18 //@arcs.21" exit="//@arcs.19"/>
+  <arcs source="//@nodes.0" target="//@nodes.4"/>
+  <arcs source="//@nodes.4" target="//@nodes.1"/>
+  <arcs source="//@nodes.4" target="//@nodes.2"/>
+  <arcs source="//@nodes.1" target="//@nodes.5"/>
+  <arcs source="//@nodes.5" target="//@nodes.3"/>
+  <arcs source="//@nodes.6" target="//@nodes.10"/>
+  <arcs source="//@nodes.10" target="//@nodes.7"/>
+  <arcs source="//@nodes.10" target="//@nodes.8"/>
+  <arcs source="//@nodes.7" target="//@nodes.11"/>
+  <arcs source="//@nodes.11" target="//@nodes.9"/>
+  <arcs source="//@nodes.12" target="//@nodes.16"/>
+  <arcs source="//@nodes.16" target="//@nodes.13"/>
+  <arcs source="//@nodes.16" target="//@nodes.14"/>
+  <arcs source="//@nodes.13" target="//@nodes.17"/>
+  <arcs source="//@nodes.17" target="//@nodes.15"/>
+  <arcs source="//@nodes.18" target="//@nodes.22"/>
+  <arcs source="//@nodes.22" target="//@nodes.19"/>
+  <arcs source="//@nodes.22" target="//@nodes.20"/>
+  <arcs source="//@nodes.19" target="//@nodes.23"/>
+  <arcs source="//@nodes.23" target="//@nodes.21"/>
+  <arcs poid="1" type="read_arc" source="//@nodes.2" target="//@nodes.22"/>
+  <arcs poid="1" type="read_arc" source="//@nodes.3" target="//@nodes.23"/>
+  <arcs poid="1" type="read_arc" source="//@nodes.3" target="//@nodes.10"/>
+  <arcs poid="1" type="read_arc" source="//@nodes.2" target="//@nodes.16"/>
+  <arcs poid="1" type="read_arc" source="//@nodes.9" target="//@nodes.17"/>
+</petrinet:PetriNet>

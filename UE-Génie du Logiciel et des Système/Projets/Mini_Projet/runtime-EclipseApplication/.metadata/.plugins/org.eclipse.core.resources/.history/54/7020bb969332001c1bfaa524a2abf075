@@ -1,0 +1,84 @@
+
+		p1 conception_ready ( 1 )
+		p1 conception_running ( 0 )
+		p1 conception_started ( 0 )
+		p1 conception_finished ( 0 )
+		p1 programmation_ready ( 1 )
+		p1 programmation_running ( 0 )
+		p1 programmation_started ( 0 )
+		p1 programmation_finished ( 0 )
+		p1 RedactionTest_ready ( 1 )
+		p1 RedactionTest_running ( 0 )
+		p1 RedactionTest_started ( 0 )
+		p1 RedactionTest_finished ( 0 )
+		p1 RedactionDoc_ready ( 1 )
+		p1 RedactionDoc_running ( 0 )
+		p1 RedactionDoc_started ( 0 )
+		p1 RedactionDoc_finished ( 0 )
+
+		t1 conception_start 	conception_ready
+			
+		 -> 	conception_running
+		 	
+		 	conception_started
+		 	
+		 
+		t1 conception_finish 	conception_running
+			
+		 -> 	conception_finished
+		 	
+		 
+		t1 programmation_start 	programmation_ready
+			
+			conception_finished
+			?1
+			
+		 -> 	programmation_running
+		 	
+		 	programmation_started
+		 	
+		 
+		t1 programmation_finish 	programmation_running
+			
+		 -> 	programmation_finished
+		 	
+		 
+		t1 RedactionTest_start 	RedactionTest_ready
+			
+			conception_started
+			?1
+			
+		 -> 	RedactionTest_running
+		 	
+		 	RedactionTest_started
+		 	
+		 
+		t1 RedactionTest_finish 	RedactionTest_running
+			
+			programmation_finished
+			?1
+			
+		 -> 	RedactionTest_finished
+		 	
+		 
+		t1 RedactionDoc_start 	RedactionDoc_ready
+			
+			conception_started
+			?1
+			
+		 -> 	RedactionDoc_running
+		 	
+		 	RedactionDoc_started
+		 	
+		 
+		t1 RedactionDoc_finish 	RedactionDoc_running
+			
+			conception_finished
+			?1
+			
+		 -> 	RedactionDoc_finished
+		 	
+		 
+
+net petrtNetToTina
+

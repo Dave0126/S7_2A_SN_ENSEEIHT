@@ -1,0 +1,11 @@
+Process A {
+	processElements {
+		WorkDefinition W {
+			parametres {
+				parametre {
+					Qte 1 ressource R
+				}
+			}
+		}
+	}
+}
