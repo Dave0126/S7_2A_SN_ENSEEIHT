@@ -1,8 +1,9 @@
-#Wed Oct 20 12:44:19 CEST 2021
+#Thu Oct 21 19:34:37 CEST 2021
 rulergrid.rulerunit=1
 print.margin.left=0.5
 viewport.x=0
 rulergrid.gridlinestyle=6
+viewport.y=29
 zoom=1.0
 print.useMillim=true
 print.usePortrait=true

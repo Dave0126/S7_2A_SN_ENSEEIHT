@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.internal.views.log.EventDetailsDialog">
-		<item key="x" value="493"/>
-		<item key="y" value="231"/>
+		<item key="x" value="860"/>
+		<item key="y" value="195"/>
 		<item key="width" value="500"/>
 		<item key="height" value="550"/>
 		<item key="sashWidth1" value="225"/>

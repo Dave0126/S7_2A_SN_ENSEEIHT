@@ -1,0 +1,249 @@
+package simplepdl.manip;
+
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import simplepdl.*;
+import simplepdl.Process;
+import petrinet.*;
+
+public class simplePDL2PetriNet {
+	
+public static void main(String[] args) {
+		
+		// Charger le package Petrinet afin de l'enregistrer dans le registre d'Eclipse.
+		// PetrinetPackage packageInstance = PetrinetPackage.eINSTANCE;
+		EPackage.Registry.INSTANCE.put(SimplepdlPackage.eNS_URI, SimplepdlPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(PetrinetPackage.eNS_URI, PetrinetPackage.eINSTANCE);
+
+		// Enregistrer l'extension ".xmi" comme devant etre ouverte a 
+		// l'aide d'un objet "XMIResourceFactoryImpl"
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("xmi", new XMIResourceFactoryImpl());
+		
+		/**CHARGEMENT SIMPLEPDL**/
+		//EPackage.Registry.INSTANCE.put(SimplepdlPackage.eNS_URI, SimplepdlPackage.eINSTANCE);
+		//Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(Resource.FILE_EXTENSION, Resource.Factory.INSTANCE);
+		ResourceSet resGet = new ResourceSetImpl();
+		
+		// Charger la ressource (notre modele)
+		URI modelURI_GET = URI.createURI("models/pdl-sujet.xmi");
+		Resource resource_SimplePDL = resGet.getResource(modelURI_GET, true);
+		
+		// Recuperer le premier element du modele (element racine)
+		Process process = (Process) resource_SimplePDL.getContents().get(0);
+		
+		/**
+		 * CREATION PETRINET:
+		 * **/
+		
+		// Creer un objet resourceSetImpl qui contiendra une ressource EMF (le modele)
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		// Definir la ressource (le modele)
+		URI modelURI_SET = URI.createURI("models/PetriNet_Created_By_Process_simplePDL2PetriNet.xmi");
+		Resource resource_PetriNet = resSet.createResource(modelURI_SET);
+		
+		
+				
+		
+		// La fabrique pour fabriquer les elements de PetriNet
+	    PetrinetFactory myFactory = PetrinetFactory.eINSTANCE;
+
+		// Creer un element Process
+	    PetriNet petriNet = myFactory.createPetriNet();
+		petriNet.setName("PetriNet_from_"+ process.getName());
+		
+		// Ajouter le petriNet dans le modele
+		resource_PetriNet.getContents().add(petriNet);
+		
+		
+		
+		
+		// Ajouter les ressources
+		for (simplepdl.Ressource res : process.getRessources()) {
+			// Creation des Places 
+			Place p1 = myFactory.createPlace();
+			p1.setName(res.getName());
+			p1.setJeton(res.getNbOccurance());
+			petriNet.getNodes().add(p1);
+			}
+		
+		
+		//for (Object o : process.getProcessElements()) {
+		//if (o instanceof WorkDefinition) 
+		
+		 //Ajouter des WorkDefinitions
+		for (Object o :process.getProcessElements()) {
+			if (o instanceof WorkDefinition) {
+				WorkDefinition wd = (WorkDefinition) o;
+			// Creation des Places 
+			
+			Place p_ready = myFactory.createPlace();
+			p_ready.setName(((WorkDefinition) wd).getName()+"_ready");
+			p_ready.setJeton(1);
+			
+			Place p_running = myFactory.createPlace();
+			p_running.setName(((WorkDefinition) wd).getName()+"_running");
+			
+			Place p_started = myFactory.createPlace();
+			p_started.setName(((WorkDefinition) wd).getName()+"_started");
+			
+			Place p_finished = myFactory.createPlace();
+			p_finished.setName(((WorkDefinition) wd).getName()+"_finished");
+			
+			// Creation des Transitions
+			Transition tr_start = myFactory.createTransition();
+			tr_start.setName(((WorkDefinition) wd).getName()+"_start");
+			
+			Transition tr_finish = myFactory.createTransition();
+			tr_finish.setName(((WorkDefinition)wd).getName()+"_finish"); 
+			
+			// Creation des Arcs
+			Arc a1 =myFactory.createArc();
+			a1.setType(ArcType.NORMAL);
+			a1.setSource(p_ready);
+			a1.setTarget(tr_start);
+			
+			Arc a21 =myFactory.createArc();
+			a21.setType(ArcType.NORMAL);
+			a21.setSource(tr_start);
+			a21.setTarget(p_running);
+			
+			Arc a22 =myFactory.createArc();
+			a22.setType(ArcType.NORMAL);
+			a22.setSource(tr_start);
+			a22.setTarget(p_started);
+			
+			Arc a3 =myFactory.createArc();
+			a3.setType(ArcType.NORMAL);
+			a3.setSource(p_running);
+			a3.setTarget(tr_finish);
+			
+			Arc a4 =myFactory.createArc();
+			a4.setType(ArcType.NORMAL);
+			a4.setSource(tr_finish);
+			a4.setTarget(p_finished);
+			
+			// Attribuer les Creations a PetriNet
+			petriNet.getNodes().add(p_ready);
+			petriNet.getNodes().add(p_running);
+			petriNet.getNodes().add(p_started);
+			petriNet.getNodes().add(p_finished);
+			petriNet.getNodes().add(tr_start);
+			petriNet.getNodes().add(tr_finish);
+			petriNet.getArcs().add(a1);
+			petriNet.getArcs().add(a21);
+			petriNet.getArcs().add(a22);
+			petriNet.getArcs().add(a3);
+			petriNet.getArcs().add(a4);
+			
+			// Ajouter les parameters
+					
+			for (parametre par : wd.getParametres()) {
+				// Creation des Places 
+				// Demande parameter
+				String tmp ;
+				Arc ad =myFactory.createArc();
+				ad.setType(ArcType.NORMAL);
+				ad.setPoid(par.getQte());
+				
+				tmp = par.getRessource().getName();
+				for (Node n : petriNet.getNodes()) 
+					if (n.getName().equals(tmp))
+						ad.setSource(n);
+					
+				tr_start = myFactory.createTransition();
+				ad.setTarget(tr_start);
+				petriNet.getArcs().add(ad);
+				// Liberer Arc de parameter
+				Arc al =myFactory.createArc();
+				al.setType(ArcType.NORMAL);
+				al.setPoid(par.getQte());
+				
+				tmp = par.getRessource().getName();
+				for (Node n : petriNet.getNodes()) 
+					if (n.getName().equals(tmp))
+						al.setTarget(n);
+					
+				tr_finish = myFactory.createTransition();
+				al.setSource(tr_finish);
+				petriNet.getArcs().add(al);
+				}
+			}
+		}
+		
+		//Ajouter les WorkSequences
+		for (Object ws :process.getProcessElements()) {
+			if (ws instanceof WorkSequence) {
+			Arc arcWS = myFactory.createArc();
+			arcWS.setType(ArcType.READ_ARC);
+			arcWS.setPoid(1);
+			if (((WorkSequence) ws).getLinkType() == WorkSequenceType.FINISH_TO_FINISH){
+				String tmp = ((WorkSequence) ws).getPredecessor().getName()+"_finished";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setSource(n);
+				}
+				tmp = ((WorkSequence) ws).getSuccessor().getName()+"_finish";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setTarget(n);
+				}
+			}
+			else if (((WorkSequence) ws).getLinkType() == WorkSequenceType.START_TO_FINISH){
+				String tmp = ((WorkSequence) ws).getPredecessor().getName()+"_started";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setSource(n);
+				}
+				tmp = ((WorkSequence) ws).getSuccessor().getName()+"_finish";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setTarget(n);
+				}
+			}
+			else if (((WorkSequence) ws).getLinkType() == WorkSequenceType.FINISH_TO_START){
+				String tmp = ((WorkSequence) ws).getPredecessor().getName()+"_finished";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setSource(n);
+				}
+				tmp = ((WorkSequence) ws).getSuccessor().getName()+"_start";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setTarget(n);
+				}
+			}
+			else if (((WorkSequence) ws).getLinkType() == WorkSequenceType.START_TO_START){
+				String tmp = ((WorkSequence) ws).getPredecessor().getName()+"_started";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setSource(n);
+				}
+				tmp = ((WorkSequence) ws).getSuccessor().getName()+"_start";
+				for (Node n : petriNet.getNodes()) {
+					if (n.getName().equals(tmp))
+						arcWS.setTarget(n);
+				}
+			}
+			petriNet.getArcs().add(arcWS);}
+		}
+		   
+		// Sauver la ressource
+	    try {
+	    	resource_PetriNet.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
