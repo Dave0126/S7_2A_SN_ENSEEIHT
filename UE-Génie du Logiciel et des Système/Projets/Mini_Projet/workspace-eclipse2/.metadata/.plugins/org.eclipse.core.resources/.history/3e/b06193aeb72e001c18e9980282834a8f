@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.n7.petrinet.feautre_1.0.0.202110162117.jar" id="fr.n7.petrinet.feautre" version="1.0.0.202110162117">
+      <category name="petrinet_feature"/>
+   </feature>
+   <category-def name="petrinet_feature" label="petrinet_feature"/>
+</site>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    name="myprocess">
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToSuccessors="//@processElements.4 //@processElements.5 //@processElements.6"
+      name="conception"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      name="programmation"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      name="RedactionTest"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToPredecessors="//@processElements.4 //@processElements.5"
+      name="RedactionDoc"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      predecessor="//@processElements.0"
+      successor="//@processElements.3"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="finishToFinish"
+      predecessor="//@processElements.0"
+      successor="//@processElements.3"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="finishToStart"
+      predecessor="//@processElements.0"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"/>
+</simplepdl:Process>

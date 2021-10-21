@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='file:/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie%20du%20Logiciel%20et%20des%20Système/Projets/Mini_Projet/workspace-eclipse%20(2)/.metadata/.plugins/org.eclipse.pde.core/tempp2metadata - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1634727382587'/>
+    <property name='p2.compressed' value='false'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='6'>
+    <artifact classifier='osgi.bundle' id='fr.n7.simplePDL.editor' version='1.0.0.202110201256'>
+      <properties size='1'>
+        <property name='download.size' value='63547'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='fr.n7.simplePDL.edit' version='1.0.0.202110201256'>
+      <properties size='1'>
+        <property name='download.size' value='25363'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='fr.n7.simplePDL' version='1.0.0.202110201256'>
+      <properties size='1'>
+        <property name='download.size' value='61915'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='fr.n7.simplePDL.toHTML.ui' version='1.0.0.202110121932'>
+      <properties size='5'>
+        <property name='artifact.size' value='7854'/>
+        <property name='download.size' value='7854'/>
+        <property name='download.md5' value='2faeabf1eabae7a23f74d6aa12334d8b'/>
+        <property name='download.checksum.md5' value='2faeabf1eabae7a23f74d6aa12334d8b'/>
+        <property name='download.checksum.sha-256' value='7fdc5d5b839e3261ea3bb5a9c76f45b2704af98e0ec56c282da2e469ba6c8bda'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='fr.n7.eclipse.feature.simplePDL' version='1.0.0.202110201256'>
+      <properties size='2'>
+        <property name='download.contentType' value='application/zip'/>
+        <property name='download.size' value='453'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='fr.n7.simplePDL.toHTML' version='1.0.0.202110121932'>
+      <properties size='5'>
+        <property name='artifact.size' value='4591'/>
+        <property name='download.size' value='4591'/>
+        <property name='download.md5' value='4a1e7bc782daa74c052986b94ea4f466'/>
+        <property name='download.checksum.md5' value='4a1e7bc782daa74c052986b94ea4f466'/>
+        <property name='download.checksum.sha-256' value='6c6053b23cab12537adedca2ee42f355221fecdf91c16027c729117a2f803119'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

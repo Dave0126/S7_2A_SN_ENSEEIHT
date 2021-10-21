@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExportRepresentationsAsImagesDialog">
+		<item key="ExportRepresentationsAsImagesDialog.imageFormat" value="PNG"/>
+		<list key="ExportRepresentationsAsImagesDialog.folder">
+			<item value="/home/gdai/Bureau"/>
+		</list>
+		<list key="ExportRepresentationsAsImagesDialog.file">
+			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Projets/Mini_Projet/workspace-eclipse/image"/>
+			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Projets/Mini_Projet/workspace-eclipse/fr.n7.simplePDL.exemples"/>
+			<item value="/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Génie du Logiciel et des Système/Projets/Mini_Projet/workspace-eclipse/fr.n7.simplePDL.exemples/simplepdl_editor.png"/>
+		</list>
+	</section>
+</section>
