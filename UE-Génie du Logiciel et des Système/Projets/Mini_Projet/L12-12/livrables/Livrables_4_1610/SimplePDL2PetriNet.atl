@@ -1,0 +1,130 @@
+module SimplePDL2PetriNet;
+create OUT: petrinet from  IN: simplepdl;
+
+-- Get the process that contains this process element.
+-- Note: This helper would not be useful if a reference opposite
+-- had been placed between Process and ProcessElement 
+
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first();
+
+helper context simplepdl!Process
+def: nodeOfPetriNet(): petrinet!Node =
+	petrinet!Node.allInstances() -> asSequence();
+
+helper context simplepdl!Process
+def: arcOfPetriNet(): petrinet!Arc =
+	petrinet!Arc.allInstances() -> asSequence();
+
+-- Translate a Process into a PetriNet of the same name
+rule Process2PetriNet {
+	from p: simplepdl!Process
+	to pn: petrinet!PetriNet (
+		name <- p.name,
+		nodes <- p.nodeOfPetriNet(),
+		arcs <- p.arcOfPetriNet())
+}
+
+-- Translate a Work Definition into a pattern on the PetriNet
+rule WorkDefinition2PetriNet {
+	from wd: simplepdl!WorkDefinition
+	to
+		-- PLACES d'une WorkDefinition
+		p_ready: petrinet!Place(
+				name <- wd.name + '_ready',
+				jeton <- 1),
+				
+		p_running: petrinet!Place(
+				name <- wd.name + '_running',
+				jeton <- 0),
+				
+		p_started: petrinet!Place(
+				name <- wd.name + '_started',
+				jeton <- 0),
+				
+		p_finished: petrinet!Place(
+				name <- wd.name + '_finished',
+				jeton <- 0),
+				
+		-- TRANSITION d'une WorkDefinition
+		tr_start:petrinet!Transition(
+				name <- wd.name + '_start'),
+				
+		tr_finish:petrinet!Transition(
+				name <- wd.name + '_finish'),
+				
+		-- ARC d'une WorkSequence
+		arc1 : petrinet!Arc (type <- #normal, source <- p_ready, target <- tr_start),
+		arc21 : petrinet!Arc (type <- #normal, source <- tr_start, target <- p_running),
+		arc22 : petrinet!Arc (type <- #normal, source <- tr_start, target <- p_started),
+		arc3 : petrinet!Arc (type <- #normal, source <- p_running, target <- tr_finish),
+		arc4 : petrinet!Arc (type <- #normal, source <- tr_finish, target <- p_finished)
+		
+}
+
+rule WorkSequence2PetriNet {
+	from ws: simplepdl!WorkSequence
+	to
+		-- ARCs d'une WorkSequence
+		arcWS : petrinet!Arc (
+			type <- #read_arc,
+			poid <- 1,
+			source <- thisModule.resolveTemp(ws.predecessor,
+				if ((ws.linkType = #finishToFinish) or (ws.linkType = #finishToStart))
+					then 'p_finished'
+					else 'p_started'
+					endif),
+			target <- thisModule.resolveTemp(ws.successor,
+				if ((ws.linkType = #finishToStart) or (ws.linkType = #startToStart))
+					then 'tr_start'
+					else 'tr_finish'
+					endif))
+}
+
+-- Ajouter la transformation des ressources .....
+
+rule Ressource2PetriNet {
+	from res: simplepdl!Ressource
+	to p_res: petrinet!Place(
+		name <- res.Name,
+		jeton <- res.nbOccurance)
+}
+
+helper context simplepdl!parametre
+def: wdOfPar(): simplepdl!WorkDefinition =
+	let allWD : Sequence(simplepdl!WorkDefinition) = 
+		simplepdl!WorkDefinition.allInstances() -> asSequence() in
+		allWD -> select(e|e.parametres -> includes(self)) -> first();
+	
+	
+rule Parameter2PetriNet {
+	-- Comme le prof. a dit "RU2PN"
+	from par : simplepdl!parametre
+	to 
+		arc_take : petrinet!Arc(
+			type <- #normal,
+			poid <- par.Qte,
+			source <- par.ressource,
+			target <- thisModule.resolveTemp(par.wdOfPar(),'tr_start')
+		),
+		
+		arc_giveBack : petrinet!Arc (
+			type <- #normal,
+			poid <- par.Qte,
+			source <- par.ressource,
+			target <- thisModule.resolveTemp(par.wdOfPar(),'tr_finish')
+		)
+}
+
+
+		
+		
+		
+		
+		
+		
+		
+		
