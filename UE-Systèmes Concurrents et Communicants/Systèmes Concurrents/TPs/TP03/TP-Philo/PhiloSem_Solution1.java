@@ -24,7 +24,7 @@ private Semaphore[] fourchette;
     public void demanderFourchettes (int no) throws InterruptedException
     {
         fourchette[Main.FourchetteGauche(no)].acquire();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         fourchette[Main.FourchetteDroite(no)].acquire();
         
         

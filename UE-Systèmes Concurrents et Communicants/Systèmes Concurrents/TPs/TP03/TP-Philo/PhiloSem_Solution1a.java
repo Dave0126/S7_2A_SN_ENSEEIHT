@@ -27,12 +27,12 @@ private Semaphore[] fourchette;
         while (ok){
             /** Philo 'no' pick up the left fork */
             fourchette[Main.FourchetteGauche(no)].acquire();
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             /** Philo 'no' try to pick up the right one 
               * IF he can -> he pick up the right one AND ok = true
               * ELSE ok = false */
             ok = fourchette[Main.FourchetteDroite(no)].tryAcquire();
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             if (!ok){
                 /** IF ok = false
                   * THEN Philo 'no' put down the left fork */

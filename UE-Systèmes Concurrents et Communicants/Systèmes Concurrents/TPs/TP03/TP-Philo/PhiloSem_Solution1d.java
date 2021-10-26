@@ -25,11 +25,11 @@ private Semaphore[] fourchette;
     {
         if (no != 0){
             fourchette[Main.FourchetteGauche(no)].acquire();
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             fourchette[Main.FourchetteDroite(no)].acquire();
         } else {
             fourchette[Main.FourchetteDroite(no)].acquire();
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             fourchette[Main.FourchetteGauche(no)].acquire();
         }
         
