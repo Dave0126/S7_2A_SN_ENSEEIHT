@@ -1,0 +1,128 @@
+# dune utop
+# OCAMLPARAM: unset
+# Workspace root: "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation
+# Fonctionelle/BEs/sourceEtu"
+$ /usr/bin/nproc > /tmp/duneeac6ac.output 2> /dev/null
+# Auto-detected concurrency: 6
+# disable binary cache
+$ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dune6f7ed8.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Release
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path =
+#      Some External "/applications/opam/ocaml-base-compiler/lib/toplevel"
+#  ; ocaml_bin = External "/applications/opam/ocaml-base-compiler/bin"
+#  ; ocaml = Ok External "/applications/opam/ocaml-base-compiler/bin/ocaml"
+#  ; ocamlc = External "/applications/opam/ocaml-base-compiler/bin/ocamlc.opt"
+#  ; ocamlopt =
+#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamlopt.opt"
+#  ; ocamldep =
+#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamldep.opt"
+#  ; ocamlmklib =
+#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/applications/opam/ocaml-base-compiler/lib"
+#        ; "DUNE_OCAML_STDLIB" :
+#            "/applications/opam/ocaml-base-compiler/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/BEs/sourceEtu"
+#        ; "INSIDE_DUNE" :
+#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/BEs/sourceEtu/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/BEs/sourceEtu/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/BEs/sourceEtu/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/BEs/sourceEtu/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/applications/opam/ocaml-base-compiler/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.12.0"
+#      ; standard_library_default =
+#          "/applications/opam/ocaml-base-compiler/lib/ocaml"
+#      ; standard_library = "/applications/opam/ocaml-base-compiler/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="disabled"' --cookie 'library-name="be"' -o boa.pp.ml --impl boa.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl boa.pp.ml) > _build/default/.be.objs/boa.pp.ml.d
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w -40 -g -bin-annot -I .be.objs/byte -I /applications/opam/ocaml-base-compiler/lib/base -I /applications/opam/ocaml-base-compiler/lib/base/base_internalhash_types -I /applications/opam/ocaml-base-compiler/lib/base/caml -I /applications/opam/ocaml-base-compiler/lib/base/shadow_stdlib -I /applications/opam/ocaml-base-compiler/lib/jane-street-headers -I /applications/opam/ocaml-base-compiler/lib/ppx_compare/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_enumerate/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_hash/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/config -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_sexp_conv/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/sexplib0 -I /applications/opam/ocaml-base-compiler/lib/time_now -no-alias-deps -open Be -o .be.objs/byte/be__Boa.cmo -c -impl boa.pp.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w -40 -g -bin-annot -I .be.objs/byte -I /applications/opam/ocaml-base-compiler/lib/base -I /applications/opam/ocaml-base-compiler/lib/base/base_internalhash_types -I /applications/opam/ocaml-base-compiler/lib/base/caml -I /applications/opam/ocaml-base-compiler/lib/base/shadow_stdlib -I /applications/opam/ocaml-base-compiler/lib/jane-street-headers -I /applications/opam/ocaml-base-compiler/lib/ppx_compare/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_enumerate/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_hash/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/config -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_sexp_conv/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/sexplib0 -I /applications/opam/ocaml-base-compiler/lib/time_now -no-alias-deps -open Be -o .be.objs/byte/be__Tests.cmo -c -impl tests.pp.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w -40 -g -a -o be.cma .be.objs/byte/be.cmo .be.objs/byte/be__Boa.cmo .be.objs/byte/be__Tests.cmo)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w -40 -w -24 -g -bin-annot -I .utop/.utop.eobjs/byte -I /applications/opam/ocaml-base-compiler/lib/base -I /applications/opam/ocaml-base-compiler/lib/base/base_internalhash_types -I /applications/opam/ocaml-base-compiler/lib/base/caml -I /applications/opam/ocaml-base-compiler/lib/base/shadow_stdlib -I /applications/opam/ocaml-base-compiler/lib/bytes -I /applications/opam/ocaml-base-compiler/lib/camomile -I /applications/opam/ocaml-base-compiler/lib/camomile/default_config -I /applications/opam/ocaml-base-compiler/lib/camomile/dyn -I /applications/opam/ocaml-base-compiler/lib/camomile/lib_default -I /applications/opam/ocaml-base-compiler/lib/camomile/library -I /applications/opam/ocaml-base-compiler/lib/charInfo_width -I /applications/opam/ocaml-base-compiler/lib/findlib -I /applications/opam/ocaml-base-compiler/lib/jane-street-headers -I /applications/opam/ocaml-base-compiler/lib/lambda-term -I /applications/opam/ocaml-base-compiler/lib/lwt -I /applications/opam/ocaml-base-compiler/lib/lwt/unix -I /applications/opam/ocaml-base-compiler/lib/lwt_log -I /applications/opam/ocaml-base-compiler/lib/lwt_log/core -I /applications/opam/ocaml-base-compiler/lib/lwt_react -I /applications/opam/ocaml-base-compiler/lib/mew -I /applications/opam/ocaml-base-compiler/lib/mew_vi -I /applications/opam/ocaml-base-compiler/lib/mmap -I /applications/opam/ocaml-base-compiler/lib/ocaml/compiler-libs -I /applications/opam/ocaml-base-compiler/lib/ocaml/threads -I /applications/opam/ocaml-base-compiler/lib/ocplib-endian -I /applications/opam/ocaml-base-compiler/lib/ocplib-endian/bigstring -I /applications/opam/ocaml-base-compiler/lib/ppx_compare/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_enumerate/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_hash/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/config -I /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/ppx_sexp_conv/runtime-lib -I /applications/opam/ocaml-base-compiler/lib/react -I /applications/opam/ocaml-base-compiler/lib/result -I /applications/opam/ocaml-base-compiler/lib/seq -I /applications/opam/ocaml-base-compiler/lib/sexplib0 -I /applications/opam/ocaml-base-compiler/lib/time_now -I /applications/opam/ocaml-base-compiler/lib/trie -I /applications/opam/ocaml-base-compiler/lib/utop -I /applications/opam/ocaml-base-compiler/lib/zed -I .be.objs/byte -no-alias-deps -o .utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl .utop/utop.ml-gen)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w -40 -w -24 -g -o .utop/utop.exe -output-complete-exe /applications/opam/ocaml-base-compiler/lib/ocaml/compiler-libs/ocamlcommon.cma /applications/opam/ocaml-base-compiler/lib/ocaml/compiler-libs/ocamlbytecomp.cma /applications/opam/ocaml-base-compiler/lib/ocaml/compiler-libs/ocamltoplevel.cma /applications/opam/ocaml-base-compiler/lib/findlib/findlib.cma /applications/opam/ocaml-base-compiler/lib/findlib/findlib_top.cma /applications/opam/ocaml-base-compiler/lib/result/result.cma /applications/opam/ocaml-base-compiler/lib/lwt/lwt.cma /applications/opam/ocaml-base-compiler/lib/ocaml/unix.cma -I /applications/opam/ocaml-base-compiler/lib/ocaml /applications/opam/ocaml-base-compiler/lib/ocaml/bigarray.cma -I /applications/opam/ocaml-base-compiler/lib/ocaml /applications/opam/ocaml-base-compiler/lib/mmap/mmap.cma /applications/opam/ocaml-base-compiler/lib/ocplib-endian/ocplib_endian.cma /applications/opam/ocaml-base-compiler/lib/ocplib-endian/bigstring/ocplib_endian_bigstring.cma /applications/opam/ocaml-base-compiler/lib/ocaml/threads/threads.cma -I /applications/opam/ocaml-base-compiler/lib/ocaml /applications/opam/ocaml-base-compiler/lib/lwt/unix/lwt_unix.cma -I /applications/opam/ocaml-base-compiler/lib/lwt/unix /applications/opam/ocaml-base-compiler/lib/react/react.cma /applications/opam/ocaml-base-compiler/lib/lwt_react/lwt_react.cma /applications/opam/ocaml-base-compiler/lib/camomile/default_config/camomileDefaultConfig.cma /applications/opam/ocaml-base-compiler/lib/camomile/library/camomileLibrary.cma /applications/opam/ocaml-base-compiler/lib/camomile/lib_default/camomileLibraryDefault.cma /applications/opam/ocaml-base-compiler/lib/camomile/dyn/camomileLibraryDyn.cma /applications/opam/ocaml-base-compiler/lib/camomile/camomile_yuge.cma /applications/opam/ocaml-base-compiler/lib/charInfo_width/charInfo_width.cma /applications/opam/ocaml-base-compiler/lib/zed/zed.cma /applications/opam/ocaml-base-compiler/lib/lwt_log/core/lwt_log_core.cma /applications/opam/ocaml-base-compiler/lib/lwt_log/lwt_log.cma /applications/opam/ocaml-base-compiler/lib/trie/trie.cma /applications/opam/ocaml-base-compiler/lib/mew/mew.cma /applications/opam/ocaml-base-compiler/lib/mew_vi/mew_vi.cma /applications/opam/ocaml-base-compiler/lib/lambda-term/lambda_term.cma -I /applications/opam/ocaml-base-compiler/lib/lambda-term /applications/opam/ocaml-base-compiler/lib/utop/uTop.cma /applications/opam/ocaml-base-compiler/lib/base/base_internalhash_types/base_internalhash_types.cma -I /applications/opam/ocaml-base-compiler/lib/base/base_internalhash_types /applications/opam/ocaml-base-compiler/lib/base/caml/caml.cma /applications/opam/ocaml-base-compiler/lib/sexplib0/sexplib0.cma /applications/opam/ocaml-base-compiler/lib/base/shadow_stdlib/shadow_stdlib.cma /applications/opam/ocaml-base-compiler/lib/base/base.cma -I /applications/opam/ocaml-base-compiler/lib/base /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/config/inline_test_config.cma /applications/opam/ocaml-base-compiler/lib/jane-street-headers/jane_street_headers.cma /applications/opam/ocaml-base-compiler/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cma /applications/opam/ocaml-base-compiler/lib/ppx_compare/runtime-lib/ppx_compare_lib.cma /applications/opam/ocaml-base-compiler/lib/ppx_enumerate/runtime-lib/ppx_enumerate_lib.cma /applications/opam/ocaml-base-compiler/lib/ppx_hash/runtime-lib/ppx_hash_lib.cma /applications/opam/ocaml-base-compiler/lib/time_now/time_now.cma -I /applications/opam/ocaml-base-compiler/lib/time_now /applications/opam/ocaml-base-compiler/lib/ppx_inline_test/runtime-lib/ppx_inline_test_lib.cma be.cma .utop/.utop.eobjs/byte/dune__exe__Utop.cmo -linkall -warn-error -31)

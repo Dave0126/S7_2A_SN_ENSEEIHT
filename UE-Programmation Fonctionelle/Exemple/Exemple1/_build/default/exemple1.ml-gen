@@ -1,0 +1,2 @@
+(** @canonical Exemple1.Arbre_naire *)
+module Arbre_naire = Exemple1__Arbre_naire
