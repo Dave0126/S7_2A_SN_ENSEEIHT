@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="problème-des-philosophes">Problème des philosophes</h1>
+<h2 id="énoncé">Énoncé</h2>
+<p>N philosophes sont autour d'une table. Il y a une assiette par philosophe, et <em>une</em> fourchette entre chaque assiette. Pour manger, un philosophe doit utiliser les deux fourchettes adjacentes à son assiette (et celles-là seulement).</p>
+<p>Un philosophe peut être dans l'état :</p>
+<ul>
+<li>penseur : il n'utilise pas de fourchettes ;</li>
+<li>mangeur : il utilise les deux fourchettes adjacentes ; aucun de ses voisins ne peut manger ;</li>
+<li>demandeur : il souhaite manger mais ne dispose pas des deux fourchettes.</li>
+</ul>
+<p>Visuellement les états mangeur/demandeur/penseur sont représentés par un rond noir (ou rouge en cas de possible problème)/un rond blanc/rien.</p>
+<p>Le bouton d'aide de la fenêtre affichée par l'application en présente les fonctionnalités.</p>
+<h2 id="code-fourni">Code fourni</h2>
+<p>Le code fourni a pour seul but de fournir un exemple de protocole d'usage des moniteurs Java. La classe <code>PhiloMon.java</code> fournit cette illustration et constitue donc la seule classe à regarder dans ce paquetage.</p>
+<ul>
+<li><code>StrategiePhilo.java</code> : interface de la synchronisation entre philosophes.</li>
+<li><code>PhiloMon.java</code> : une implantation de cette interface.</li>
+<li><code>ProcessusPhilosophe.java</code> : code d'un philosophe.</li>
+<li><code>Main.java</code> : programme principal. Définit aussi les <code>PhiloDroite(i)</code>, <code>PhiloGauche(i)</code>, <code>FourchetteGauche(i)</code>, <code>FourchetteDroite(i)</code>.</li>
+<li><code>EtatFourchette.java</code> : définition des constantes pour fourchette placée sur la table, l'assiette gauche, l'assiette droite.</li>
+<li><code>EtatPhilosophe.java</code> : définition des constantes pour philosophe penseur, demandeur ou mangeur.</li>
+<li><code>IHM*.java</code> : interface utilisateur.</li>
+<li><p><code>Synchro/Simulateur.java</code> : le simulateur de temps.</p></li>
+<li><p>Compilation:<br />
+<code>javac *.java</code></p></li>
+<li><p>Exécution:<br />
+<code>java Main</code><br />
+<code>java Main PhiloSem 10</code><br />
+(classe implantant l'interface StrategiePhilo) (nb de philosophes)</p></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h2 id="moniteurs-en-java-rappel">Moniteurs en Java (rappel) :</h2>
+<ul>
+<li><p>Créer un objet de type java.util.concurrent.locks.Lock (à partir de java.util.concurrent.locks.ReentrantLock) :<br />
+<code>    mon_moniteur = new java.util.concurrent.locks.ReentrantLock();</code><br />
+Cet objet réalise le moniteur en fournissant, par son utilisation explicite, l'exclusion mutuelle et permet de créer des variables-conditions associées au verrou.<br />
+<code>    </code><br />
+<em>Remarque</em> : Il est possible de créer un ReentrantLock équitable (mais pas nécessairement FIFO) :<br />
+<code>    mon_moniteur = new java.util.concurrent.locks.ReentrantLock(true);</code></p></li>
+<li><p>Créer une ou des variables-conditions (java.util.concurrent.locks.Condition) à partir du &quot;lock&quot; précédemment créé :</p>
+<p><code>ma_var_condition = mon_moniteur.newCondition();</code></p></li>
+<li><p>Les opérations doivent explicitement manipuler le verrou pour obtenir l'exclusion mutuelle :</p>
+<p><code>mon_opération() {</code><br />
+<code>mon_moniteur.lock();</code></p>
+<p><code>...</code></p>
+<p><code>mon_moniteur.unlock();</code><br />
+<code>}</code></p></li>
+<li><p>Les variables-conditions s'utilisent avec</p>
+<p><code>    ma_var_condition.await();</code><br />
+et<br />
+<code>    ma_var_condition.signal();</code><br />
+<code>    ma_var_condition.signalAll();</code></p></li>
+<li>La sémantique est priorité au signaleur, sans file des signalés :
+<ul>
+<li>en outre, l'attente sur les conditions n'est <strong>pas FIFO</strong>, et</li>
+<li>le signaleur conserve l'accès exclusif</li>
+<li>le signalé est réveillé, mais doit réacquérir l'accès exclusif, et il n'est pas prioritaire par rapport aux entrants en attente (que le verrou soit équitable ou non) ; il doit donc nécessairement retester la condition attendue, car elle a pu être utilisée/ invalidée par un entrant avant qu'il obtienne l'accès exclusif.<br />
+Il faut donc penser à utiliser des boucles &quot;while&quot; pour déterminer si les conditions attendues sont effectivement vérifiées au moment du réveil.</li>
+</ul></li>
+</ul>
+</body>
+</html>
