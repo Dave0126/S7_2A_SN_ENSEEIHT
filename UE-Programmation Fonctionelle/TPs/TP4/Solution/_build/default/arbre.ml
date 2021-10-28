@@ -124,3 +124,6 @@ let rec parcours_arbre(Noeud(b,lb)) =
    | (tc,Noeud(bc,lc))::qc -> if bc then [tc]::(List.map (fun l -> tc::l) (parcours_arbre (Noeud(bc,lc))))@ (parcours_arbre (Noeud(b,qc)))
        else (List.map (fun l -> tc::l) (parcours_arbre (Noeud(bc,lc))))@ (parcours_arbre (Noeud(b,qc)))
 
+(* let rec normalisation(Noeud(b,lb)) =
+   match lb with 
+   | [] -> if b then *)

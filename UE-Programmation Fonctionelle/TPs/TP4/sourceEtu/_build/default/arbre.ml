@@ -98,11 +98,11 @@ match lc with
                | Some a -> a
             in Noeud (b, maj hd (retrait_arbre tl arbre_c) lb)
 
-let rec parcour (Noeud (b, lb)) =
+(*let rec parcour (Noeud (b, lb)) =
    match (b,lb) with 
    | (_, []) -> []
    | (true, (tc, ta)::tl) -> if ta = Noeud(b,[]) then tc :: (parcour (Noeud(b,tl)))
-                                       else tc :: (parcour ta)
+                                       else tc :: (parcour ta)*)
 
 let arbre_sujet2 =
   List.fold_right ajout_arbre

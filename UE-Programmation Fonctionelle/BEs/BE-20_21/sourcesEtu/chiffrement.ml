@@ -9,12 +9,21 @@ module Arbre =
 struct
 
   (* Arbre de chiffrement : arbre n-aire avec données de type 'b dans les branches et 'f dans les feuilles *)
-    type ('b,'f) arbre_chiffrement =
-    | Lettre of 'f
-    | Noeud of 'b arbre_chiffrement list;;
+  
+  (* For example:
+  let arbre2 =
+    Noeud ([(1,Lettre 'a');(2,Lettre 'b'); (3,Lettre 'c')])
+    'b -> 1 or 2 or 3
+    'f -> Lettre 'a' or Lettre 'b' ...
+    *)
+  type ('b,'f) arbre_chiffrement =
+     Lettre of 'f
+    | Noeud of (('b * ('b ,'f) arbre_chiffrement) list)
+    
+    
 
   (* Arbre de chiffrement de la figure 1 du sujet *)
-(*  let arbre1 =
+let arbre1 =
     Noeud (
         [(1,Noeud ([(1,Lettre 'e');(2,Lettre 'b')]) );
          (2,Noeud (
@@ -22,24 +31,24 @@ struct
                  (2,Lettre 'd')]));
          (3,Lettre 'a')]
       )
- *)
+
 
   (* Arbre de chiffrement de la figure 2 du sujet *)
-(*  let arbre2 =
+let arbre2 =
     Noeud ([(1,Lettre 'a');(2,Lettre 'b'); (3,Lettre 'c')])
- *)
+
 
   (* Arbre de chiffrement de la figure 3 du sujet *)
-(*  let arbre3 =
+let arbre3 =
     Noeud([
           ('a', Noeud([('u',Lettre 'a');('a', Lettre 'b')]));
           ('e', Lettre 'c');
           ('i', Noeud([('o',Lettre 'd');('u',Lettre 'e');('e',Lettre 'f')]))
       ])
- *)
+
 
   (* Arbre de chiffrement de la figure 4 du sujet *)
-(*  let arbre4 =
+let arbre4 =
     Noeud([
           ('a',Lettre 'c');
           ('b', Lettre 'd');
@@ -48,13 +57,16 @@ struct
           ('e', Lettre 'a');
           ('f', Lettre 'b')
       ])
- *)
+
 
   (*  get_branche : 'b ->  ('b,'f) arbre_chiffrement -> ('b,'f) arbre_chiffrement option**)
   (*  Cherche la branche qui est étiquetée par e et renvoie le sous-arbre associé *)
-  let rec get_branche (Noeud (listArbres)) e = match listArbres with
+
+  let rec get_branche (Noeud (listArbres)) e = match listArbres with 
   | [] -> None
-  | (label,node)::t -> if e = label then node else get_branche t e
+  | (label,node)::tl -> if label = e then List.assoc_opt listArbres e
+    
+
 
 (*  let%test _ = get_branche 1 arbre1 = Some (Noeud ([(1,Lettre 'e');(2,Lettre 'b')]))
   let%test _ = get_branche 2 arbre2 = Some (Lettre 'b')

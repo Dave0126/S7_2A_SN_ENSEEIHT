@@ -1,0 +1,14 @@
+(** @canonical Be.Chaines *)
+module Chaines = Be__Chaines
+
+
+(** @canonical Be.Chiffrement *)
+module Chiffrement = Be__Chiffrement
+
+
+(** @canonical Be.Dr *)
+module Dr = Be__Dr
+
+
+(** @canonical Be.Test *)
+module Test = Be__Test
