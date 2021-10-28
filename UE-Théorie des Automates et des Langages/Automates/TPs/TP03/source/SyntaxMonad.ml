@@ -119,9 +119,13 @@ let rec parseE stream =
   (print_endline "E");
   (match (peekAtFirstToken stream) with
     (* regle #1 *)
-    (* regle #2 *)
-    (* regle #3 *)
-    (* regle #4 *)
+    | FunctionToken -> inject stream >>= accept FunctionToken >>= acceptIdent >>= accept BodyToken >>= parseE
+    (* regle #2  E -> let ident = E in E*)
+    | LetToken -> inject stream >>= parseFF >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
+    (* regle #3  E -> letrec ident = E in E*)
+    | RecToken -> inject stream >>= parseFF >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
+    (* regle #4 - E -> if E then E else E *)
+    | IfToken -> inject stream >>= accept IfToken >>= parseE >>= accept ThenToken >>= parseE >>= accept ElseToken >>= parseE
     (* regle #5 *)
     | ((IdentToken _) | (NumberToken _) | TrueToken | FalseToken | MinusToken | LeftParenthesisToken ) ->
         inject stream >>=
@@ -248,8 +252,12 @@ and parseF stream =
 and parseFF stream =
   (print_endline "FF");
   (match (peekAtFirstToken stream) with
-    (* regle 23 *)
-    (* regle 24 *)
+    (* regle 23 - FF -> ( E ) *)
+    | LeftParenthesisToken ->  inject stream >>= accept LeftParenthesisToken>>= parseE >>= accept LeftParenthesisToken
+
+    (* regle 24 - FF -> ident*)
+    | IdentToken  name -> inject stream >>= accept (IdentToken  name)
+
     | _ -> Failure)
 
 (* parseARG : inputStream -> parseResult *)
@@ -257,7 +265,9 @@ and parseFF stream =
 and parseARG stream =
   (print_endline "ARG");
   (match (peekAtFirstToken stream) with
-    (* regle 25 *)
-    (* regle 26 *)
+    (* regle 25 ARG -> ( E ) *)
+    | LeftParenthesisToken ->  inject stream >>= accept LeftParenthesisToken >>= parseE >>= accept LeftParenthesisToken
+    (* regle 26 ARG -> *)
+    | (EqualToken | DivideToken | TimesToken | PlusToken | MinusToken | InToken | ThenToken | ElseToken | RightParenthesisToken | EOSToken) -> inject stream
     | _ -> Failure)
 ;;

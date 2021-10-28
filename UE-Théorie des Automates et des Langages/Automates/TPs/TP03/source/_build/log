@@ -1,11 +1,11 @@
-# dune build Main.exe
+# dune build MainMonad.exe
 # OCAMLPARAM: unset
 # Workspace root: "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des
 # Automates et des Langages/Automates/TPs/TP03/source"
-$ /usr/bin/nproc > /tmp/dune5f8d02.output 2> /dev/null
-# Auto-detected concurrency: 4
+$ /usr/bin/nproc > /tmp/dune800f03.output 2> /dev/null
+# Auto-detected concurrency: 32
 # disable binary cache
-$ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dune9724e1.output
+$ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dunea7e9e9.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -119,10 +119,9 @@ $ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dune9724e
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl Main.ml) > _build/default/.Main.eobjs/Main.ml.d
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl Syntax.ml) > _build/default/.Main.eobjs/Syntax.ml.d
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/syntax.cmo -c -impl Syntax.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/main.cmo -c -impl Main.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/syntax.cmx -c -impl Syntax.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/main.cmx -c -impl Main.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o Main.exe .Main.eobjs/native/lex.cmx .Main.eobjs/native/scanner.cmx .Main.eobjs/native/syntax.cmx .Main.eobjs/native/main.cmx)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl SyntaxMonad.ml) > _build/default/.Main.eobjs/SyntaxMonad.ml.d
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/syntaxMonad.cmo -c -impl SyntaxMonad.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/mainMonad.cmo -c -impl MainMonad.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/mainMonad.cmx -c -impl MainMonad.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/syntaxMonad.cmx -c -impl SyntaxMonad.ml)
+$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o MainMonad.exe .Main.eobjs/native/lex.cmx .Main.eobjs/native/scanner.cmx .Main.eobjs/native/syntaxMonad.cmx .Main.eobjs/native/mainMonad.cmx)

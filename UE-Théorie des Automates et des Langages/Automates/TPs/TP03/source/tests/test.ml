@@ -1,1 +1,1 @@
-y - x
+function f -> if f = 1 then true else false
