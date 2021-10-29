@@ -62,7 +62,9 @@ let arbre4 =
   (*  get_branche : 'b ->  ('b,'f) arbre_chiffrement -> ('b,'f) arbre_chiffrement option**)
   (*  Cherche la branche qui est étiquetée par e et renvoie le sous-arbre associé *)
 
-  let rec get_branche (Noeud (listArbres)) e = List.assoc_opt listArbres e
+  (*let rec get_branche (Noeud (listArbres)) e = match listArbres with 
+  | [] -> None
+  | (label,node)::tl -> if label = e then List.assoc_opt listArbres e*)
     
 
 

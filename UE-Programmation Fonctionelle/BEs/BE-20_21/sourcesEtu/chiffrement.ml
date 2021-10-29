@@ -1,4 +1,5 @@
 open Dr
+open Chaines
 
 (* Exception levée quand le code ne peut pas être déchiffré avec l'arbre de chiffrement *)
 exception CodeNonValide
@@ -49,7 +50,7 @@ let arbre3 =
 
   (* Arbre de chiffrement de la figure 4 du sujet *)
 let arbre4 =
-    Noeud([
+  Noeud([
           ('a',Lettre 'c');
           ('b', Lettre 'd');
           ('c', Lettre 'e');
@@ -62,23 +63,78 @@ let arbre4 =
   (*  get_branche : 'b ->  ('b,'f) arbre_chiffrement -> ('b,'f) arbre_chiffrement option**)
   (*  Cherche la branche qui est étiquetée par e et renvoie le sous-arbre associé *)
 
-  let rec get_branche (Noeud (listArbres)) e = match listArbres with 
-  | [] -> None
-  | (label,node)::tl -> if label = e then List.assoc_opt listArbres e
+let rec get_branche e (Noeud (listArbres)) = 
+    List.assoc_opt e listArbres
     
 
 
-(*  let%test _ = get_branche 1 arbre1 = Some (Noeud ([(1,Lettre 'e');(2,Lettre 'b')]))
+  let%test _ = get_branche 1 arbre1 = Some (Noeud ([(1,Lettre 'e');(2,Lettre 'b')]))
   let%test _ = get_branche 2 arbre2 = Some (Lettre 'b')
   let%test _ = get_branche 'i' arbre3 = Some (Noeud([('o',Lettre 'd');('u',Lettre 'e');('e',Lettre 'f')]))
   let%test _ = get_branche 'd' arbre4 = Some (Lettre 'f')
- *)
+
+(******************************************************************************)
+(*   fonction de recherche dans une liste associative                         *)
+(*   TRIEE par valeur croissante des clés                                     *)
+(*                                                                            *)
+(*   signature  : recherche :                                                 *)
+(*                  'a -> ('a * 'b) list -> 'b option                         *)
+(*   paramètres : - une clé (caractère dans le cas des tries)                 *)
+(*                - une liste d'association (clé / valeur)                    *)
+(*                (branches dans le cas des tries, où la clé est un caractère *)
+(*                 et la valeur un sous-arbre)                                *)
+(*   résultat   : Some (la valeur correspondant à la clé),                    *)
+(*                si elle existe                                              *)
+(*                None, sinon                                                 *)
+(******************************************************************************)
+  let rec recherche c lb =
+    match lb with
+    | [] -> None
+    | (tc, ta)::qlb ->
+       if c < tc then None
+       else if c = tc then Some ta
+       else recherche c qlb
+
+
+(******************************************************************************)
+(*   fonction  d'ajout/mise à jour d'une valeur dans une liste associative    *)
+(*   TRIEE par valeur croissante des clés                                     *)
+(*                                                                            *)
+(*   signature  : maj :                                                       *)
+(*                 'a -> 'b -> ('a * 'b) list -> ('a * 'b) list               *)
+(*   paramètres : - une clé (un caractère dans le cas des tries)              *)
+(*                - le couple (clé,valeur) c(la branche dans le cas des tries  *)
+(*                  à ajouter/modifier                                        *)
+(*                - la liste associative                                      *)
+(*   résultat   : la liste associative mise à jour                            *)
+(******************************************************************************)
+let rec maj c nouvelle_b lb =
+  match lb with
+  | [] -> [(c,nouvelle_b)]
+  | (tc, ta)::qlb ->
+     if c < tc then (c,nouvelle_b)::lb
+     else if c = tc then (c,nouvelle_b)::qlb
+     else (tc, ta)::(maj c nouvelle_b qlb)
 
   (*  dechiffrer : 'b list -> ('b,'f) arbre_chiffrement -> 'f list **)
   (*  transforme un code (sous forme de liste des symboles de l'alphabet des code) à l'aide d'un arbre **)
   (*  renvoie la donnée déchiffrée, sous forme de liste de symboles de l'alphabet des données **)
   (*  Exception CodeNonValide : si le code ne peut pas être déchiffré avec l'arbre de chiffrement**)
-  (* TODO: let dechiffrer  = fun _ -> assert false *)
+  
+  let rec dechiffrer codeList (Noeud (listArbres)) = 
+      match codeList with
+      (* on a épuisé la liste : le résultat est le booléen du noeud sur
+         lequel on est arrivé *)
+      | [] -> []
+      (* sinon on cherche la branche correspondant au premier
+         caractère de la liste :
+         - elle n'existe pas : le mot n'appartient pas au trie
+         - on la trouve, on relance aux avec le reste de la liste
+         et l'arbre de cette branche *)
+      | c::qlc -> 
+         match get_branche c (Noeud (listArbres)) with
+         | None -> []
+         | Some a -> dechiffrer qlc a
 
 (*  let%test _ = dechiffrer [1;2;3;2;1;2] arbre1 = ['b';'a';'c']
   let%test _ = dechiffrer [1;2;3] arbre1 = ['b';'a']
@@ -200,13 +256,12 @@ let arbre4 =
 
 end
 
-module Chiffrement (DRDonnee : DecomposeRecompose) (DRCode : DecomposeRecompose)=
+module Chiffrement (DRDonnee : DecomposeRecompose) (DRCode : DecomposeRecompose) =
 struct
-
-  type donnee = TODO
-  type symbole_donnee = TODO
-  type symbole_code = TODO
-  type code = TODO
+  type donnee = string
+  type symbole_donnee = char
+  type symbole_code = int
+  type code = int
 
   (* dechiffrer : code -> (symbole_code,symbole_donnee) arbre_chiffrement -> donnee
      Déchiffre un code en utilisant l'abre de chiffrement
