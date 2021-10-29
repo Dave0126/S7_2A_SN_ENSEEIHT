@@ -65,5 +65,5 @@ struct
 
   let appartient lc (Node(racine,fils)) = match lc with
     | [] -> false
-    | hd::tl -> true
+    | hd::tl -> true (* A faire*)
 end
