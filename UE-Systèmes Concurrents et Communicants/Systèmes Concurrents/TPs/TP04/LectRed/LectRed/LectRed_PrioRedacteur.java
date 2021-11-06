@@ -3,10 +3,14 @@
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import javax.swing.text.html.HTMLDocument.BlockElement;
+
 import Synchro.Assert;
 
 /** Lecteurs/rédacteurs
  * stratégie d'ordonnancement: priorité aux rédacteurs,
+ * 策略：写者优先
  * implantation: avec un moniteur. */
 public class LectRed_PrioRedacteur implements LectRed
 {
@@ -14,14 +18,14 @@ public class LectRed_PrioRedacteur implements LectRed
     private Lock moniteur;
 
     //variable d'etat
-    private int nbLecteurs;
-    private boolean ecriture;
+    private int nbLecteurs; //正在读的读者人数
+    private int nbEcriteurs;
 
     private int nbLectAtt;
+    private int nbEcriAtt;
 
-    private Condition accesLecture;
-
-    private Condition accesEcriture;
+    private Condition accesLecture; //可以读
+    private Condition accesEcriture; //可以写
 
 
     public LectRed_PrioRedacteur()
@@ -29,63 +33,85 @@ public class LectRed_PrioRedacteur implements LectRed
         this.moniteur = new ReentrantLock();
         this.accesLecture = moniteur.newCondition ();
         this.accesEcriture = moniteur.newCondition ();
+
         this.nbLecteurs = 0;
-        this.ecriture = false;
+        this.nbEcriteurs = 0;
+
         this.nbLectAtt = 0;
+        this.nbEcriAtt = 0;
     }
 
-    public void demanderLecture() throws InterruptedException
-    {
-        moniteur.lock();
-        if ( ecriture || nbLectAtt > 0){
-            accesLecture.await();
+/** 开始读 */
+public void demanderLecture() throws InterruptedException 
+{
+    moniteur.lock();
+    try {
+        while ( nbEcriteurs + nbEcriAtt > 0){
+            nbLectAtt++;
+            try {
+                accesLecture.await(); //如果（有人在写 || 等待读的人数 > 0），则 阻塞自己
+            }
+            catch (InterruptedException e) {}
+            nbLectAtt--;
         }
-        //!ecriture
-        nbLecteurs ++;
-        //!ecriture && nbLecteurs > 0
-        accesLecture.signal();
+        nbLecteurs++;
+    }
+    finally {
         moniteur.unlock();
     }
-
+    
+}
+/** 结束读 */
     public void terminerLecture() throws InterruptedException
     {
         moniteur.lock();
-        // nbLecteurs > 0 && !ecriture
-        nbLecteurs --;
-        // nbLecteurs >= 0
-        if (nbLecteurs == 0){
-            //!ecriture && nbLecteurs = 0
-            accesEcriture.signal();
+        try {
+            nbLecteurs--;
+            if (nbLecteurs==0 && nbEcriAtt>0){
+                accesEcriture.signalAll(); // 如果（没人读了），则 唤醒等待的第一个写者
+            }
         }
-        moniteur.unlock();
+        finally {
+            moniteur.unlock();
+        }
+        
     }
 
+    /** 开始写 */
     public void demanderEcriture() throws InterruptedException
     {
         moniteur.lock();
-        if (!(nbLecteurs==0 && !ecriture)){
-            accesEcriture.await();
+        try {
+            while (nbLecteurs + nbEcriteurs > 0){
+                nbEcriAtt++;
+                try {
+                    accesEcriture.await(); // 如果(有人在读 或 有人在写)，则 阻塞自己
+                }
+                catch (InterruptedException e) {}
+                nbEcriAtt--;
+            }
+        nbEcriteurs++; // 修改写状态
         }
-        // nbLecteur=0 && !ecriture
-        ecriture = true;
-        // nbLecteur=0 && ecriture
-        moniteur.unlock();
+        finally{
+            moniteur.unlock();
+        }
     }
 
+    /** 结束写 */
     public void terminerEcriture() throws InterruptedException
     {
         moniteur.lock();
-        // nbLecteur=0 && ecriture
-        ecriture = false;
-        // nbLecteur=0 && !ecriture
-        if (nbLectAtt > 0) {
-            accesLecture.signal();
+        try {
+            nbEcriteurs--; // 修改写状态
+            if (nbEcriAtt > 0) {
+                accesEcriture.signalAll(); // 如果有等待写，则唤醒（写者优先的体现）
+            } else if (nbLectAtt > 0) {
+                accesLecture.signalAll(); // 否则唤醒第一个等待的读者
+            }
         }
-        else  {
-            accesEcriture.signal();
+        finally {
+            moniteur.unlock();
         }
-        moniteur.unlock();
-
     }
 
     public String nomStrategie()
