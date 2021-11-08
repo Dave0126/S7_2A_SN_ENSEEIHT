@@ -39,7 +39,7 @@ public class LectRed_PrioLecteur implements LectRed
             while ( nbEcriteurs != 0) {
                 nbLectAtt++;
                 try {
-                    access.await();  //如果（有人在写），则 阻塞自己
+                    access.await();  //if someone is writing, then block(access.await()) himself. 如果（有人在写），则 阻塞自己
                 }
                 catch(InterruptedException e) {}
                 nbLectAtt--;
@@ -59,7 +59,7 @@ public class LectRed_PrioLecteur implements LectRed
             nbLecteurs--;
             // nbLecteurs >= 0
             if (nbLecteurs ==0 && nbLectAtt == 0){
-                //!ecriture && nbLecteurs = 0
+                //if nobaby reading and waiting for reading -> access for reading
                 access.signalAll();
             }
         }
