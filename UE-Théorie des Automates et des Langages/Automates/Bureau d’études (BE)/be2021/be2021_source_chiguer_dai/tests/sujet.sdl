@@ -1,0 +1,11 @@
+model S is
+	flow f1 from B1.r1 to HS.p1, HS.p2;
+	block B1(p1 : in float, p2 : in float, r1 : out float [ 2 ] );
+	system HS(p1 : in float [ 2 ], r1 : out float, p2 : in float [ 2 ] , r2 : out float [ 2 ] ) is
+	       block B2(r1 : out float, p1 : in float);
+	       flow f1 from p1 to B2.p1;
+	       flow f2 from p2 to r2;
+	end S1.
+	flow f2 from HS.r1 to B1.p1, B1.p2;
+	flow f3 from HS.r2 to;
+end S.

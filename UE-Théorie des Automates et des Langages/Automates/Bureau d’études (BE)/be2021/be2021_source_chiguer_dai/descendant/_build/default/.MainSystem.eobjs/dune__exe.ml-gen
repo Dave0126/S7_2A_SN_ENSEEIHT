@@ -1,0 +1,14 @@
+(** @canonical Dune__exe.MainSystem *)
+module MainSystem = Dune__exe__MainSystem
+
+
+(** @canonical Dune__exe.Parser *)
+module Parser = Dune__exe__Parser
+
+
+(** @canonical Dune__exe.Scanner *)
+module Scanner = Dune__exe__Scanner
+
+
+(** @canonical Dune__exe.Tokens *)
+module Tokens = Dune__exe__Tokens
