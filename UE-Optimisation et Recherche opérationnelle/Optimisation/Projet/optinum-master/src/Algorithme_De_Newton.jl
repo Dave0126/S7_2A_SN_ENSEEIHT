@@ -54,6 +54,9 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
         xmin = zeros(n)
         f_min = 0
         flag = 0
-        nb_iters = 0
+        nb_iters = 
+    # just like le sujet
+    while (flag == 0) 
+        
         return xmin,f_min,flag,nb_iters
 end
