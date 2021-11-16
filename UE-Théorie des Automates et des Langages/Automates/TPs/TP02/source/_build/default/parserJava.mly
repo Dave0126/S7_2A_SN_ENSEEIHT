@@ -115,20 +115,81 @@ instructions : /* Lambda, mot vide */
 /* A FAIRE : Completer pour ajouter les autres formes d'instructions */
                instruction : expression PTVIRG { (print_endline "instruction : expression PTVIRG") }
                              | RETOUR expression PTVIRG  { (print_endline "instruction : RETURN expression PTVIRG") }
-							 | SI PAROUV expression PARFER ACCOUV instruction ACCFER { (print_endline "instruction : SI PAROUV expression PARFER ACCOUV instruction ACCFER") }
-							 | SI PAROUV expression PARFER ACCOUV instruction ACCFER SINON ACCOUV instruction ACCFER { (print_endline "instruction : SI PAROUV expression PARFER ACCOUV expression PTVIRG ACCFER") }
-							 | TANTQUE PAROUV expression PARFER ACCOUV instruction ACCFER { (print_endline "instruction : TANTQUE PAROUV expression PARFER ACCOUV instruction ACCFER") }
+							 | SI PAROUV expression PARFER bloc { (print_endline "instruction : SI PAROUV expression PARFER ACCOUV instruction ACCFER") }
+							 | SI PAROUV expression PARFER bloc SINON bloc { (print_endline "instruction : SI PAROUV expression PARFER ACCOUV expression PTVIRG ACCFER") }
+							 | TANTQUE PAROUV expression PARFER bloc { (print_endline "instruction : TANTQUE PAROUV expression PARFER ACCOUV instruction ACCFER") }
 
 /* A FAIRE : Completer pour ajouter les autres formes d'expressions */
-expression : ENTIER { (print_endline "expression : ENTIER") }
-	   | expression OPPLUS expression {(print_endline "expression : expression OPPLUS expression")}
-	   
-	   | expression OPMULT expression {(print_endline "expression : expression OPMULT expression")}
+expression :
+	subExpression { (print_endline "expression : subExpression") }
+	|unaire expression { (print_endline "expression :  unaire subExpression") }
+	|expression ASSIGN expression {(print_endline "expression : expression ASSIGN expression")}
+	|expression OPPT expression {(print_endline "expression : expression OPPT expression")}
+	|expression OPPLUS expression {(print_endline "expression : expression OPPLUS expression")}
+	|expression OPMOINS expression {(print_endline "expression : expression OPMOINS expression")}
+	|expression OPMULT expression {(print_endline "expression : expression OPMULT expression")}
+	|expression OPDIV expression {(print_endline "expression : expression OPDIV expression")}
+	|expression OPMOD expression {(print_endline "expression : expression OPMOD expression")}
+	|expression OPET expression {(print_endline "expression : expression OPET expression")}
+	|expression OPOU expression {(print_endline "expression : expression OPOU expression")}
+	|expression OPNONEG expression {(print_endline "expression : expression OPNONEG expression")}
+	|expression OPSUP expression {(print_endline "expression : expression OPSUP expression")}
+	|expression OPINF expression {(print_endline "expression : expression OPINF expression")}
+	|expression OPINFEG expression {(print_endline "expression : expression OPINFEG expression")}
+	|expression OPSUPEG expression {(print_endline "expression : expression OPSUPEG expression")}
 
-	   | expression OPMOINS expression {(print_endline "expression : expression OPMOINS expression")}
 
-	   | expression OPEG expression {(print_endline "expression : expression OPEG expression")}
-	   
-	   | OPPLUS expression %prec OPNON {(print_endline "expression : OPPLUS expression %prec OPNON")}
+
+subExpression : 
+	ENTIER { (print_endline "subExpression : ENTIER") }
+	|FLOTTANT { (print_endline "subExpression : FLOTTANT") }
+	|CARACTERE { (print_endline "subExpression : CARACTERE") }
+	|BOOLEEN { (print_endline "subExpression : BOOLEEN") }
+	|VIDE { (print_endline "subExpression : null") }
+	|NOUVEAU IDENT PAROUV PARFER { (print_endline "subExpression : NOUVEAU IDENT PAROUV PARFER") }
+	|NOUVEAU IDENT CROOUV expression CROFER { (print_endline "subExpression : NOUVEAU IDENT CROOUV expression CROFER") }
+	|IDENT loopSuffixe {(print_endline "subExpression : IDENT loopSuffixe") }
+	|PAROUV expression PARFER loopSuffixe {(print_endline "subExpression : PAROUV expression PARFER loopSuffixe") }
+	
 
 %%
+loopSuffixe :
+	{ 
+		(print_endline "loopSuffixe : /* Lambda, mot vide */") 
+		0
+	}
+	| suffixe /*$1*/ loopSuffixe /*$2*/ { 
+		(print_endline "loopSuffixe : /* Lambda, mot vide */") 
+		($2 + 1)
+		}
+
+binaire : 
+	ASSIGN {(print_endline "binaire : ASSIGN")}
+	|OPPT {(print_endline "binaire : OPPT")}
+	|OPPLUS {(print_endline "binaire : OPPLUS")}
+	|OPMOINS {(print_endline "binaire : OPMOINS")}
+	|OPMULT {(print_endline "binaire : OPMULT")}
+	|OPDIV {(print_endline "binaire : OPDIV")}
+	|OPMOD {(print_endline "binaire : OPMOD")}
+	|OPET {(print_endline "binaire : OPET")}
+	|OPOU  {(print_endline "binaire : OPOU")}
+	|OPNONEG {(print_endline "binaire : OPNONEG")}
+	|OPSUP {(print_endline "binaire : OPSUP")}
+	|OPINF{(print_endline "binaire : OPINF")}
+	|OPINFEG {(print_endline "binaire : OPINFEG")}
+	|OPSUPEG {(print_endline "binaire : OPSUPEG")}
+
+unaire :
+	PAROUV type PARFER {(print_endline "unaire : PAROUV type PARFER")}
+	|OPPLUS {(print_endline "unaire : OPMOINS")}
+	|OPNON {(print_endline "unaire : OPNON")}
+
+suffixe :
+	PAROUV parsSuffixe PARFER {(print_endline "suffixe : PAROUV parSuffixe PARFER")}
+	|CROOUV expression CROFER {(print_endline "suffixe : CROOUV expression CROFER")}
+
+parsSuffixe : /* Lambda, mot vide */ { (print_endline "parsSuffixe : /* Lambda, mot vide */") }
+            | expression { (print_endline "parsSuffiex : expression") }
+			| VIRG {(print_endline "parsSuffixe : VIRG(,)")}
+
+

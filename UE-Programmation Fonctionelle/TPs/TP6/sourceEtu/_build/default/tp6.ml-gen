@@ -1,0 +1,2 @@
+(** @canonical Tp6.Etu *)
+module Etu = Tp6__Etu

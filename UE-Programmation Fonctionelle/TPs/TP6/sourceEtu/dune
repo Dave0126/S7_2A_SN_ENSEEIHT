@@ -1,5 +1,5 @@
 (library
- (name tp6_etu)
+ (name tp6)
  (inline_tests)
  (preprocess
   (pps ppx_inline_test)))

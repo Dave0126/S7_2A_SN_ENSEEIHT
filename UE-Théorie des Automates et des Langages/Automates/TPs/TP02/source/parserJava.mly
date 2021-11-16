@@ -150,7 +150,7 @@ subExpression :
 	|NOUVEAU IDENT CROOUV expression CROFER { (print_endline "subExpression : NOUVEAU IDENT CROOUV expression CROFER") }
 	|IDENT loopSuffixe {(print_endline "subExpression : IDENT loopSuffixe") }
 	|PAROUV expression PARFER loopSuffixe {(print_endline "subExpression : PAROUV expression PARFER loopSuffixe") }
-	}
+	
 
 %%
 loopSuffixe :
