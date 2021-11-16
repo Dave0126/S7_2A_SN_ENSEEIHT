@@ -29,7 +29,19 @@ fun nlist -> match nlist with
   | Cons (_, tl) -> tail_n tl
 
 (** rev_n : ('a ,'n) nlist −> ('a,'n) nlist *)
-let rec rev_n : type n. ('a ,n) nlist -> ('a,n) nlist =
+let rec rev_n : type n. ('a, n) nlist -> ('a, n) nlist =
 fun nlist -> match nlist with 
   | Nil -> Nil
-  | Cons (hd, tl) -> snoc_n((rev_n tl), hd)
+  | Cons (hd, tl) -> snoc_n(rev_n tl) hd
+
+(** EXERCICE 2 *)
+let rec insert_n : type n. ('a, n) nlist -> 'a -> ('a, n succ) nlist =
+  fun nlist e -> match nlist with
+    | Nil -> Cons (e, Nil)
+    | Cons (hd, tl) -> if hd < e then Cons (hd, insert_n tl e)
+                                  else Cons (e, nlist)
+
+let rec sort_by_insertion : type n. ('a, n) nlist -> ('a, n) nlist =
+  fun nlist -> match nlist with
+    | Nil -> Nil
+    | Cons (hd, tl) -> insert_n (sort_by_insertion tl) hd                             

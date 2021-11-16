@@ -52,7 +52,7 @@ public class Saisie extends JApplet {
 			n = nom.getText();
 			c = carnets.getSelectedItem();
 			message.setText("Consulter("+n+","+c+")        ");
-			// DO IT
+			
 		}
 	}
 	// La reaction au bouton Ajouter
@@ -63,7 +63,19 @@ public class Saisie extends JApplet {
 			e = email.getText();
 			c = carnets.getSelectedItem();
 			message.setText("Ajouter("+n+","+e+","+c+")        ");
-			// DO IT
+			SFiche sFiche ;
+			try {
+				sFiche = new SFicheImpl(n,e);
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				CarnetImpl.Ajouter(sFiche);
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
