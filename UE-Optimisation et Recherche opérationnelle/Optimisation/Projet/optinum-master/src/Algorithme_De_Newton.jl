@@ -51,12 +51,38 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
     end
 
         n = length(x0)
-        xmin = zeros(n)
+        xmin = x0  # current value of vector x, init value = x0
         f_min = 0
-        flag = 0
-        nb_iters = 
-    # just like le sujet
-    while (flag == 0) 
+        flag = -1
+        nb_iters = 0
         
+
+    while flag == -1
+        # Tant que le test de convergence est non satisfait
+        x_previous = xmin
+        delta_k = - hessf(x_previous)/gradf(x_previous)
+        # Mise à jour 
+        xmin = x_previous + delta_k
+        nb_iters = nb_iters + 1
+        f_min = f(xmin)
+        
+        if (norm(gradf(xmin),2) <= max(Tol_rel * norm(gradf(x0),2), Tol_abs))
+            # Convergence
+            flag = 0
+        elseif (norm(delta_k,2) <= max(Tol_rel * norm(x_previous,2), Tol_abs))
+                # stagnation du xk
+                flag = 1
+        elseif (abs(f(xmin) - f(x_previous)) <= max(Tol_rel * abs(f(x_previous)), Tol_abs))
+                # stagnation du f
+                flag = 2
+        elseif (nb_iters >= max_iter)
+                # nombre maximal d'itération dépassé
+                flag = 3
+        end
+        
+        
+    end
+   
         return xmin,f_min,flag,nb_iters
 end
+
