@@ -75,7 +75,7 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
         elseif (abs(f(xmin) - f(x_previous)) <= max(Tol_rel * abs(f(x_previous)), Tol_abs))
                 # stagnation du f
                 flag = 2
-        elseif (nb_iters >= max_iter)
+        elseif (nb_iters > max_iter)
                 # nombre maximal d'itération dépassé
                 flag = 3
         end
