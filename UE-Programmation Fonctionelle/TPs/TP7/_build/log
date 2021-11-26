@@ -1,0 +1,131 @@
+# dune utop
+# OCAMLPARAM: unset
+# Workspace root:
+# "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation
+# Fonctionelle/TPs/TP7"
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/dune409ab9.output 2> /dev/null
+# Auto-detected concurrency: 8
+# disable binary cache
+$ /Users/dave/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/dune9f92d4.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path = Some External "/Users/dave/.opam/4.12.0/lib/toplevel"
+#  ; ocaml_bin = External "/Users/dave/.opam/4.12.0/bin"
+#  ; ocaml = Ok External "/Users/dave/.opam/4.12.0/bin/ocaml"
+#  ; ocamlc = External "/Users/dave/.opam/4.12.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/Users/dave/.opam/4.12.0/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/Users/dave/.opam/4.12.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/Users/dave/.opam/4.12.0/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP7"
+#        ; "INSIDE_DUNE" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP7/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP7/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP7/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Programmation Fonctionelle/TPs/TP7/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/Users/dave/.opam/4.12.0/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.12.0"
+#      ; standard_library_default = "/Users/dave/.opam/4.12.0/lib/ocaml"
+#      ; standard_library = "/Users/dave/.opam/4.12.0/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "cc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; cc_profile = []
+#      ; architecture = "arm64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "macosx"
+#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "aarch64-apple-darwin21.1.0"
+#      ; target = "aarch64-apple-darwin21.1.0"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="enabled"' --cookie 'library-name="tp7_etu"' -o sourceEtu/tp7_etu.pp.ml --impl sourceEtu/tp7_etu.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/dave/.opam/4.12.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I sourceEtu/.tp7_etu.objs/byte -I /Users/dave/.opam/4.12.0/lib/base -I /Users/dave/.opam/4.12.0/lib/base/base_internalhash_types -I /Users/dave/.opam/4.12.0/lib/base/caml -I /Users/dave/.opam/4.12.0/lib/base/shadow_stdlib -I /Users/dave/.opam/4.12.0/lib/graphics -I /Users/dave/.opam/4.12.0/lib/jane-street-headers -I /Users/dave/.opam/4.12.0/lib/ppx_compare/runtime-lib -I /Users/dave/.opam/4.12.0/lib/ppx_enumerate/runtime-lib -I /Users/dave/.opam/4.12.0/lib/ppx_hash/runtime-lib -I /Users/dave/.opam/4.12.0/lib/ppx_inline_test/config -I /Users/dave/.opam/4.12.0/lib/ppx_inline_test/runtime-lib -I /Users/dave/.opam/4.12.0/lib/ppx_sexp_conv/runtime-lib -I /Users/dave/.opam/4.12.0/lib/sexplib0 -I /Users/dave/.opam/4.12.0/lib/time_now -no-alias-deps -opaque -o sourceEtu/.tp7_etu.objs/byte/tp7_etu.cmo -c -impl sourceEtu/tp7_etu.pp.ml)
+> File "sourceEtu/tp7_etu.ml", line 124, characters 23-24:
+> 124 |       let handler_alrm i =
+>                              ^
+> Error (warning 27 [unused-var-strict]): unused variable i.
+> File "sourceEtu/tp7_etu.ml", line 132, characters 28-30:
+> 132 |           | Some (((x, y), (dx, dy)), r') ->
+>                                   ^^
+> Error (warning 27 [unused-var-strict]): unused variable dx.
+> File "sourceEtu/tp7_etu.ml", line 132, characters 32-34:
+> 132 |           | Some (((x, y), (dx, dy)), r') ->
+>                                       ^^
+> Error (warning 27 [unused-var-strict]): unused variable dy.
+> File "sourceEtu/tp7_etu.ml", line 142, characters 22-23:
+> 142 |       let handler_int i =
+>                             ^
+> Error (warning 27 [unused-var-strict]): unused variable i.
+[2]
