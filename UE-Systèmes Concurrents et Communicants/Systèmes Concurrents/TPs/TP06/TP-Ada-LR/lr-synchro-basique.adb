@@ -17,15 +17,43 @@ package body LR.Synchro.Basique is
    end LectRedTask;
 
    task body LectRedTask is
-   begin
-      loop
-         -- TODO
-         null;
-      end loop;
-   exception
-      when Error: others =>
-         Put_Line("**** LectRedTask: exception: " & Ada.Exceptions.Exception_Information(Error));
-   end LectRedTask;
+      type ETAT2 is (READING, WRITING, LIBRE);
+         etat : ETAT2 := LIBRE;
+         nb : Natural := 0;
+
+      begin
+         loop
+            -- TODO
+            select
+               when etat = LIBRE or etat = READING =>
+                  accept Demander_Lecture;
+                  etat := READING;
+                  nb := nb + 1;
+               or
+               when etat = LIBRE or etat = WRITING =>
+                  accept Demander_Ecriture;
+                  etat := WRITING;
+                  nb := nb + 1;
+               or
+               when etat = READING =>
+                  accept Terminer_Lecture;
+                  nb := nb - 1;
+                  if nb = 0 then
+                     etat := LIBRE;
+                  end if;
+               or
+               when etat = WRITING =>
+                  accept Terminer_Ecriture;
+                  nb := nb - 1;
+                  if nb = 0 then
+                     etat := LIBRE;
+                  end if;       
+            end select;
+         end loop;
+      exception
+         when Error: others =>
+            Put_Line("**** LectRedTask: exception: " & Ada.Exceptions.Exception_Information(Error));
+      end LectRedTask;
 
    procedure Demander_Lecture is
    begin
