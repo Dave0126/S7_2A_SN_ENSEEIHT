@@ -1,0 +1,23 @@
+import 'Game.ecore'
+
+package game
+
+context game
+
+-- Contrainte: Le nom du modèle n'est pas vide
+inv NonNull_name('Le nom du modèle est nul'):
+	name <> null
+	
+-- Contrainte E6: Le nombre d’objets que peut posséder un explorateur est limité par la taille cumulée des objets possédés.
+inv LimiteTailleObject('Erreur: le nombre d\'objets d\'un explorateur est supérieure à la limite '):
+	--todo
+	
+-- Contrainte E17: Il ne peut y avoir qu’un seul chemin obligatoire visible et ouvert par lieu.
+inv UniqueCheminObligatoireVisible('Erreur : plusieurs chemins obligatoires visibles sont ouvert pour un même lieu'): 
+	--todo
+
+-- Contrainte E26: Il ne peut y avoir qu’une seule personne obligatoire par lieu
+inv UneSeulePersonne('Erreur : plusieurs personnes obligatoires sont présentes dans un même lieu'): 
+	--todo
+endpackage
+

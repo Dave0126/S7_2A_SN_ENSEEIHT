@@ -1,0 +1,75 @@
+'Action {'=34
+'InventoryObject {'=41
+'Knowledge {'=38
+'KnowledgeCondition {'=31
+'ObjectAfterTransformation = '=44
+'ObjectCondition {'=27
+'Path {'=39
+'Person {'=32
+'amount <= '=30
+'amount = '=28
+'amount >= '=29
+'condition = '=19
+'condition ='=26
+'consumedObject = '=37
+'description {'=17
+'displayCondition = '=35
+'endCondition = '=36
+'false'=12
+'finish = '=22
+'game'=13
+'inventorySize = '=15
+'mandatory = '=33
+'open = '=40
+'optionalText {'=18
+'paths = '=24
+'place {'=20
+'prizes = '=23
+'size = '=42
+'start = '=21
+'transformationCondition = '=43
+'true'=11
+'visible = '=25
+'{'=14
+'}'=16
+RULE_ANY_OTHER=10
+RULE_ID=4
+RULE_INT=5
+RULE_ML_COMMENT=7
+RULE_SL_COMMENT=8
+RULE_STRING=6
+RULE_WS=9
+T__11=11
+T__12=12
+T__13=13
+T__14=14
+T__15=15
+T__16=16
+T__17=17
+T__18=18
+T__19=19
+T__20=20
+T__21=21
+T__22=22
+T__23=23
+T__24=24
+T__25=25
+T__26=26
+T__27=27
+T__28=28
+T__29=29
+T__30=30
+T__31=31
+T__32=32
+T__33=33
+T__34=34
+T__35=35
+T__36=36
+T__37=37
+T__38=38
+T__39=39
+T__40=40
+T__41=41
+T__42=42
+T__43=43
+T__44=44

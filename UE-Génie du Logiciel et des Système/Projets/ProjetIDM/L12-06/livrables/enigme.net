@@ -1,0 +1,8 @@
+net enigme
+pl question (3)
+pl tentativesRestantes (0)
+pl succes (0)
+pl echec (0)
+tr reussite question -> succes
+tr reponseFausse question -> tentativesRestantes
+tr zeroTentative tentativesRestantes*3 -> echec

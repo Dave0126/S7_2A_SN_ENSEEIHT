@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: fr.n7.projetIDM.Xtext.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.n7.projetIDM.Xtext.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: fr.n7.projetIDM.Xtext.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fr.n7.projetIDM.Xtext,
+ fr.n7.projetIDM.Xtext.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.example.mydsl.ui.contentassist,
+ fr.n7.projetIDM.Xtext.ui.internal,
+ org.xtext.example.mydsl.ui.quickfix,
+ fr.n7.ui.contentassist,
+ fr.n7.ui.quickfix
+Bundle-Activator: fr.n7.projetIDM.Xtext.ui.internal.XtextActivator

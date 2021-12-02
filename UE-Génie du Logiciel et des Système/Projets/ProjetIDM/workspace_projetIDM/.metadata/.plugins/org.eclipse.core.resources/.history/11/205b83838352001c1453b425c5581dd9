@@ -1,0 +1,93 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Game : 'game' name=ID '{'
+	'inventorySize = 'inventorySize=INT
+	gameElements+=GameElement*
+'}';
+
+Description : 'description {'
+	text=STRING // avec un nombre quelconque de balise
+	optionalText+=OptionalText*
+'}';
+
+OptionalText: 'optionalText {'
+	'condition = 'condition+=Condition*
+	text=STRING
+'}';
+
+GameElement : 
+	Places | Path
+	description=Description
+;
+
+Places: 'place {'
+	'start = 'start=BOOLEAN
+	'finish = 'finish=BOOLEAN
+	persons+=Person*
+	'prizes = 'prizesID+=STRING*
+	'paths = 'pathsID+=STRING*
+'}';
+
+enum BOOLEAN:
+	TRUE = "true"
+	| FALSE = "false"
+;
+
+Prize: 
+	InventoryObject | Knowledge
+	'visible = 'visible=BOOLEAN
+	'condition ='condition+=Condition*
+;
+
+Condition: 
+	KnowledgeCondition | ObjectCondition
+;
+
+ObjectCondition: 'ObjectCondition {'
+	objectRequiredID=STRING
+	'amount = 'amount=INT
+'}';
+
+KnowledgeCondition: 'KnowledgeCondition {'
+	knowledgeRequiredID=STRING
+'}';
+
+Person: 'Person {'
+	'visible = 'visible=BOOLEAN
+	'mandatory = 'mandatory=BOOLEAN
+	'actions = 'actions+=Action+
+'}';
+
+Action: 'Action {'
+	'displayCondition = 'displayCondition+=Condition*
+	'endCondition = 'endCondition+=Condition*
+	'condition = 'condition+=Condition*
+	'prizes = 'prizesID+=STRING*
+	'consumedObject = 'consumedID+=STRING*
+'}';
+
+Knowledge: 'Knowledge {'
+	id=STRING
+	'description = 'description=Description
+'}';
+
+
+Path: 'Path {'
+	id=STRING
+	'open = 'open=BOOLEAN
+	'visible = 'visible=BOOLEAN
+	'mandatory = 'mandatory=BOOLEAN
+	'prizes = 'prizesID+=STRING*
+	'consumedObject = 'consumedID+=STRING*
+'}';
+
+
+InventoryObject: 'Path {' 
+	id=STRING
+	'transformationCondition = 'transformationCondition+=Condition*
+	'ObjectAfterTransformation = 'ObjectAfterTransformationID=STRING
+	'size = 'size=INT
+	'description = 'description=Description
+'}';
