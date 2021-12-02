@@ -156,3 +156,37 @@ module Drawing (F : Frame) =
       end    
   end
 
+module Init =
+struct
+  let dt = 0.01
+  let box_x = (0., 800.)
+  let box_y = (0., 600.)
+end
+
+module Draw = Drawing (Init)
+module Bounce = FreeFall (Init)
+
+let position0 = (300., 400.) 
+let vitesse0 = (25., 15.) 
+
+let _  =Draw.draw (Bounce.run (position0, vitesse0))
+
+(** unless : ’a Flux.t −> (’a −> bool) −> (’a −> ’a Flux.t) −> ’a Flux.t *)
+let rec unless flux cond suite f =
+  Tick (lazy (match Flux.uncons flux with
+                | None -> None
+                | Some (v,q) -> if cond v then 
+                                  Flux.uncons(f v)
+                                else
+                                  Some(v,unless q cond f)
+              )
+        )
+
+module Bounce (F:Frame) =
+struct
+  module Balle = FreeFall(F)
+
+  let rec run etat =
+    unless (Balle.run etat) contact (fun(position, vitesse) -> run (position, - vitesse))
+
+end
