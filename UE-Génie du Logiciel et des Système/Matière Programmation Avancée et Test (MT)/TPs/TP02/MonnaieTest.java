@@ -1,9 +1,12 @@
 /** Classe regroupant les tests unitaires de la classe Monnaie.  */
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
 public class MonnaieTest {
 
 	protected Monnaie m1;
 	protected Monnaie m2;
-
+	@Before
 	public void preparer() {
 		this.m1 = new Monnaie(5, "euro");
 		this.m2 = new Monnaie(7, "euro");
