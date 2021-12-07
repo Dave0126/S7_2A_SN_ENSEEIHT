@@ -1,4 +1,4 @@
-# S7_2A_SN_ENSEELHT
+# S7_2A_SN_ENSEEIHT
 ## INTRODUCTION
 这个仓库里的内容均为ENSEEIHT-SN-1A-2021~2022学年-第一学期的教学资料，其中包括所有科目的Cours、TD、TP、Projet以及Examen的Sujet、Slide、Source Code以及我个人的Rapport和部分笔记。希望能对你有所帮助。<br>
 
