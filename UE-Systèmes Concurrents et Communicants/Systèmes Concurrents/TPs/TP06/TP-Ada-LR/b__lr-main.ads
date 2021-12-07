@@ -835,7 +835,7 @@ package ada_main is
    pragma Export (C, u00398, "lr__synchroB");
    u00399 : constant Version_32 := 16#6f87cbb4#;
    pragma Export (C, u00399, "lr__synchroS");
-   u00400 : constant Version_32 := 16#89bcb83c#;
+   u00400 : constant Version_32 := 16#8215fd21#;
    pragma Export (C, u00400, "lr__synchro__prioredacteurB");
    u00401 : constant Version_32 := 16#bd3c25b5#;
    pragma Export (C, u00401, "lr__synchro__prioredacteurS");

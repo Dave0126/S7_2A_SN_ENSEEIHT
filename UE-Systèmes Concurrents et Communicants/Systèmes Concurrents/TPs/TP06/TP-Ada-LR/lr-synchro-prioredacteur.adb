@@ -26,19 +26,41 @@ package body LR.Synchro.PrioRedacteur is
          nbEcriteurs : Natural := 0;
          nbLectAtt : Natural := 0;
          nbEcriAtt : Natural := 0;
+         nb : Natural := 0;
    begin
       loop
       	select
-            when nbEcriteurs + nbEcriAtt > 0 =>
-               nbLectAtt := nbLectAtt + 1;
-               nbLectAtt := nbLectAtt - 1;
-               
-    	      or
-            when 
-			
-            or
-        	
-         end select;
+               when nbEcriAtt + nbEcriteurs = 0 and etat = LIBRE =>
+                  accept Demander_Lecture;
+                  etat := READING;
+                  nbLecteurs := nbLecteurs + 1;
+               or
+               when nbEcriteurs = 0  =>
+                  if etat = WRITING then 
+                     nbEcriAtt := nbEcriAtt + 1;
+                  else
+                     if nbEcriAtt > 0 then 
+                        nbEcriAtt := nbEcriAtt - 1;
+                     end if;
+                     accept Demander_Ecriture;
+                     etat := WRITING;
+                     nbEcriteurs := nbEcriteurs + 1;
+                  end if;
+               or
+               when etat = READING =>
+                  accept Terminer_Lecture;
+                  nbLecteurs := nbLecteurs - 1;
+                  if nbEcriteurs + nbLecteurs = 0 then
+                     etat := LIBRE;
+                  end if;
+               or
+               when etat = WRITING =>
+                  accept Terminer_Ecriture;
+                  nbEcriteurs := nbEcriteurs - 1;
+                  if nbEcriteurs + nbLecteurs = 0 then
+                     etat := LIBRE;
+                  end if;       
+            end select;
         -- une fois une opération acceptée, on accepte uniquement sa terminaison
       end loop;
    end LectRedTask;

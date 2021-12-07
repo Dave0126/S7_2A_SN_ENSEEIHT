@@ -1,0 +1,7 @@
+lr-synchro-prioredacteur.adb:39:18: missing "end select;" for "select" at line 32
+lr-synchro-prioredacteur.adb:39:19: select alternative ("accept", "abort", "delay") expected
+lr-synchro-prioredacteur.adb:49:16: "or" not allowed here
+lr-synchro-prioredacteur.adb:50:16: "when" not allowed here
+lr-synchro-prioredacteur.adb:56:16: "or" not allowed here
+lr-synchro-prioredacteur.adb:57:16: "when" not allowed here
+lr-synchro-prioredacteur.adb:63:13: no "select" for this "end select"

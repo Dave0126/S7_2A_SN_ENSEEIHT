@@ -19,7 +19,7 @@ W lr%s			lr.ads			lr.ali
 
 D lr.ads		20211202073658 400998c9 lr%s
 D lr-synchro.ads	20211202073658 2f8e537d lr.synchro%s
-D lr-synchro.adb	20211202083721 d134176d lr.synchro%b
+D lr-synchro.adb	20211207130706 d134176d lr.synchro%b
 D lr-synchro-prioredacteur.ads  20211202083539 92b276c8 lr.synchro.prioredacteur%s
 D system.ads		20200312110721 4635ec04 system%s
 X 1 lr.ads
