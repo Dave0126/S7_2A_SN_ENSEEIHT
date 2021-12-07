@@ -1,16 +1,18 @@
-TD-Sychronisation par la communication(CSP,Go,Ada)
+# TD-Sychronisation par la communication(CSP,Go,Ada)
 - envoi  (bloquant ou pas) d'un message sur un canal
 - recepiton bloquant
 - alternation en reception (ou en recetion / emission)
 
 Voie unique:
-Code d'un train:
+### Code d'un train:
+```java
 boucle
     // demander a entrer
 
     // parcours sur la voie unique
     // indique qu'on sort
 finboucle
+```
 
 Canoux necessaire:
 - entrerEO, entrerOE, sortir (initile de disstinguer ,sortirEO, sortirOE )
@@ -19,33 +21,40 @@ Canoux necessaire:
 
 Selection sur le contenu des message : NON
 
-Acticite de synchro:
+### Acticite de synchro:
+```java
 boucle
-    recevoir un msg (parmi un ensemble de canaux)
-    le traiter
+    // recevoir un msg (parmi un ensemble de canaux)
+    // le traiter
 finboucle
+```
 
-Code d‘un train
+### Code d‘un train
+```java
     boucle
         entrerEO !_
         ...
         sortir !_
         ...
     fin boucle
+```
 
-Notation Go
+### Notation Go
+```java
     for {
         entrerEO <- true;
         ...
         sortir <- true;
         ...
     }
+```
 
-Activite de sychro
-variable
-    sens : ( OE, OE, libre) = Libre
-    nb : int =0
+## Activite de sychro
+variable  
+- sens : ( OE, OE, libre) = Libre  
+- nb : int =0
 
+```Ada
 boucle 
     select
         sens = EO V sens = Libre
@@ -62,8 +71,10 @@ boucle
             end if
     end select
 end boucle
+```
 
-Version GO:
+### Version GO:
+```go
 const{
     sensEO = 1;
     sensOE = 2;
@@ -75,20 +86,20 @@ func when (b bool, c char bool) char bool{
         return nil // nil = canal ou aucune action n'est faisable
 }
 func voieUnique (entrerEO char bool, entrerOE char bool, sortir char bool)
-这里需要补充
+// 这里需要补充...
+```
 
-Approche par automate
+### Approche par automate
 1 etat = 1 ensemble specifique de canaux acceptes en reception
 
-Voie unique, capacite = 2 :
-(|---|)<-entrerEO-
-(|2EO|)
-(|---|)
+Voie unique, capacite = 2 :  
+(|---|)<-entrerEO-  
+(|2EO|)  
+(|---|)  
 
-Activite de sychro
-variable
-    etat (Vide, 1EO, 2EO, 1OE, 2OE) = Vide
-
+### Activite de sychro
+- variable: etat (Vide, 1EO, 2EO, 1OE, 2OE) = Vide
+```Ada
 boucle 
     if etat = Vide then
         select
@@ -112,23 +123,23 @@ boucle
         ...
     end if
 end boucle
-
-Ada:
-Tache ~ activites
-accepteut des RDV
-client                       server
-|         (demande de RDV)      |
+```
+### Ada:
+Tache ~ activites  
+accepteut des RDV  
+client                       server  
+|         (demande de RDV)      |  
 |------------------------------>|
-                                |   (acceptation/traite du RDV )
-|<------------------------------|
-            (retour)
+                                |   (acceptation/traite du RDV )  
+|<------------------------------|  
+            (retour)  
 
 - demende bloquante
 - acceptation bloquante
 - alternation sur l'acceptation
 - Cas particulier : sychro pure
     -> pas de parameter en entree, ni en sortie
-
+```Ada
 task VU:
     entry entrerEO;
     entry entrerOE;
@@ -171,12 +182,13 @@ task body VU is
             end select
         end loop
     end VU
+```
 
-Tournoi de belotte
-Salle agent en nb quelconque de table,
-il faut garantir que lonter les tables occupees sont complites
--> garantir que le nb de personnes a l'interieur est un multipale de 4
-
+Tournoi de belotte  
+Salle agent en nb quelconque de table,  
+il faut garantir que lonter les tables occupees sont complites  
+-> garantir que le nb de personnes a l'interieur est un multipale de   
+```
 <INERFACE>
     2 canaux : entrer, sortir
     ou
@@ -184,7 +196,8 @@ il faut garantir que lonter les tables occupees sont complites
 
 <Regle>
     4 entrees ou 4 sorties ou 1 echange
-
+```
+```Ada
 task Gardien is
     entry entrer;
     entry sortir;
@@ -213,11 +226,12 @@ task body is
             end select
         end
     end
-
+```
 Questions:
-<1> Que se parse -tl si aucune garde n'est vraie?
-<2> Pas d'evaluation dynamique des garder?
+1. Que se parse -tl si aucune garde n'est vraie?
+2. Pas d'evaluation dynamique des garder?
 
+```Ada
 task Gardien
     preparerEntere;
     preparerSortir;
@@ -264,13 +278,14 @@ task body Gardien is
             end
         end
     end
+```
 
-On ne prut choisir d'accpter un RDV ou recevoir un message selon le contenu.
-->  2 messages
-        1 avec les valeurs, non bloquents
-        1 avec "faire l'action"
+On ne prut choisir d'accpter un RDV ou recevoir un message selon le contenu.  
+->  2 messages 
+- 1 avec les valeurs, non bloquents  
+- 1 avec "faire l'action"  
 
-Approche automate:
+Approche automate:  
 (图略，后期补)
 
 
