@@ -1,6 +1,7 @@
-(** TD9 : Les contiuations natires *) 
+# TD9 : Les Contiuations Natires
 
-(** On utilise la librainrue Definiee *)
+On utilise la librainrue Definiee
+```ocaml
 (* type des marquteuse de pile *)
 type 'a prompt 
 val neur_prompt: unit -> 'reset prompt
@@ -8,8 +9,9 @@ val neur_prompt: unit -> 'reset prompt
 val push_prompt: 'reset prompt -> (unit -> 'reset) -> 'reset
 val shift: (('shift -> 'reset) -> 'reset) -> 'shift
 (**         |-------k-------|    |-expr-| *)
-
-(** on utilise pour 'reset *)
+```
+on utilise pour 'reset 
+```ocaml
 (* le type suivant: *)
   type ('shift, 'reset)res =
     (* calcule normeux*)
@@ -17,22 +19,30 @@ val shift: (('shift -> 'reset) -> 'reset) -> 'shift
     (* calcule aretes par 1 shift *)
     | Request of ('shift -> 'reset)
     (*                   ｜contiuation k | *)
+  ```
 
-(** Exo 1: *)
+## Exo 1: 
+```ocaml
 let rec prod_int_list l =
   match l with 
   | [] -> 1
   | hd :: tl -> hd * (prod_int_list tl)
+```
 
-  (** on peut "optimiser" le programme pour ne realiser auncune muiltiplication si un 0 et dan le liste (arc 1 seul parcours) *)
+on peut "optimiser" le programme pour ne realiser auncune muiltiplication si un 0 et dan le liste (arc 1 seul parcours) 
+```ocaml
   let rec prod_int_list l =
     match l with
     | [] -> 1
     | 0 :: tl -> 0
     | hd :: tl -> hd * (prod_int_list tl)
+```
 
-(** cette solution erite la mulitplication des elements apres le premier 0, mais pas ceux avant *)
-(** on peut eriter les calcule avec des exceptions *)
+cette solution erite la mulitplication des elements apres le premier 0, mais pas ceux avant
+
+on peut eriter les calcule avec des exceptions
+
+```ocaml
 exception Zero;;
 let prod_int_list l =
   match l with
@@ -41,7 +51,11 @@ let prod_int_list l =
   | hd :: tl -> hd * loop tl
       in try loop l with
       | Zero -> 0
-(** on peut retransive cette solution avec des contiuations *)
+```
+
+on peut retransive cette solution avec des contiuations
+
+```ocaml
 let p = neur_prompt ()
 
 let prod_int_list l =
@@ -51,9 +65,15 @@ let prod_int_list l =
     | 0 :: tl -> shift (func k -> 0)
     | hd :: tl -> hd * loop tl
   in push_prompt p (func () -> loop l )
+  ```
 
-  (** Exo 3: definir les primitives yield et foreach *)
-  (** Exo 4&5 : 这tmd都是些什么东西啊 *)
+## Exo 3: definir les primitives yield et foreach 
+略
+
+
+## Exo 4&5 : 
+```ocaml
+(** 这tmd都是些什么东西啊 *)
   let ping ()=
     for i = 1 to 10 do
       print_endline "ping!";
@@ -97,3 +117,4 @@ let scheduler () =
                     | Done -> loop tl
                     | Request k -> loop (tl @ [k])
                     in loop [run ping; run pong]
+```
