@@ -2,13 +2,18 @@
 module GreenThreads =
   struct
     (* à compléter/modifier *)
-    type res = unit
+    type res = 
+      | Yield of (unit -> res)
+      | Fork of (unit -> res) * (unit -> res)
+      | Done
+
+      let p = new_prompt()
 
     let scheduler proc_init = assert false;;
 
-    let yield () = assert false;;
-    let fork proc = assert false;;
-    let exit () = assert false;;
+    let yield () = Delimcc.shift p (fun k -> Yield (k))
+    let fork proc = Delimcc.shift p (fun k -> Fork (k, p))
+    let exit () = Delimcc.shift p (fun k -> Done)
   end
 
 module type Channel =
