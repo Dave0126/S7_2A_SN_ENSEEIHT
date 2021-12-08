@@ -29,39 +29,38 @@ package body LR.Synchro.PrioRedacteur is
          nb : Natural := 0;
    begin
       loop
-      	select
-               when nbEcriAtt + nbEcriteurs = 0 and etat = LIBRE =>
-                  accept Demander_Lecture;
-                  etat := READING;
-                  nbLecteurs := nbLecteurs + 1;
-               or
-               when nbEcriteurs = 0  =>
-                  if etat = WRITING then 
-                     nbEcriAtt := nbEcriAtt + 1;
-                  else
-                     if nbEcriAtt > 0 then 
-                        nbEcriAtt := nbEcriAtt - 1;
-                     end if;
-                     accept Demander_Ecriture;
-                     etat := WRITING;
-                     nbEcriteurs := nbEcriteurs + 1;
-                  end if;
-               or
-               when etat = READING =>
-                  accept Terminer_Lecture;
-                  nbLecteurs := nbLecteurs - 1;
-                  if nbEcriteurs + nbLecteurs = 0 then
-                     etat := LIBRE;
-                  end if;
-               or
-               when etat = WRITING =>
-                  accept Terminer_Ecriture;
-                  nbEcriteurs := nbEcriteurs - 1;
-                  if nbEcriteurs + nbLecteurs = 0 then
-                     etat := LIBRE;
-                  end if;       
+      	case etatCurrent is
+         when LIBRE =>
+            select
+               when (Demander_Ecriture'count = 0) =>
+               accept Demander_Lecture;
+                  etatCurrent := READING;
+                  nb := 1;
+            or
+               accept Demander_Ecriture;
+                  etatCurrent := WRITING;
             end select;
-        -- une fois une opération acceptée, on accepte uniquement sa terminaison
+
+         when READING =>
+            select
+               when (Demander_Ecriture'count = 0) =>
+               accept Demander_Lecture;
+                  etatCurrent := READING;
+                  nb := nb + 1;
+            or
+               accept Terminer_Lecture;
+                  nb := nb - 1;
+               if nb = 0 then
+                  etatCurrent := LIBRE;
+               end if;
+            end select;
+
+         when WRITING =>
+            select
+               accept Terminer_Ecriture;
+                  etatCurrent := LIBRE;
+            end select;
+         end case;         
       end loop;
    end LectRedTask;
 
