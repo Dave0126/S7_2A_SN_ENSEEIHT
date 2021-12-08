@@ -88,7 +88,7 @@ package body ada_main is
    E226 : Short_Integer; pragma Import (Ada, E226, "gtk__target_entry_E");
    E224 : Short_Integer; pragma Import (Ada, E224, "gtk__target_list_E");
    E399 : Short_Integer; pragma Import (Ada, E399, "lr__synchro_E");
-   E401 : Short_Integer; pragma Import (Ada, E401, "lr__synchro__prioredacteur_E");
+   E401 : Short_Integer; pragma Import (Ada, E401, "lr__synchro__fifo_E");
    E231 : Short_Integer; pragma Import (Ada, E231, "pango__enums_E");
    E249 : Short_Integer; pragma Import (Ada, E249, "pango__attributes_E");
    E235 : Short_Integer; pragma Import (Ada, E235, "pango__font_metrics_E");
@@ -801,12 +801,12 @@ package body ada_main is
            False, False, False, True, False, False, True, False, 
            True, False, False, True, False, True, False, True, 
            True, False, True, True, False, True, True, False, 
-           False, False, False, True, False, True, True, True, 
+           False, False, False, True, True, True, True, True, 
            False, False, True, False, True, True, True, False, 
            True, True, False, True, True, True, True, False, 
            False, True, False, False, False, False, True, True, 
            True, False, False, False),
-         Count => (0, 0, 0, 0, 4, 4, 2, 0, 0, 0),
+         Count => (0, 0, 0, 0, 3, 4, 2, 0, 0, 0),
          Unknown => (False, False, False, False, False, False, True, False, False, False));
       Priority_Specific_Dispatching :=
         Local_Priority_Specific_Dispatching'Address;
@@ -984,7 +984,7 @@ package body ada_main is
       Gtk.Target_List'Elab_Body;
       E224 := E224 + 1;
       E399 := E399 + 1;
-      LR.SYNCHRO.PRIOREDACTEUR'ELAB_BODY;
+      LR.SYNCHRO.FIFO'ELAB_BODY;
       E401 := E401 + 1;
       E231 := E231 + 1;
       Pango.Attributes'Elab_Spec;
@@ -1210,7 +1210,7 @@ package body ada_main is
 --  BEGIN Object file/option list
    --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr.o
    --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro.o
-   --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro-prioredacteur.o
+   --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro-fifo.o
    --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-simu.o
    --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-tasks.o
    --   /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-affic.o

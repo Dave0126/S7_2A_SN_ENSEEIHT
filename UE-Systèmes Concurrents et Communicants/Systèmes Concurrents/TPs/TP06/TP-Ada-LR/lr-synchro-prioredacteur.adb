@@ -20,7 +20,7 @@ package body LR.Synchro.PrioRedacteur is
 
    task body LectRedTask is
    type ETAT2 is (READING, WRITING, LIBRE);
-         etat : ETAT2 := LIBRE;
+         etatCurrent : ETAT2 := LIBRE;
 
          nbLecteurs : Natural := 0;
          nbEcriteurs : Natural := 0;

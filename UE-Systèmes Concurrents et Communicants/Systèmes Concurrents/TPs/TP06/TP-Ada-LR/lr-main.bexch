@@ -8,7 +8,7 @@ b__lr-main.o
 [BOUND OBJECT FILES]
 /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr.o
 /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro.o
-/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro-prioredacteur.o
+/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-synchro-fifo.o
 /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-simu.o
 /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-tasks.o
 /home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Systèmes Concurrents et Communicants/Systèmes Concurrents/TPs/TP06/TP-Ada-LR/lr-affic.o
