@@ -1,5 +1,12 @@
 # Optinum
 
+## How to compile?
+1. 在终端中来到 `/test` 文件夹中：  
+`> cd ../optinum/test`
+2. 编译前请先确定 `Julia` 环境是否可用，之后键入一下命令行以测试算法  
+`> julia new_runtests.jl`
+
+
 ## Mise à jour des tests unitaires
 
 ### Attention : afin d'éviter tout problème sauvegardez votre répertoire src (voire test si vous l'avez modifié) dans optinum
