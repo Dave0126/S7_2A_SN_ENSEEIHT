@@ -74,14 +74,15 @@ function Regions_De_Confiance(algo,f::Function,gradf::Function,hessf::Function,x
         Tol_rel = options[9]
     end
 
+    ### Initialization of parameters
     n = length(x0)
     xmin = zeros(n)
     fxmin = f(xmin)
     flag = 0
     nb_iters = 0
 
-    delta = delta0
-    x_k = x0
+    delta = delta0 # "delta" in the Iteration
+    x_k = x0 # "x" in the Iteration
 
     while (true)
         ### a. Calculer approximativement s_k

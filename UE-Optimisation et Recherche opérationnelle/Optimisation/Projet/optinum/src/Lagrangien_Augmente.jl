@@ -107,11 +107,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
     La_gradf_x0_lambda0 = gradfonc(x0) + transpose(lambda0) * grad_contrainte(x_k)
 
     ##### Condition of STOP
-    if norm(La_gradf_xmin_lambda) <= max(epsilon, tol * norm(La_gradf_x0_lambda0))
-      # convergence
-      flag = 0
-      break
-    elseif norm(contrainte(x_k)) <= max(tol, tol * norm(contrainte(x0)))
+    if norm(La_gradf_xmin_lambda) <= max(epsilon, tol * norm(La_gradf_x0_lambda0)) || norm(contrainte(x_k)) <= max(tol, tol * norm(contrainte(x0)))
       # convergence
       flag = 0
       break
@@ -121,7 +117,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
       break
     end
 
-    # mise a jour
+    # Update the parameters
     if norm(contrainte(x_k)) <= eta
       lambda = lambda + mu * contrainte(x_k)
       epsilon = epsilon / mu

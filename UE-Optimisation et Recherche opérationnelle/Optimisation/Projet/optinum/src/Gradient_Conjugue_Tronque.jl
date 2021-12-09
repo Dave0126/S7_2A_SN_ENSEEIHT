@@ -45,11 +45,11 @@ function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
    s = zeros(n) # s_0
    g = gradfk # g_0
    p = - gradfk # p_0
-   j = 0 
+   nb_iters = 0 
    q(s) = transpose(gradfk) * s + 1/2 * transpose(s) * hessfk * s
-   canExit = false
+   canExit = false # flag parameter
 
-   while(!canExit)
+   while(true)
         # κ: kappa
         kappa = transpose(p) * hessfk * p
         if (kappa < 0)
@@ -62,15 +62,25 @@ function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
             # 这里差两个判断条件 也许是a==0和b==0
             if ( a == 0)
                 if (b == 0)
-                    sj = 0
+                    # a==0, b==0, no roots
+                    """
                     canExit = true
+                    """
+                    break
+
                 else
                     # TODO
+                    # a==0, b!=0, 1 root
                     sigma = (-c) / b
                     s = s + sigma * p
+                    """
                     canExit = true
-                end
+                    """
+                    break
+                end # end if
             else
+                # a!=0, b!=0, 2 roots
+                # 求根公式：delta
                 discriminant = b^2 - 4 * a * c
                 sigma1 = (-b + sqrt(discriminant)) / (2 * a)
                 sigma2 = (-b - sqrt(discriminant)) / (2 * a)
@@ -78,12 +88,12 @@ function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
                     s = s + sigma1 * p
                 else
                     s = s + sigma2 * p
-                end
-                break
-            end
+                end # end if
+                break # break loop
+            end# end if
         else
             if kappa == 0 
-                break
+                break # break loop
             else
                 alpha = transpose(g) * g / kappa
                 if (norm(s + alpha * p,2) >= deltak)
@@ -95,14 +105,17 @@ function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
                     # 这里差两个判断条件 也许是a或b
                     if ( a == 0)
                         if (b == 0)
-                            break
+                            # a==0, b==0, no roots
+                            break 
                         else
-                            # TODO
+                            # a==0, b!=0, 1 root
                             sigma = (-c) / b
                             s = s + sigma * p
                             break
-                        end
+                        end # end if
                     else
+                        # a!=0, b!=0, 2 roots
+                        # 求根公式：delta
                         discriminant = b^2 - 4 * a * c
                         sigma1 = (-b + sqrt(discriminant)) / (2 * a)
                         sigma2 = (-b - sqrt(discriminant)) / (2 * a)
@@ -110,27 +123,30 @@ function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
                             s = s + sigma1 * p
                         else
                             s = s + sigma2 * p
-                        end
+                        end # end if
                         break
-                    end
-                end    
+                    end # end if
+                end # end if  
             
-            end
-        end
+            end # end if
+        end # end if
 
-        # update the parameters
+        # Update the parameters
         s = s + alpha * p
         g_previous = g
         g = g_previous + alpha * hessfk * p
         beta = transpose(g) * g / (transpose(g_previous) * g_previous)
         p = -g + beta * p
-        j = j + 1
+        nb_iters = nb_iters + 1
 
         # la condition de sortie
-        if ( norm(g,2) <= (tol * norm(gradfk)) || j >= max_iter)
+        if ( norm(g,2) <= (tol * norm(gradfk)) || nb_iters >= max_iter)
+            """
             canExit = true
-        end
+            """
+            break
+        end # end if
 
-    end
+    end # end while
    return s
 end

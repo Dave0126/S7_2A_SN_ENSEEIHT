@@ -33,25 +33,29 @@ s1, e1 = Pas_De_Cauchy(g1,H1,delta1)
 ```
 """
 function Pas_De_Cauchy(g,H,delta)
-
-    e = 0
+    ### Initialization of parameters
+    e = 0 # the state of exit
     n = length(g)
-    s = zeros(n)
+    s = zeros(n) # solution of sub-problem
     
+    # if the Gradient is not null
     if norm(g) > 0
-      t = norm(g)^2 / (g' * H * g)
-      s =-t * g
+      t = norm(g)^2 / (transpose(g) * H * g)
+      s = -t * g
       e = 1
 
-      if norm(s) > delta || g'*H*g <0
+      #si on ne sature pas la boule
+      if norm(s) > delta || transpose(g) * H * g < 0
         s = - (delta/norm(g)) * g
         e = -1
-      end
+      end # end if
+
+    # if the Gradient is null
     else
       t = 0
       s = t * g
       e = 0
-    end
+    end # end if
 
     return s, e
-end
+end # end fonc
