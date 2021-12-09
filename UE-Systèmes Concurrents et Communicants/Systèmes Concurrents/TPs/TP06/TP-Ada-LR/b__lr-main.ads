@@ -831,14 +831,14 @@ package ada_main is
    pragma Export (C, u00396, "lr__tasksB");
    u00397 : constant Version_32 := 16#07263366#;
    pragma Export (C, u00397, "lr__tasksS");
-   u00398 : constant Version_32 := 16#a562f09d#;
+   u00398 : constant Version_32 := 16#fc7ec844#;
    pragma Export (C, u00398, "lr__synchroB");
    u00399 : constant Version_32 := 16#6f87cbb4#;
    pragma Export (C, u00399, "lr__synchroS");
-   u00400 : constant Version_32 := 16#485b880f#;
-   pragma Export (C, u00400, "lr__synchro__fifoB");
-   u00401 : constant Version_32 := 16#6a0b4988#;
-   pragma Export (C, u00401, "lr__synchro__fifoS");
+   u00400 : constant Version_32 := 16#1e3e7393#;
+   pragma Export (C, u00400, "lr__synchro__serverB");
+   u00401 : constant Version_32 := 16#37668ded#;
+   pragma Export (C, u00401, "lr__synchro__serverS");
    u00402 : constant Version_32 := 16#eb4fc41d#;
    pragma Export (C, u00402, "ada__real_timeB");
    u00403 : constant Version_32 := 16#69ea8064#;
@@ -1281,9 +1281,9 @@ package ada_main is
    --  gtk.target_list%b
    --  lr%s
    --  lr.synchro%s
-   --  lr.synchro.fifo%s
+   --  lr.synchro.server%s
    --  lr.synchro%b
-   --  lr.synchro.fifo%b
+   --  lr.synchro.server%b
    --  pango%s
    --  pango.enums%s
    --  pango.enums%b

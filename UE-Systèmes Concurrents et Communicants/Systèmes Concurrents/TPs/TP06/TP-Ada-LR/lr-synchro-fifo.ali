@@ -5,6 +5,9 @@ A -march=x86-64
 P ZX
 
 RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
 RV NO_IO
 RV NO_SECONDARY_STACK
 RV NO_SELECT_STATEMENTS
@@ -15,11 +18,11 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_SELECT_ALTERNATIVES=3
-RV MAX_TASK_ENTRIES=4
+RV MAX_SELECT_ALTERNATIVES=4
+RV MAX_TASK_ENTRIES=3
 RV MAX_TASKS=1
 
-U lr.synchro.fifo%b	lr-synchro-fifo.adb	485b880f OO PK IU
+U lr.synchro.fifo%b	lr-synchro-fifo.adb	a33c865c OO PK IU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.real_time%s	a-reatim.adb		a-reatim.ali
@@ -50,10 +53,10 @@ D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20200312110721 5ab55268 interfaces%s
 D i-c.ads		20200312110721 5421119b interfaces.c%s
 D i-cstrea.ads		20200312110721 e53d8b8e interfaces.c_streams%s
-D lr.ads		20211202073658 400998c9 lr%s
-D lr-synchro.ads	20211202073658 2f8e537d lr.synchro%s
-D lr-synchro-fifo.ads	20211208223736 45851af5 lr.synchro.fifo%s
-D lr-synchro-fifo.adb	20211208223736 acda3375 lr.synchro.fifo%b
+D lr.ads		20141028181748 400998c9 lr%s
+D lr-synchro.ads	20141028181624 2f8e537d lr.synchro%s
+D lr-synchro-fifo.ads	20211209100024 45851af5 lr.synchro.fifo%s
+D lr-synchro-fifo.adb	20211209100039 47bd3d26 lr.synchro.fifo%b
 D system.ads		20200312110721 4635ec04 system%s
 D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20200312110721 0ebbdb71 system.crtl%s
@@ -89,22 +92,31 @@ X 2 a-except.ads
 X 8 a-textio.ads
 49K13*Text_IO 471e16 16|1w10 1r27
 X 13 lr.ads
-1K9*LR 2e7 15|1r9 10r5 16|7r14 55r5
+1K9*LR 2e7 15|1r9 10r5 16|7r14 79r5
 X 14 lr-synchro.ads
-1K12*Synchro 13|1k9 14|10e15 15|1r12 10r8 16|7r17 55r8
+1K12*Synchro 13|1k9 14|10e15 15|1r12 10r8 16|7r17 79r8
 X 15 lr-synchro-fifo.ads
-1K20*FIFO 14|1k12 15|10l16 10e20 16|7b25 55l16 55t20
+1K20*FIFO 14|1k12 15|10l16 10e20 16|7b25 79l16 79t20
 3V13*Nom_Strategie{string} 16|9b13 12l8 12t21
-5U14*Demander_Lecture 16|35b14 38l8 38t24
-6U14*Demander_Ecriture 16|40b14 43l8 43t25
-7U14*Terminer_Lecture 16|45b14 48l8 48t24
-8U14*Terminer_Ecriture 16|50b14 53l8 53t25
+5U14*Demander_Lecture 16|59b14 62l8 62t24
+6U14*Demander_Ecriture 16|64b14 67l8 67t25
+7U14*Terminer_Lecture 16|69b14 72l8 72t24
+8U14*Terminer_Ecriture 16|74b14 77l8 77t25
 X 16 lr-synchro-fifo.adb
-14t9 LectRedTask 21b14 33l8 33t19 37r7 42r7 47r7 52r7
-15Y13 Demander_Lecture 25b32 37s19
-16Y13 Demander_Ecriture 27b32 42s19
-17Y13 Terminer_Lecture 25b57 47s19
-18Y13 Terminer_Ecriture 27b58 52s19
+13E9 state 13e31 15r26 33r36
+13n19 Read{13E9} 35r26 61r28
+13n25 Write{13E9} 66r28
+14t9 LectRedTask 20b14 57l8 57t19 61r7 66r7 71r7 76r7
+15Y13 Demander 15>22 33b23 43l20 43t28 61s19 66s19
+15e22 c{13E9} 35r22
+16Y13 Terminer_Lecture 50b20 71s19
+17Y13 Terminer_Ecriture 46b20 76s19
+21i10 nbLecteurs{natural} 31r38 37m22 37r36 49r18 51m16 51r30
+22i10 nbEcriteurs{natural} 31r18 41m22 41r37 45r18 47m16 47r31
+23i10 nbLectAtt{natural}
+24i10 nbEcriAtt{natural}
+25b10 isWriting{boolean}
+33e32 c{13E9}
 X 31 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22

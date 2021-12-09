@@ -45,10 +45,10 @@ D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20200312110721 5ab55268 interfaces%s
 D i-c.ads		20200312110721 5421119b interfaces.c%s
 D i-cstrea.ads		20200312110721 e53d8b8e interfaces.c_streams%s
-D lr.ads		20211202073658 400998c9 lr%s
-D lr-simu.ads		20211202073658 af6ee446 lr.simu%s
-D lr-simu.adb		20211202073658 01b9df8b lr.simu%b
-D lr-tasks.ads		20211202073658 472fabaf lr.tasks%s
+D lr.ads		20141028181748 400998c9 lr%s
+D lr-simu.ads		20191107081045 af6ee446 lr.simu%s
+D lr-simu.adb		20191108122158 01b9df8b lr.simu%b
+D lr-tasks.ads		20191107081045 472fabaf lr.tasks%s
 D system.ads		20200312110721 4635ec04 system%s
 D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
 D s-conca2.ads		20200312110721 02a0d7d0 system.concat_2%s

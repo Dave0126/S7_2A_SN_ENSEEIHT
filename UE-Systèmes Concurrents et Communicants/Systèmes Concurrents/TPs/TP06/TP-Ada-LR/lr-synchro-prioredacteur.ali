@@ -18,7 +18,7 @@ RV MAX_SELECT_ALTERNATIVES=2
 RV MAX_TASK_ENTRIES=4
 RV MAX_TASKS=1
 
-U lr.synchro.prioredacteur%b  lr-synchro-prioredacteur.adb  059fa74e OO PK IU
+U lr.synchro.prioredacteur%b  lr-synchro-prioredacteur.adb  eea4d7b6 OO PK IU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.real_time%s	a-reatim.adb		a-reatim.ali
@@ -50,10 +50,10 @@ D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20200312110721 5ab55268 interfaces%s
 D i-c.ads		20200312110721 5421119b interfaces.c%s
 D i-cstrea.ads		20200312110721 e53d8b8e interfaces.c_streams%s
-D lr.ads		20211202073658 400998c9 lr%s
-D lr-synchro.ads	20211202073658 2f8e537d lr.synchro%s
-D lr-synchro-prioredacteur.ads  20211202083539 92b276c8 lr.synchro.prioredacteur%s
-D lr-synchro-prioredacteur.adb  20211208223405 36297009 lr.synchro.prioredacteur%b
+D lr.ads		20141028181748 400998c9 lr%s
+D lr-synchro.ads	20141028181624 2f8e537d lr.synchro%s
+D lr-synchro-prioredacteur.ads  20211209100259 92b276c8 lr.synchro.prioredacteur%s
+D lr-synchro-prioredacteur.adb  20211209100317 dd1200f1 lr.synchro.prioredacteur%b
 D system.ads		20200312110721 4635ec04 system%s
 D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20200312110721 0ebbdb71 system.crtl%s
@@ -89,32 +89,32 @@ X 2 a-except.ads
 X 8 a-textio.ads
 49K13*Text_IO 471e16 16|1w10 1r27
 X 13 lr.ads
-1K9*LR 2e7 15|1r9 10r5 16|7r14 87r5
+1K9*LR 2e7 15|1r9 10r5 16|7r14 98r5
 X 14 lr-synchro.ads
-1K12*Synchro 13|1k9 14|10e15 15|1r12 10r8 16|7r17 87r8
+1K12*Synchro 13|1k9 14|10e15 15|1r12 10r8 16|7r17 98r8
 X 15 lr-synchro-prioredacteur.ads
-1K20*PrioRedacteur 14|1k12 15|10l16 10e29 16|7b25 87l16 87t29
+1K20*PrioRedacteur 14|1k12 15|10l16 10e29 16|7b25 98l16 98t29
 3V13*Nom_Strategie{string} 16|9b13 12l8 12t21
-5U14*Demander_Lecture 16|67b14 70l8 70t24
-6U14*Demander_Ecriture 16|72b14 75l8 75t25
-7U14*Terminer_Lecture 16|77b14 80l8 80t24
-8U14*Terminer_Ecriture 16|82b14 85l8 85t25
+5U14*Demander_Lecture 16|78b14 81l8 81t24
+6U14*Demander_Ecriture 16|83b14 86l8 86t25
+7U14*Terminer_Lecture 16|88b14 91l8 91t24
+8U14*Terminer_Ecriture 16|93b14 96l8 96t25
 X 16 lr-synchro-prioredacteur.adb
-14t9 LectRedTask 21b14 65l8 65t19 69r7 74r7 79r7 84r7
-15Y13 Demander_Lecture 36b23 47b23 69s19
-16Y13 Demander_Ecriture 35r22 40b23 46r22 74s19
-17Y13 Terminer_Lecture 51b23 79s19
-18Y13 Terminer_Ecriture 60b23 84s19
-22E9 ETAT2 22e43 23r24
-22n19 READING{22E9} 37r34 44r15 48r34
-22n28 WRITING{22E9} 41r34 58r15
-22n37 LIBRE{22E9} 23r33 33r15 54r34 61r34
-23e10 etatCurrent{22E9} 32r14 37m19 41m19 48m19 54m19 61m19
+14t9 LectRedTask 21b14 76l8 76t19 80r7 85r7 90r7 95r7
+15Y13 Demander_Lecture 38b23 53b23 80s19
+16Y13 Demander_Ecriture 36r22 43b23 51r22 85s19
+17Y13 Terminer_Lecture 58b23 90s19
+18Y13 Terminer_Ecriture 70b23 95s19
+22E9 ETAT2 22e43 23r17
+22n19 READING{22E9} 39r27 47r15 54r27
+22n28 WRITING{22E9} 44r27 66r15
+22n37 LIBRE{22E9} 23r26 33r15 62r27 72r27
+23e10 etat{22E9} 32r14 39m19 44m19 54m19 62m19 72m19
 25i10 nbLecteurs{natural}
 26i10 nbEcriteurs{natural}
 27i10 nbLectAtt{natural}
 28i10 nbEcriAtt{natural}
-29i10 nb{natural} 38m19 49m19 49r25 52m19 52r25 53r19
+29i10 nb{natural} 40m19 55m19 55r25 59m19 59r25 60r19
 X 31 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22

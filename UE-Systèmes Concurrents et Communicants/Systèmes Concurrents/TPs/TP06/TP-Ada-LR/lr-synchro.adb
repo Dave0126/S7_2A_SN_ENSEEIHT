@@ -1,8 +1,8 @@
-with LR.Synchro.FIFO;  -- XXXX
+with LR.Synchro.Server;  -- XXXX
 
 package body LR.Synchro is
    
-   package Synchro renames LR.Synchro.FIFO; -- XXXX
+   package Synchro renames LR.Synchro.Server; -- XXXX
     
    function Nom_Strategie return String renames Synchro.Nom_Strategie;
 
