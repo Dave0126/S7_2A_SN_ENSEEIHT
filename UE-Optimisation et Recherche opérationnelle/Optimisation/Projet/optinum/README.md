@@ -3,7 +3,7 @@
 ## How to compile?
 1. 在终端中来到 `/test` 文件夹中：  
 `> cd ../optinum/test`
-2. 编译前请先确定 `Julia` 环境是否可用，之后键入一下命令行以测试算法  
+2. 编译前请先确定 `Julia` 环境是否可用，之后键入以下命令行以测试算法  
 `> julia new_runtests.jl`
 
 
