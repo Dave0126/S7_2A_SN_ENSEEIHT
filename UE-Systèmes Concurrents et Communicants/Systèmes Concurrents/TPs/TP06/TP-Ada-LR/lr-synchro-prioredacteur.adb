@@ -20,7 +20,7 @@ package body LR.Synchro.PrioRedacteur is
 
    task body LectRedTask is
    type ETAT2 is (READING, WRITING, LIBRE);
-         etatCurrent : ETAT2 := LIBRE;
+         etat : ETAT2 := LIBRE;
 
          nbLecteurs : Natural := 0;
          nbEcriteurs : Natural := 0;
@@ -29,36 +29,47 @@ package body LR.Synchro.PrioRedacteur is
          nb : Natural := 0;
    begin
       loop
-      	case etatCurrent is
+      	case etat is
          when LIBRE =>
             select
+               -- 当没有 写请求 时
                when (Demander_Ecriture'count = 0) =>
+               -- 可读
                accept Demander_Lecture;
-                  etatCurrent := READING;
+                  etat := READING;
                   nb := 1;
             or
+               -- 或者 可写
                accept Demander_Ecriture;
-                  etatCurrent := WRITING;
+                  etat := WRITING;
             end select;
 
          when READING =>
             select
+            -- 在 READING 状态中，有人正在读。
+               -- 当没有 写请求 时
                when (Demander_Ecriture'count = 0) =>
+               -- 可读
                accept Demander_Lecture;
-                  etatCurrent := READING;
+                  etat := READING;
                   nb := nb + 1;
             or
+               -- 或者 结束读
                accept Terminer_Lecture;
                   nb := nb - 1;
                if nb = 0 then
-                  etatCurrent := LIBRE;
+                  -- 当读的人数为0时， 状态为LIBRE
+                  etat := LIBRE;
                end if;
             end select;
 
          when WRITING =>
+         -- 在 WRITING 状态中，有人正在写
             select
+               -- 结束写
                accept Terminer_Ecriture;
-                  etatCurrent := LIBRE;
+                  -- 直接将状态改为LIBRE
+                  etat := LIBRE;
             end select;
          end case;         
       end loop;

@@ -27,17 +27,17 @@ package body LR.Synchro.FIFO is
    begin
       loop
       	select
-            when nbEcriteurs = 0 =>
+            -- 当 写者为0 且 读者为0 时
+            when nbEcriteurs = 0 and nbLecteurs = 0 =>
+               -- 可读 或 可写
                accept Demander(c : state) do
-                  if (c = Read) then
+                  -- 读 操作
+                  if c = Read then
                      -- READING
                      nbLecteurs := nbLecteurs + 1;
-                  else if (c = Write) then
-                     -- WRITING
-                     loop nbLecteurs > 0
-                        accept Terminer_Lecture;
-                        nbLecteurs := nbLecteurs - 1;
-                     end loop;
+                  -- 写 操作
+                  else
+                     -- 等待所有的 读操作 结束
                      nbEcriteurs := nbEcriteurs + 1;
                   end if;
                end Demander;
