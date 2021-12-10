@@ -1,8 +1,8 @@
-with LR.Synchro.PrioRedacteur;  -- XXXX
+with LR.Synchro.FIFO;  -- XXXX
 
 package body LR.Synchro is
    
-   package Synchro renames LR.Synchro.PrioRedacteur; -- XXXX
+   package Synchro renames LR.Synchro.FIFO; -- XXXX
     
    function Nom_Strategie return String renames Synchro.Nom_Strategie;
 

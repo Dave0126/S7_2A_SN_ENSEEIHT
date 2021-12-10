@@ -19,8 +19,8 @@ W lr%s			lr.ads			lr.ali
 
 D lr.ads		20141028181748 400998c9 lr%s
 D lr-synchro.ads	20141028181624 2f8e537d lr.synchro%s
-D lr-synchro.adb	20211209101536 cb1845a9 lr.synchro%b
-D lr-synchro-server.ads	20211209100646 18e8de90 lr.synchro.server%s
+D lr-synchro.adb	20211210082406 cb1845a9 lr.synchro%b
+D lr-synchro-server.ads	20211210082111 18e8de90 lr.synchro.server%s
 D system.ads		20200312110721 4635ec04 system%s
 X 1 lr.ads
 1K9*LR 2e7 2|1r9 10r5 3|1r6 3r14 5r28 17r5

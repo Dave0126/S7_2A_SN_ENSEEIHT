@@ -53,10 +53,10 @@ D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20200312110721 5ab55268 interfaces%s
 D i-c.ads		20200312110721 5421119b interfaces.c%s
 D i-cstrea.ads		20200312110721 e53d8b8e interfaces.c_streams%s
-D lr.ads		20211202073658 400998c9 lr%s
-D lr-synchro.ads	20211202073658 2f8e537d lr.synchro%s
-D lr-synchro-fifo.ads	20211208223736 45851af5 lr.synchro.fifo%s
-D lr-synchro-fifo.adb	20211209094924 47bd3d26 lr.synchro.fifo%b
+D lr.ads		20141028181748 400998c9 lr%s
+D lr-synchro.ads	20141028181624 2f8e537d lr.synchro%s
+D lr-synchro-fifo.ads	20211209100024 45851af5 lr.synchro.fifo%s
+D lr-synchro-fifo.adb	20211209100039 47bd3d26 lr.synchro.fifo%b
 D system.ads		20200312110721 4635ec04 system%s
 D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20200312110721 0ebbdb71 system.crtl%s

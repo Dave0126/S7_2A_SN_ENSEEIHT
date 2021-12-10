@@ -9,18 +9,18 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U lr.synchro%b		lr-synchro.adb		6c0832d8 NE OO PK IU
+U lr.synchro%b		lr-synchro.adb		a562f09d NE OO PK IU
 W lr%s			lr.ads			lr.ali
 W lr.synchro%s		lr-synchro.adb		lr-synchro.ali
-W lr.synchro.prioredacteur%s  lr-synchro-prioredacteur.adb  lr-synchro-prioredacteur.ali
+W lr.synchro.fifo%s	lr-synchro-fifo.adb	lr-synchro-fifo.ali
 
 U lr.synchro%s		lr-synchro.ads		6f87cbb4 EE NE OO PK IU
 W lr%s			lr.ads			lr.ali
 
-D lr.ads		20211202073658 400998c9 lr%s
-D lr-synchro.ads	20211202073658 2f8e537d lr.synchro%s
-D lr-synchro.adb	20211209095447 d134176d lr.synchro%b
-D lr-synchro-prioredacteur.ads  20211202083539 92b276c8 lr.synchro.prioredacteur%s
+D lr.ads		20141028181748 400998c9 lr%s
+D lr-synchro.ads	20141028181624 2f8e537d lr.synchro%s
+D lr-synchro.adb	20211210081411 cf69b915 lr.synchro%b
+D lr-synchro-fifo.ads	20211209100024 45851af5 lr.synchro.fifo%s
 D system.ads		20200312110721 4635ec04 system%s
 X 1 lr.ads
 1K9*LR 2e7 2|1r9 10r5 3|1r6 3r14 5r28 17r5
@@ -33,8 +33,8 @@ X 2 lr-synchro.ads
 8U14*Terminer_Ecriture 3|15b14
 X 3 lr-synchro.adb
 5K12 Synchro=5:39 7r49 9r39 11r40 13r39 15r40
-X 4 lr-synchro-prioredacteur.ads
-1K20*PrioRedacteur 3|1w17 5r39 4|10e29
+X 4 lr-synchro-fifo.ads
+1K20*FIFO 3|1w17 5r39 4|10e20
 3V13*Nom_Strategie{string} 3|7r57
 5U14*Demander_Lecture 3|9r47
 6U14*Demander_Ecriture 3|11r48
