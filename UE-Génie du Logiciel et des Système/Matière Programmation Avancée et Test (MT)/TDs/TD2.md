@@ -58,7 +58,7 @@ public static int search(List<?> list, Object elements)
 
 2.4. Proposer une nouvelle partition disjointe et complète.
 
-## Exercice 4
+## Exercice 3
 ```java
 void myFun (int a, int b, int c, int n){
     if (b<c){
@@ -112,3 +112,62 @@ void myFun (int a, int b, int c, int n){
 |c|(1,2),(1,3)|
 |...|...|
 |d|(6,8), (6,10)|
+
+## Exercice 4
+```java
+void foo (boolean a, boolean b, boolean c){
+  id (a || b){ // Decision D
+    System.out.println("OK");
+  }
+  System.out.println("fin");
+}
+```
+Condition:
+- Ca
+- Cb
+- Cc
+
+### Instruction 
+2,3,5
+
+### Decisions 
+expersion D prend valeurs (V | F)
+
+### Conditions
+expersion Condition Ca, Cb, Cc prend les valeurs :
+- V : independancement
+- F : sous etudier conbiratoire
+  
+### Desions ou Condition
+A la fois D et C, donc valeurs V | F pour Ca, Cb, Cc et desicion V | F
+
+### Multiple Condition
+toute la table de veirte de la decision en fonction des condition elementaire
+
+### Modifued Condition / Decision
+function de ligne dans la table quand le chanquent d'une condition ne change pas la decision.
+
+|Ca|Cb|Cc|Decision|
+|:---:|:---:|:---:|:--:|
+|f|f|f|f|
+|f|f|v|f|
+|f|v|f|f|
+|f|v|v|v|
+|v|f|f|v|
+|v|f|v|v|
+|v|v|f|v|
+|v|v|v|v|
+
+- Si on change Ca, Decision va etre change.
+- Si Ca est "v", Decision est "v"
+
+|Ca|Cb|Cc|Decision|
+|:---:|:---:|:---:|:--:|
+|f|f|f|f|
+||||f|
+||||f|
+|f|v|v|v|
+|v|f|f|v|
+||||v|
+||||v|
+||||v|
