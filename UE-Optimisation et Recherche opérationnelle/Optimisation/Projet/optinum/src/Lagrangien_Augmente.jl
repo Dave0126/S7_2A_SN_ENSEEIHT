@@ -102,12 +102,15 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
       x_k, _, _, _ = Regions_De_Confiance(algo, La_f, La_gradf, La_hessf, x_k, [])
     end
 
-    # convergence de l'algorithme global,
+    ##### convergence de l'algorithme global
+    # ∇ La(xmin, λ, 0)
     La_gradf_xmin_lambda = gradfonc(x_k) + transpose(lambda) * grad_contrainte(x_k)
+    # ∇ La(x0, λ0, 0)
     La_gradf_x0_lambda0 = gradfonc(x0) + transpose(lambda0) * grad_contrainte(x_k)
 
     ##### Condition of STOP
-    if norm(La_gradf_xmin_lambda) <= max(epsilon, tol * norm(La_gradf_x0_lambda0)) || norm(contrainte(x_k)) <= max(tol, tol * norm(contrainte(x0)))
+    # || ∇ La(xmin, λ, 0) ||
+    if norm(La_gradf_xmin_lambda) <= max(epsilon, tol * norm(La_gradf_x0_lambda0)) && norm(contrainte(x_k)) <= max(tol, tol * norm(contrainte(x0)))
       # convergence
       flag = 0
       break
@@ -117,7 +120,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
       break
     end
 
-    # Update the parameters
+    ##### Update the parameters
     if norm(contrainte(x_k)) <= eta
       lambda = lambda + mu * contrainte(x_k)
       epsilon = epsilon / mu
