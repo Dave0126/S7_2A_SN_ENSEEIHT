@@ -1020,157 +1020,6 @@ new Thread(()->{
 - 买票：BiliBili-黑马程序员全面深入学习Java并发编程，JUC并发编程全套教程 [买票问题](https://www.bilibili.com/video/BV16J411h7Rd?p=71)
 - 转账：BiliBili-黑马程序员全面深入学习Java并发编程，JUC并发编程全套教程 [转账问题](https://www.bilibili.com/video/BV16J411h7Rd?p=74)
 
-# 6. ReentrantLock
-相对于 synchronized 它具备如下特点
-- 可中断
-- 可以设置超时时间
-- 可以设置为公平锁
-- 支持多个条件变量
-- 与 synchronized 一样，都支持可重入
-
-## 6.1 基本语法
-```java
-// 获取锁 
-reentrantLock.lock(); 
-try {
-    // 临界区 
-} 
-finally {
-    // 释放锁
-    reentrantLock.unlock(); 
-}
-```
-
-## 6.2 可重入
-可重入是指同一个线程如果首次获得了这把锁，那么因为它是这把锁的拥有者，因此有权利再次获取这把锁 如果是不可重入锁，那么第二次获得锁时，自己也会被锁挡住.
-```java
-static ReentrantLock lock = new ReentrantLock();
-
-public static void main(String[] args) { 
-    method1();
-}
-public static void method1() { 
-    lock.lock();
-    try {
-        log.debug("execute method1"); method2();
-    } 
-    finally { 
-        lock.unlock();
-    } 
-}
-public static void method2() { 
-    lock.lock();
-    try {
-        log.debug("execute method2"); method3();
-    }
-    finally { 
-        lock.unlock();
-    }
-}
-public static void method3() { 
-    lock.lock();
-    try {
-        log.debug("execute method3");
-        }
-    finally { 
-        lock.unlock();
-    }
-}
-```
-Output:
-```
- 17:59:11.862 [main] c.TestReentrant - execute method1
- 17:59:11.865 [main] c.TestReentrant - execute method2
- 17:59:11.865 [main] c.TestReentrant - execute method3
-```
-
-## 6.3 可打断
-```java
-ReentrantLock lock = new ReentrantLock(); 
-
-Thread t1 = new Thread(() -> {
-    log.debug("启动..."); 
-    try {
-        lock.lockInterruptibly(); // 可中断锁
-    } catch (InterruptedException e) {
-        e.printStackTrace(); 
-        log.debug("等锁的过程中被打断"); 
-        return;
-    }
-    try {
-        log.debug("获得了锁"); 
-        }
-    finally {
-        lock.unlock(); 
-    }
-}, "t1");
-
-lock.lock(); 
-log.debug("获得了锁"); 
-t1.start();
-try {
-    sleep(1);
-    t1.interrupt(); // 执行中断
-    log.debug("执行打断");
-} 
-finally { 
-    lock.unlock();
-}
-```
-
-Output:
-```
-18:02:40.520 [main] c.TestInterrupt - 获得了锁 
-18:02:40.524 [t1] c.TestInterrupt - 启动... 
-18:02:41.530 [main] c.TestInterrupt - 执行打断
-java.lang.InterruptedException
-    at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireInterruptibly(AbstractQueuedSynchr onizer.java:898)
-    at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireInterruptibly(AbstractQueuedSynchron izer.java:1222)
-    at java.util.concurrent.locks.ReentrantLock.lockInterruptibly(ReentrantLock.java:335) at cn.itcast.n4.reentrant.TestInterrupt.lambda$main$0(TestInterrupt.java:17)
-    at java.lang.Thread.run(Thread.java:748)
-18:02:41.532 [t1] c.TestInterrupt - 等锁的过程中被打断
-```
-注意如果是不可中断模式，那么即使使用了 `interrupt` 也不会让等待中断
-
-```java
-ReentrantLock lock = new ReentrantLock();
-
-Thread t1 = new Thread(() -> {
-    log.debug("启动...");
-    lock.lock(); // 普通锁
-    try {
-        log.debug("获得了锁"); 
-        }
-    finally {
-        lock.unlock();
-    }
-}, "t1");
-
-lock.lock(); 
-log.debug("获得了锁");
-t1.start();
-try {
-    sleep(1);
-    t1.interrupt(); // 执行中断
-    log.debug("执行打断");
-    sleep(1);
-} 
-finally { 
-    log.debug("释放了锁"); 
-    lock.unlock();
-}
-```
-Output:
-```
-18:06:56.261 [main] c.TestInterrupt - 获得了锁
-18:06:56.265 [t1] c.TestInterrupt - 启动...
-18:06:57.266 [main] c.TestInterrupt - 执行打断 // 这时 t1 并没有被真正打断, 而是仍继续等待锁
-18:06:58.267 [main] c.TestInterrupt - 释放了锁
-18:06:58.267 [t1] c.TestInterrupt - 获得了锁
-```
-
-
-
 ## Wait/Notify
 ### API介绍
 - `obj.wait()` 让进入obj监视器的线程到waitSet**等待**
@@ -1209,6 +1058,7 @@ public static void main(){
     }
 }
 ```
+
 ### wait和sleep的区别
 - sleep是Thread方法，wait是所有对象的方法
 - sleep不用与synchronized一起用，wait需要与synchronized一起用
@@ -1295,14 +1145,402 @@ public class TestCorrectPostureStep4 {
 }
 ```
 
+# 6. ReentrantLock
+基于对象层面，synchronized基于“关键字”
+相对于 synchronized 它具备如下特点
+- 可中断
+- 可以设置超时时间
+- 可以设置为公平锁
+- 支持多个条件变量
+- 与 synchronized 一样，都支持可重入
 
-# Java的并发工具：线程池 Thread Pool
-### 自定义线程池
+## 6.1 基本语法
+```java
+// 获取锁 
+reentrantLock.lock(); 
+try {
+    // 临界区 
+} 
+finally {
+    // 释放锁
+    reentrantLock.unlock(); 
+}
+```
+
+## 6.2 可重入
+可重入是指同一个线程如果首次获得了这把锁，那么因为它是这把锁的拥有者，因此有权利再次获取这把锁  
+如果是不可重入锁，那么第二次获得锁时，自己也会被锁挡住.
+```java
+static ReentrantLock lock = new ReentrantLock();
+
+public static void main(String[] args) { 
+    method1();
+}
+public static void method1() { 
+    lock.lock(); // 锁的重入
+    try {
+        log.debug("execute method1"); 
+        method2(); // 调用method2
+    } 
+    finally { 
+        lock.unlock();
+    } 
+}
+public static void method2() { 
+    lock.lock();
+    try {
+        log.debug("execute method2"); 
+        method3(); // 调用method3
+    }
+    finally { 
+        lock.unlock();
+    }
+}
+public static void method3() { 
+    lock.lock();
+    try {
+        log.debug("execute method3");
+        }
+    finally { 
+        lock.unlock();
+    }
+}
+```
+Output:
+```
+ 17:59:11.862 [main] c.TestReentrant - execute method1
+ 17:59:11.865 [main] c.TestReentrant - execute method2
+ 17:59:11.865 [main] c.TestReentrant - execute method3
+```
+
+## 6.3 可打断
+```java
+ReentrantLock lock = new ReentrantLock(); 
+
+Thread t1 = new Thread(() -> {
+    log.debug("启动..."); 
+    try {
+        // 如果没有竞争，那么此方法就会获得lock对象锁
+        // 如果有竞争就进入阻塞队列，可以被其他进程用 interrupt 方法打断
+        lock.lockInterruptibly(); // 可中断锁
+    } catch (InterruptedException e) {
+        e.printStackTrace(); 
+        log.debug("等锁的过程中被打断"); 
+        return;
+    }
+    try {
+        log.debug("获得了锁"); 
+        }
+    finally {
+        lock.unlock(); 
+    }
+}, "t1");
+
+lock.lock(); 
+log.debug("获得了锁"); 
+t1.start();
+try {
+    sleep(1);
+    t1.interrupt(); // 执行中断
+    log.debug("执行打断");
+} 
+finally { 
+    lock.unlock();
+}
+```
+
+Output:
+```
+18:02:40.520 [main] c.TestInterrupt - 获得了锁 
+18:02:40.524 [t1] c.TestInterrupt - 启动... 
+18:02:41.530 [main] c.TestInterrupt - 执行打断
+java.lang.InterruptedException
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireInterruptibly(AbstractQueuedSynchr onizer.java:898)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireInterruptibly(AbstractQueuedSynchron izer.java:1222)
+    at java.util.concurrent.locks.ReentrantLock.lockInterruptibly(ReentrantLock.java:335) at cn.itcast.n4.reentrant.TestInterrupt.lambda$main$0(TestInterrupt.java:17)
+    at java.lang.Thread.run(Thread.java:748)
+18:02:41.532 [t1] c.TestInterrupt - 等锁的过程中被打断
+```
+注意如果是不可中断模式，那么即使使用了 `interrupt` 也不会让等待中断
+
+```java
+ReentrantLock lock = new ReentrantLock();
+
+Thread t1 = new Thread(() -> {
+    log.debug("启动...");
+    lock.lock(); // 普通锁
+    try {
+        log.debug("获得了锁"); 
+        }
+    finally {
+        lock.unlock();
+    }
+}, "t1");
+
+lock.lock(); 
+log.debug("获得了锁");
+t1.start();
+try {
+    sleep(1);
+    t1.interrupt(); // 执行中断
+    log.debug("执行打断");
+    sleep(1);
+} 
+finally { 
+    log.debug("释放了锁"); 
+    lock.unlock();
+}
+```
+Output:
+```
+18:06:56.261 [main] c.TestInterrupt - 获得了锁
+18:06:56.265 [t1] c.TestInterrupt - 启动...
+18:06:57.266 [main] c.TestInterrupt - 执行打断 // 这时 t1 并没有被真正打断, 而是仍继续等待锁
+18:06:58.267 [main] c.TestInterrupt - 释放了锁
+18:06:58.267 [t1] c.TestInterrupt - 获得了锁
+```
+
+## 6.4 锁超时
+当一个线程尝试获取锁时，发现其他线程持有着锁一直没有释放，超过一段时间之后对方并没有释放锁，此线程就放弃等待。
+```java
+ReentrantLock lock = new ReentrantLock(); 
+
+Thread t1 = new Thread(() -> {
+    log.debug("启动..."); 
+    if (!lock.tryLock()) {
+        log.debug("获取立刻失败，返回");
+        return; 
+    }
+    try {
+        log.debug("获得了锁");
+    }
+    finally { 
+        lock.unlock();
+    }
+}, "t1");
+
+lock.lock();
+log.debug("获得了锁");
+t1.start(); 
+try {
+    sleep(2); 
+} 
+finally {
+    lock.unlock();
+}
+```
+Output:
+```
+ 18:15:02.918 [main] c.TestTimeout - 获得了锁
+ 18:15:02.921 [t1] c.TestTimeout - 启动...
+ 18:15:02.921 [t1] c.TestTimeout - 获取立刻失败，返回
+```
+
+## 6.5 条件变量
+synchronized 中也有条件变量，就是我们讲原理时那个 waitSet 休息室，当条件不满足时进入 waitSet 等待  
+ReentrantLock 的条件变量比 synchronized 强大之处在于，它是支持多个条件变量的，这就好比
+- synchronized 是那些不满足条件的线程都在一间休息室等消息
+- 而 ReentrantLock 支持多间休息室，有专门等烟的休息室、专门等早餐的休息室、唤醒时也是按休息室来唤醒
+
+使用要点:
+- await 前需要获得锁
+- await 执行后，会释放锁，进入 conditionObject 等待 await 的线程被唤醒(或打断、或超时)取重新竞争 lock 锁 竞争 lock 锁成功后，从 await 后继续执行
+
+```java
+static ReentrantLock lock = new ReentrantLock();
+// 创建新的条件变量（休息室）
+static Condition condition1 = lock.newCondition();
+static Condition condition2 = lock.newCondition(); 
+
+public static void main (String[] args) {
+    lock.lock();
+
+    condition1.await(); // 进入“休息室”等待
+
+    condition1.signal(); // 从“休息室”唤醒
+
+    condition1.signalAll();
+}
+```
+
+
+
+
+
+# 7. 线程池 Thread Pool
+## 7.1 线程池
+**什么是线程池？**  
+线程池其实就是一种多线程处理的形式，处理过程中可以将任务添加到到队列中，然后在创建线程后自动启动这些任务。
+
+使用线程池的优势：
+- 使用线程池可以统一的管理线程和控制线程并发数量；
+- 可以与任务分离，提升线程重用度；
+- 提升系统的响应速度
+
+## 7.2 线程池的使用
+### 7.2.1 Java内置线程池
+接口继承自`java.util.concurrent.ThreadPoolExecutor`  
+
+```java
+public ThreadPoolExecutor(
+    int corePoolSize, // 核心线程数量
+    int maximumPoolSize, // 最大线程数量
+    long keepAliveTime, // 最大空闲时间（存活时间）
+    TimeUnit unit, // 时间单位，TimeUnit 枚举类型
+    BlockingQueue<Runnable> workQueue, // 任务阻塞队列
+    ThreadFactory threadFactory, // 线程工厂
+    RejectedExecutionHandler handler // 饱和处理机制
+)
+```
+工作方式：
+1. 线程池中刚开始没有线程，当一个任务提交给线程池后，线程池会创建一个新线程来执行任务。
+2. 当线程数达到 `corePoolSize` 并没有线程空闲，这时再加入任务，新加的任务会被加入workQueue 队列排队，直到有空闲的线程。
+3. 如果队列选择了有界队列，那么任务超过了队列大小时，会创建 `maximumPoolSize - corePoolSize` 数目的线程来救急。
+4. 如果线程到达 `maximumPoolSize` 仍然有新任务这时会执行拒绝策略。拒绝策略 jdk 提供了 4 种实现，其它著名框架也提供了实现
+   - AbortPolicy 让调用者抛出 RejectedExecutionException 异常，这是默认策略
+   - allerRunsPolicy 让调用者运行任务
+   - DiscardPolicy 放弃本次任务
+   - DiscardOldestPolicy 放弃队列中最早的任务，本任务取而代之
+   - Dubbo 的实现，在抛出 RejectedExecutionException 异常之前会记录日志，并 dump 线程栈信息，方便定位问题
+   - Netty 的实现，是创建一个新线程来执行任务
+   - ActiveMQ 的实现，带超时等待(60s)尝试放入队列，类似我们之前自定义的拒绝策略
+   - PinPoint 的实现，它使用了一个拒绝策略链，会逐一尝试策略链中每种拒绝策略
+5. 当高峰过去后，超过`corePoolSize` 的救急线程如果一段时间没有任务做，需要结束节省资源，这个时间由 `keepAliveTime` 和 `unit` 来控制。
+
+### 7.2.2 自定义线程池
 创建一批线程，让这些线程可以得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免频繁的上下文切换。
 ```java
-public class TestPool {
+    /*
+        需求：
+            自定义线程池练习，这是任务类，需要实现Runnable
+            包含任务编号，每个任务设计执行时间0.2s
+    */
+public class MyTask implements Runnable {
+
+    private int id; // id的初始化可以利用构造方法
+
+    public MyTask (int id) {
+        this.id = id;
+    }
+
+    @Override
+    public void run() {
+        String name = Thread.currentThread.getName();
+        System.out.println("线程:" + name + "即将执行任务:" + id);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("线程:" + name + "完成任务!");
+    }
+}
+```
+```java
+    /*
+        需求：
+            自定义线程池练习，这是线程类，需要继承Thread类
+            包含线程的名字 和 一个用于保存所有任务的集合
+    */
+public class MyThread extends Thread {
+    private String name; // 线程的名字
+    private List<Runnable> tasks;
+
+    public MyThred (String name, List<Runnable> tasks) {
+        super(name);
+        this.tasks = tasks;
+    }
+
+    @Override
+    public void run () {
+        // 判断集合中是否有任务，只要有就一直执行任务
+        while (tasks.size > 0) {
+            Runnable r = tasks.remove(0);
+            r.run();
+        }
+    }
+}
+```
+```java
+    /*
+        需求：
+            自定义线程池练习，这是线程池类（核心）
+        成员变量：
+            1. 任务队列 集合 需要控制线程安全问题
+            2. 当前线程数量 
+            3. 核心线程数
+            4. 最大线程数
+            5. 任务队列的长度
+        成员方法：
+            1. 提交任务：将任务添加到集合中，需要判断是否超出了任务总长度
+            2. 执行任务：判断当前线程数量，决定创建核心线程还是非核心线程
+    */
+public class MyThreadPool {
+    // 1.任务队列
+    private List<Runnable> tasks = Collections.synchronizedList(new LinkedList());
+    // 2. 当前线程数量 
+    private int num;
+    // 3. 核心线程数
+    private int corePoolSize;
+    // 4. 最大线程数
+    private int maxPoolSize;
+    // 5. 任务队列的长度
+    private int workSize;
+
+    public MyThreadPool (int corePoolSize, int maxPoolSize, int workSize) {
+        this.corePoolSize = corePoolSize;
+        this.maxPoolSize = maxPoolSize;
+        this.workSize = workSize;
+    }
+
+    // 1. 提交任务
+    public void submit (Runnable r) {
+        // 判断当前集合中任务的数量是否超出了最大任务数量
+        if (tasks.size() >= workSize && num >= maxPoolSize) {
+            System.out.println("任务" + r + "被丢弃了...")
+        } 
+        else {
+            tasks.add(r);
+            execTask(r); // 执行任务
+        }
+    }
+    
+    // 2. 执行任务
+    private void execTask (Runnable r) {
+        // 判断当前线程池中的线程总数量是否超出了核心数
+        if (num < corePoolSize) {
+            new Mywork ("核心线程", tasks).start();
+            num++;
+        }
+        else if (num < maxPoolSize) {
+            new Mywork ("非核心线程", tasks).start();
+            num++;
+        }
+        else {
+            System.out.println("任务" + r + "被缓存了...")
+        }
+    }
 
 }
+```
+```java
+    /*
+        测试类：
+            1. 创建线程池对象
+            2. 提交多个对象
+    */
+public class MyTest {
+    MyThreadPool pool = new MyThreadPool (2,4,10);
+
+    public static void main (String[] args) {
+        for (int i = 0; i < 0; i++) {
+            MyTask myTasks = new MyTask(i);
+            pool.submit(myTasks);
+        }
+    } 
+}
+```
+```java
 class BlockingQueue<T> {
     // 1.任务队列
     private Deque<T> queue = new ArrayDeque<>();
@@ -1339,4 +1577,27 @@ class BlockingQueue<T> {
     }
 }
 ```
+## 7.3 Fork/Join
+主要思想：分而治之，把一个大任务拆分成多个小任务。
+```java
+class SumTask extends RecursiveTask<Long> {
+    @Override
+    protected Long compute() {
+        SumTask subtask1 = new SumTask(...);
+        SumTask subtask2 = new SumTask(...);
+        invoke(subtask1); // 执行subtask1
+        invokeAll(subtask1,subtask2); // 执行全部
+        Long result1 = subtask1.join();
+        Long result2 = subtask2.join();
+        return (result1 + result2);
+    }
+}
+```
 
+
+
+
+
+# 8. Transaction
+定义：  
+Suite d’opérations qui, exécutée seule a partir d’un état initial cohérent, aboutit a un état final cohérent
