@@ -1,0 +1,20 @@
+module Game2PetriNet;
+create OUT: PetriNet from IN: Game;
+
+
+helper context jv!GameElement
+def: getGame(): jv!Game =
+	jv!Game.allInstances()
+		->select(p | p.gameElements->includes(self))
+		->asSequence()->first();
+
+rule InventoryObject2Petrinet {
+	from io: jv!InventoryObject
+	to 
+		-- PLACES d'un InventoryObject
+		p_quantite: PetriNet!Place(
+			name <- io.name + '_quantite',
+			marking <- io.size,
+			net <- io.getGame()),
+					
+}

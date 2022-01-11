@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jV:Game xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jV="http://www.n7.fr/JV"
+    xsi:schemaLocation="http://www.n7.fr/JV JV.ecore">
+  <gameElements
+      xsi:type="jV:Places">
+    <persons/>
+    <persons/>
+  </gameElements>
+  <gameElements
+      xsi:type="jV:Path"/>
+  <gameElements
+      xsi:type="jV:Path"/>
+</jV:Game>

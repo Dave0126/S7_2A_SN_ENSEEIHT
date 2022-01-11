@@ -1,0 +1,61 @@
+game enigme {
+	inventorySize = 10
+	place { 
+		"Enigme"
+		start = true
+		finish = false
+		Person { 
+			"Sphinx"
+			visible = true 
+			mandatory = true
+			Action {
+				condition = ObjectCondition {
+					"Tentative"
+					amount >= 0
+				}
+				consumedObject = "Tentative"
+			}
+		}
+	}
+	place {
+		"Echec"
+		start = false 
+		finish = true
+	}
+	place {
+		"Reussite"
+		start = false 
+		finish = true
+	}
+	Path {
+		"Enigme->Echec"
+		open = ObjectCondition {
+			"Tentative"
+			amount = 0
+		}
+		mandatory = true	
+	}
+	Path {
+		"Enigme->Reussite"
+		open = KnowledgeCondition {
+			"Reussite"
+		}
+		mandatory = true	
+	}
+	
+	InventoryObject {
+		"Tentative"
+		size = 3
+		description {
+			"nombre_de_tentative"
+		}
+	}
+
+	Knowledge {
+		"Reussite"
+		description {
+			"Reussite"
+		}
+	}	
+}
+
