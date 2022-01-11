@@ -1,0 +1,7 @@
+;; génération du lexer avec ocamllex
+(ocamllex miniml_lexer)
+(library 
+ (name miniml)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test)))
