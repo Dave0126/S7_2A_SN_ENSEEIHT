@@ -1,4 +1,0 @@
-(executable
- (name miniml_principal)
- (libraries miniml)
- (promote (until-clean) (into ..)))
