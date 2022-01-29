@@ -1,0 +1,29 @@
+[comment encoding = UTF-8 /]
+[module toltl('http://www.n7.fr/JV')]
+
+
+[template public GametoLtl(g : Game)]
+[comment @main/]
+[file (g.name + '.ltl', false, 'UTF-8')]
+op finished = [for (pl : Places | g.getPLs())][ pl.getStartPlaces()/] v [ pl.getFinishPlaces() /] [/for];
+
+['[]'/] <> finished ;
+
+['[]'/] <> [for (pl : Places | g.getPLs())] [pl.getStartPlaces() /] + [pl.getFinishPlaces() /] = 1 [/for];
+
+[/file]
+[/template]
+
+[query public getPLs(g: Game) : OrderedSet(Places) = 
+	g.gameElements->select( e | e.oclIsTypeOf(Places) )
+		->collect( e | e.oclAsType(Places) )
+		->asOrderedSet()
+/]
+
+[query public getStartPlaces(pl: Places) : OrderedSet(BOOLEAN) = 
+		pl.start
+/]
+
+[query public getFinishPlaces(pl: Places) : OrderedSet(BOOLEAN) = 
+		pl.finish
+/]

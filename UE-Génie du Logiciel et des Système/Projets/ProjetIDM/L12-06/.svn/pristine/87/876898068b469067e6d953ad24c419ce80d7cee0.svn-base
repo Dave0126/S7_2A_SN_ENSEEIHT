@@ -3,18 +3,19 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:jV="http://www.n7.fr/JV"
-    xsi:schemaLocation="http://www.n7.fr/JV JV.ecore">
-  <gameElements
-      xsi:type="jV:Places">
-    <prizesID>1</prizesID>
-    <prizesID>2</prizesID>
-    <persons/>
-    <persons/>
-  </gameElements>
+    xsi:schemaLocation="http://www.n7.fr/JV JV.ecore"
+    name="Test sans erreur">
   <gameElements
       xsi:type="jV:Path"
       id="1"/>
   <gameElements
+      xsi:type="jV:Places">
+    <persons/>
+    <persons
+        mandatory="false"/>
+  </gameElements>
+  <gameElements
       xsi:type="jV:Path"
-      id="2"/>
+      id="2"
+      mandatory="false"/>
 </jV:Game>

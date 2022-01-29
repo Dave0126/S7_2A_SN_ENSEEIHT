@@ -1,0 +1,99 @@
+grammar fr.n7.JV with org.eclipse.xtext.common.Terminals
+
+generate jV "http://www.n7.fr/JV"
+
+Game : 'game' name=ID '{'
+	'inventorySize = 'inventorySize=INT
+	'maxSize = 'maxSize=INT 
+	gameElements+=GameElement*
+	objects+=Prize*
+'}';
+
+Description : 'description {'
+	text=STRING // avec un nombre quelconque de balise
+	optionalText+=OptionalText*
+'}';
+
+OptionalText: 'optionalText {'
+	'condition = 'condition+=Condition*
+	text=STRING
+'}';
+
+GameElement : 
+	Places | Path
+	description=Description?
+;
+
+Places: 'place {'
+	id = STRING
+	'start = 'start=BOOLEAN
+	'finish = 'finish=BOOLEAN
+	persons+=Person*
+	('prizes = 'prizes+=Prize)*
+	('paths = 'pathsID+=STRING)*
+'}';
+
+enum BOOLEAN:
+	TRUE = "true"
+	| FALSE = "false"
+;
+
+Prize: 
+	InventoryObject | Knowledge
+	('visible = 'visible=Condition)*
+	('condition ='condition+=Condition)*
+;
+
+Condition: 
+	KnowledgeCondition | ObjectCondition
+;
+
+ObjectCondition: 'ObjectCondition {'
+	objectRequiredID=STRING
+	('amount = 'amount=INT)? 
+	('amount >= 'minAmount=INT)?
+	('amount <= 'maxAmount=INT)?
+'}';
+
+KnowledgeCondition: 'KnowledgeCondition {'
+	knowledgeRequiredID=STRING
+'}';
+
+Person: 'Person {'
+	id=STRING
+	'visible = 'visible=BOOLEAN
+	'mandatory = 'mandatory=BOOLEAN
+	actions+=Action+
+'}';
+
+Action: 'Action {'
+	('displayCondition = 'displayCondition+=Condition)*
+	('endCondition = 'endCondition+=Condition)*
+	('condition = 'condition+=Condition)*
+	('prizes = 'prizes+=Prize)*
+	('consumedObject = 'consumedID+=STRING)*
+'}';
+
+Knowledge: 'Knowledge {'
+	id=STRING
+	description=Description
+'}';
+
+
+Path: 'Path {'
+	id=STRING
+	('open = 'open+=Condition)*
+	('visible = 'visible+=Condition)*
+	'mandatory = 'mandatory=BOOLEAN
+	('prizes = 'prizes+=Prize)*
+	('consumedObject = 'consumedID+=STRING)*
+'}';
+
+
+InventoryObject: 'InventoryObject {' 
+	id=STRING
+	('transformationCondition = 'transformationCondition+=Condition)*
+	('ObjectAfterTransformation = 'ObjectAfterTransformation=InventoryObject)?
+	'size = 'size=INT
+	description=Description
+'}';
