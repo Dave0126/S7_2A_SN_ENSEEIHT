@@ -1,0 +1,1 @@
+java -cp bin linda.search.basic.Main 'agneau' /usr/share/dict/french

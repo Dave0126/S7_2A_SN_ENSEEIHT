@@ -1,0 +1,11 @@
+
+Pour exécuter le whiteboard avec plusieurs machines :
+ (https://docs.oracle.com/javase/7/docs/technotes/guides/rmi/faq.html#domain)
+
+java -Djava.rmi.server.hostname=vrainomdelamachine ...
+(il s'agit de la machine où ce code s'exécute, pas du serveur rmi)
+
+Par exemple, serveur sur gorgone et clients sur gobelin et turing :
+queinnec@gorgone$ java -Djava.rmi.server.hostname=gorgone linda.server.CreateServer toto
+queinnec@gobelin$ java -Djava.rmi.server.hostname=gobelin linda.whiteboard.Whiteboard "//gorgone:1099/toto"
+queinnec@turing$ java -Djava.rmi.server.hostname=turing linda.whiteboard.Whiteboard "//gorgone:1099/toto"

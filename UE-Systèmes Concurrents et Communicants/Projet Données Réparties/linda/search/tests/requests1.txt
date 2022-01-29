@@ -1,0 +1,3 @@
+'agneau' /usr/share/dict/french
+'angoisse' /usr/share/dict/french
+'actor' /usr/share/dict/british-english
