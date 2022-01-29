@@ -1,11 +1,12 @@
-# dune build MainMonad.exe
+# dune build
 # OCAMLPARAM: unset
-# Workspace root: "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des
-# Automates et des Langages/Automates/TPs/TP03/source"
-$ /usr/bin/nproc > /tmp/dune800f03.output 2> /dev/null
-# Auto-detected concurrency: 32
+# Workspace root:
+# "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie
+# des Automates et des Langages/Automates/TPs/TP03/source"
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/dune2cddda.output 2> /dev/null
+# Auto-detected concurrency: 8
 # disable binary cache
-$ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dunea7e9e9.output
+$ /Users/dave/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/dune0b8c10.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,80 +15,70 @@ $ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dunea7e9e
 #  ; for_host = None
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
-#  ; toplevel_path =
-#      Some External "/applications/opam/ocaml-base-compiler/lib/toplevel"
-#  ; ocaml_bin = External "/applications/opam/ocaml-base-compiler/bin"
-#  ; ocaml = Ok External "/applications/opam/ocaml-base-compiler/bin/ocaml"
-#  ; ocamlc = External "/applications/opam/ocaml-base-compiler/bin/ocamlc.opt"
-#  ; ocamlopt =
-#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamlopt.opt"
-#  ; ocamldep =
-#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamldep.opt"
-#  ; ocamlmklib =
-#      Ok External "/applications/opam/ocaml-base-compiler/bin/ocamlmklib.opt"
+#  ; toplevel_path = Some External "/Users/dave/.opam/4.12.0/lib/toplevel"
+#  ; ocaml_bin = External "/Users/dave/.opam/4.12.0/bin"
+#  ; ocaml = Ok External "/Users/dave/.opam/4.12.0/bin/ocaml"
+#  ; ocamlc = External "/Users/dave/.opam/4.12.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/Users/dave/.opam/4.12.0/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" :
-#            "/applications/opam/ocaml-base-compiler/lib"
-#        ; "DUNE_OCAML_STDLIB" :
-#            "/applications/opam/ocaml-base-compiler/lib/ocaml"
+#        { "DUNE_OCAML_HARDCODED" : "/Users/dave/.opam/4.12.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/Users/dave/.opam/4.12.0/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source"
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source"
 #        ; "INSIDE_DUNE" :
-#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/default"
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib"
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib"
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/home/gdai/2SN/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib/toplevel"
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEELHT/UE-Th\195\169orie des Automates et des Langages/Automates/TPs/TP03/source/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_path = [ External "/applications/opam/ocaml-base-compiler/lib" ]
+#  ; findlib_path = [ External "/Users/dave/.opam/4.12.0/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
-#      ; standard_library_default =
-#          "/applications/opam/ocaml-base-compiler/lib/ocaml"
-#      ; standard_library = "/applications/opam/ocaml-base-compiler/lib/ocaml"
+#      ; standard_library_default = "/Users/dave/.opam/4.12.0/lib/ocaml"
+#      ; standard_library = "/Users/dave/.opam/4.12.0/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "gcc"
-#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; c_compiler = "cc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
-#      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
 #      ; bytecomp_c_compiler =
-#          [ "gcc"
+#          [ "cc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
-#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "gcc"
+#          [ "cc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
-#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; native_c_libraries = [ "-lm"; "-ldl" ]
+#      ; native_c_libraries = [ "-lm" ]
 #      ; cc_profile = []
-#      ; architecture = "amd64"
+#      ; architecture = "arm64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "linux"
-#      ; asm = [ "as" ]
+#      ; system = "macosx"
+#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -98,8 +89,8 @@ $ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dunea7e9e
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-pc-linux-gnu"
-#      ; target = "x86_64-pc-linux-gnu"
+#      ; host = "aarch64-apple-darwin21.1.0"
+#      ; target = "aarch64-apple-darwin21.1.0"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -119,9 +110,3 @@ $ /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -config > /tmp/dunea7e9e
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl SyntaxMonad.ml) > _build/default/.Main.eobjs/SyntaxMonad.ml.d
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/syntaxMonad.cmo -c -impl SyntaxMonad.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .Main.eobjs/byte -no-alias-deps -opaque -o .Main.eobjs/byte/mainMonad.cmo -c -impl MainMonad.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/mainMonad.cmx -c -impl MainMonad.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .Main.eobjs/byte -I .Main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .Main.eobjs/native/syntaxMonad.cmx -c -impl SyntaxMonad.ml)
-$ (cd _build/default && /applications/opam/ocaml-base-compiler/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o MainMonad.exe .Main.eobjs/native/lex.cmx .Main.eobjs/native/scanner.cmx .Main.eobjs/native/syntaxMonad.cmx .Main.eobjs/native/mainMonad.cmx)

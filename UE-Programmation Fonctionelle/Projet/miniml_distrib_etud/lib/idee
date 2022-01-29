@@ -1,0 +1,144 @@
+open Miniml_types
+
+(* signature minimale pour définir des variables *)
+module type VariableSpec =
+  sig
+    (* type abstrait des variables      *)
+    type t
+
+    (* création d'une variable fraîche  *)
+    val fraiche : unit -> t
+
+    (* fonctions de comparaison         *)
+    (* permet de définir des conteneurs *)
+    (* (hash-table, etc) de variables   *)
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val hash : t -> int
+
+    (* fonction d'affichage             *)
+    (* on utilise Format.std_formatter  *)
+    (* comme premier paramètre          *)
+    (* pour la sortie standard          *) 
+    val fprintf : Format.formatter -> t -> unit
+  end
+
+(* implantation de la spécification     *)
+module TypeVariable : VariableSpec =
+  struct
+    type t = int
+
+    let fraiche =
+      let cpt = ref 0 in
+      (fun () -> incr cpt; !cpt)
+
+    let compare a b = a - b
+    let equal a b = a = b
+    let hash a = Hashtbl.hash a
+
+    let fprintf fmt a = Format.fprintf fmt "t{%d}" a
+  end
+
+
+(* ******** à compléter ********* *)
+       
+type _ tp = 
+  | VARType: TypeVariable.t -> TypeVariable.t tp
+  | TYPE: 'a typ -> 'a typ tp
+(* signature pour définir un environment *)
+module type Environment =
+  sig
+
+    (* création d'un environment initial  *)
+    val gamma : unit -> (ident, 'a tp) Hashtbl.t
+
+    (* fonction d'insertion         *)
+    (* permet d'inserer dans l'environment *)
+    val insert : ident* 'a tp -> (ident, 'a tp) Hashtbl.t -> (ident, 'a tp) Hashtbl.t
+
+    (* fonction de recherche du type de variable *)
+    val find : ident -> (ident, 'a tp) Hashtbl.t -> 'a tp option
+  end
+
+  (* implantation de la spécification d'environment *)
+module Env : Environment =
+  struct
+
+    let gamma () = Hashtbl.create 100
+
+    let insert (var, tp) env = let rst = Hashtbl.copy env in 
+      match Hashtbl.add rst var tp with
+      | _ -> rst
+
+    let find var env = Hashtbl.find_opt env var
+
+  end
+
+  (* module typer pour l'algorithme de typage *)
+module Typer =
+  struct
+
+
+    let rec typer : expr -> (ident, 'a tp ) Hashtbl.t -> 'a tp * (('a tp * 'a tp) list )= fun expr env -> match expr with
+      | EConstant(cnst) -> (match cnst with
+          | CBooleen(_) -> TYPE TBool
+          
+          | CEntier(_) -> TYPE TInt
+          
+          | CNil -> TYPE (TList TUnit)
+          
+          | CUnit -> TYPE TUnit
+          ), []
+
+      | EIdent(id) -> (match (Env.find id env) with
+        | Some(ty) -> ty, []
+        | None -> TYPE TUnit, [])
+
+      | EProd(e1,e2) -> (match (typer e1 env, typer e2 env) with
+        | ((TYPE ty1, eq1),(TYPE ty2,eq2)) -> TYPE (TProd (ty1,ty2))
+        | ((VARType ty1, eq1),(VARType ty2,eq2)) -> TYPE (TProd (TVar ty1,TVar ty2))
+        | ((VARType ty1, eq1),(TYPE ty2,eq2)) -> TYPE (TProd (TVar ty1,ty2))
+        | ((TYPE ty1, eq1),(VARType ty2,eq2)) -> TYPE (TProd (ty1,TVar ty2))
+        ), eq1@eq2
+
+      | ECons(e1,e2) -> (match (typer e1 env, typer e2 env) with
+        | ((TYPE ty1,eq1),(ty2,eq2)) -> ty2, (ty2,TYPE (TList ty1))::eq1@eq2)
+
+      | EFun(id,e) ->( let alpha = TypeVariable.fraiche () in 
+        match (typer e (Env.insert (id,TYPE (TVar(VARType alpha))) env)) with
+        | (TYPE ty,eq) -> TYPE (TFun (TVar(VARType alpha),ty))
+        | (VARType ty,eq) -> TYPE (TFun (TVar(VARType alpha),TVar ty))), eq
+
+      | EIf(e1,e2,e3) -> (match (typer e1 env, typer e2 env, typer e3 env) with
+        | ((ty1,eq1),(ty2,eq2),(ty3,eq3)) -> ty2, (ty1,TYPE TBool)::((ty2,ty3)::eq1@eq2@eq3))
+
+      | EApply(e1,e2) -> (let alpha = TypeVariable.fraiche () in 
+        match (typer e1 env, typer e2 env) with
+        | ((ty1,eq1),(TYPE ty2,eq2)) -> VARType alpha, (ty1,TYPE (TFun ty2 ,(VARType alpha))::eq1@eq2))
+
+      | ELet(id,e1,e2) -> 
+       ( match (typer e1 env, typer e2 (Env.insert (id,TYPE (TVar (VARType (TypeVariable.fraiche ())))) env)) with
+        | ((ty1,eq1),(ty2,eq2)) -> ty2, eq1@eq2)
+
+      | ELetrec(id,e1,e2) -> (let alpha = TypeVariable.fraiche () in
+        match (typer e1 (Env.insert (id,TYPE (TVar(VARType alpha))) env)
+        , typer e2 (Env.insert (id,TYPE (TVar(VARType alpha))) env)) with
+        | ((ty1,eq1),(ty2,eq2)) -> ty2, (VARType alpha,ty1)::eq1@eq2)
+
+  end
+
+  (* module foncteur pour les tests unitaires de l'environment *)
+module TestEnv (Env : Environment) =
+  struct
+
+    let test var ty = Env.find var (Env.insert (var, ty) Env.gamma)
+
+  end
+
+module TestEnvironment = TestEnv (Environment)
+
+(* Les tests *)
+let%test _ = (TestEnvironment.test "i" TInt = TInt)
+
+
+
