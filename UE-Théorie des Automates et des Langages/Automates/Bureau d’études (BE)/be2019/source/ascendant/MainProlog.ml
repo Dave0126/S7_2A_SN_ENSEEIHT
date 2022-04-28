@@ -7,6 +7,14 @@ let printToken t =
        | UL_PAROUV -> "("
        | UL_PARFER -> ")"
        | UL_FIN -> "EOF"
+       | UL_FAIL -> "fail"
+       | UL_COUP -> "!"
+       | UL_NEG -> "-"
+       | UL_PT -> "."
+       | UL_VIRG-> ","
+       | UL_DEDUCTION -> ":-"
+       | UL_SYMBOLE n -> n
+       | UL_VARIABLE n -> n
 ));;
 
 (* Analyse lexicale du fichier passé en paramètre de la ligne de commande *)

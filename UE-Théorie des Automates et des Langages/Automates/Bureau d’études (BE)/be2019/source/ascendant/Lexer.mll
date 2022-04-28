@@ -24,6 +24,14 @@ rule lexer = parse
   | commentaire						{ (lexer lexbuf) }
   | "("							{ UL_PAROUV }
   | ")"							{ UL_PARFER }
+  | "fail"          { UL_FAIL }
+  | "!"             { UL_COUP }
+  | "-"             { UL_NEG }
+  | "."             { UL_PT }
+  | ","             { UL_VIRG}
+  | ":-"            { UL_DEDUCTION}
+  | (minuscule)(majuscule|minuscule)* as texte { (UL_SYMBOLE texte)}
+  | (majuscule)(majuscule|minuscule)* as texte { (UL_VARIABLE texte)}
   | eof							{ UL_FIN }
   | _ as texte				 		{ (print_string "Erreur lexicale : ");(print_char texte);(print_newline ()); raise LexicalError }
 
