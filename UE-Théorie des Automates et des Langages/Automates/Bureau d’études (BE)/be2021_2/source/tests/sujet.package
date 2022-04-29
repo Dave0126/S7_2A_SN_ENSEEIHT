@@ -1,0 +1,11 @@
+package a {
+   interface A { }
+   package b {
+      interface B extends a.A {
+         void m( B, int, a.C);
+      }
+   }
+   interface C {
+      a.b.B f( boolean, a.A);
+   }
+}

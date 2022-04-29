@@ -1,0 +1,23 @@
+type token =
+    UL_VOID
+  | UL_SEMICOLON
+  | UL_RIGHT_PAREN
+  | UL_RIGHT_BRACE
+  | UL_PACKAGE
+  | UL_LEFT_PAREN
+  | UL_LEFT_BRACE
+  | UL_INTERFACE
+  | UL_INT
+  | UL_IDENT_PACKAGE of string
+  | UL_IDENT_INTERFACE of string
+  | UL_FIN
+  | UL_EXTENDS
+  | UL_DOT
+  | UL_COMMA
+  | UL_BOOLEAN
+val menhir_begin_marker : int
+val xv_sub_package : unit
+val xv_package : unit
+val xv_internal_package : unit
+val xv_interface : unit
+val menhir_end_marker : int

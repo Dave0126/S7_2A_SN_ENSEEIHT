@@ -1,0 +1,144 @@
+# dune build MainPackage.exe
+# OCAMLPARAM: unset
+# Workspace root:
+# "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie
+# des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes
+# (BE)/be2021_2/source/ascendant"
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/dune67d5b9.output 2> /dev/null
+# Auto-detected concurrency: 8
+# disable binary cache
+$ /Users/dave/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/1p/0xz6_bsj53g6kk0lcgwc_xkm0000gn/T/duned30b48.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path = Some External "/Users/dave/.opam/4.12.0/lib/toplevel"
+#  ; ocaml_bin = External "/Users/dave/.opam/4.12.0/bin"
+#  ; ocaml = Ok External "/Users/dave/.opam/4.12.0/bin/ocaml"
+#  ; ocamlc = External "/Users/dave/.opam/4.12.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/Users/dave/.opam/4.12.0/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/Users/dave/.opam/4.12.0/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/Users/dave/.opam/4.12.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/Users/dave/.opam/4.12.0/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes (BE)/be2021_2/source/ascendant"
+#        ; "INSIDE_DUNE" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes (BE)/be2021_2/source/ascendant/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes (BE)/be2021_2/source/ascendant/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes (BE)/be2021_2/source/ascendant/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/Users/dave/Desktop/\231\149\153\229\173\166\230\150\135\228\187\182/ENSEEIHT/2021-2022/SN2/S7_2A_SN_ENSEEIHT/UE-Th\195\169orie des Automates et des Langages/Automates/Bureau d\226\128\153\195\169tudes (BE)/be2021_2/source/ascendant/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/Users/dave/.opam/4.12.0/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.12.0"
+#      ; standard_library_default = "/Users/dave/.opam/4.12.0/lib/ocaml"
+#      ; standard_library = "/Users/dave/.opam/4.12.0/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "cc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; cc_profile = []
+#      ; architecture = "arm64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "macosx"
+#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "aarch64-apple-darwin21.1.0"
+#      ; target = "aarch64-apple-darwin21.1.0"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /Users/dave/.opam/4.12.0/bin/menhir Parser.mly --base Parser --infer-write-query Parser__mock.ml.mock)
+> File "Parser.mly", line 17, characters 7-17:
+> Warning: the token UL_BOOLEAN is unused.
+> File "Parser.mly", line 21, characters 7-15:
+> Warning: the token UL_COMMA is unused.
+> File "Parser.mly", line 23, characters 7-13:
+> Warning: the token UL_DOT is unused.
+> File "Parser.mly", line 15, characters 7-17:
+> Warning: the token UL_EXTENDS is unused.
+> File "Parser.mly", line 28, characters 16-34:
+> Warning: the token UL_IDENT_INTERFACE is unused.
+> File "Parser.mly", line 16, characters 7-13:
+> Warning: the token UL_INT is unused.
+> File "Parser.mly", line 14, characters 7-19:
+> Warning: the token UL_INTERFACE is unused.
+> File "Parser.mly", line 19, characters 7-20:
+> Warning: the token UL_LEFT_PAREN is unused.
+> File "Parser.mly", line 20, characters 7-21:
+> Warning: the token UL_RIGHT_PAREN is unused.
+> File "Parser.mly", line 22, characters 7-19:
+> Warning: the token UL_SEMICOLON is unused.
+> File "Parser.mly", line 18, characters 7-14:
+> Warning: the token UL_VOID is unused.
+$ (cd _build/default && /Users/dave/.opam/4.12.0/bin/ocamldep.opt -modules -impl Parser__mock.ml.mock) > _build/default/.MainPackage.eobjs/Parser__mock.ml.mock.d
+$ (cd _build/default && /Users/dave/.opam/4.12.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .MainPackage.eobjs/byte -open Dune__exe -short-paths -i -impl Parser__mock.ml.mock) > _build/default/Parser__mock.mli.inferred
+$ (cd _build/default && /Users/dave/.opam/4.12.0/bin/menhir Parser.mly --base Parser --infer-read-reply Parser__mock.mli.inferred)
+> File "Parser.mly", line 46, characters 0-11:
+> Error: the grammar is cyclic:
+> the nonterminal symbol sub_package expands to itself.
+> A cyclic grammar is ambiguous.
+[1]
