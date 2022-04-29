@@ -27,11 +27,16 @@ type token =
   | TANTQUE
   | RETOUR
 (* Valeurs *)
+  | EXPONENT of string
   | ENTIER of int
   | FLOTTANT of float
   | BOOLEEN of bool
   | CARACTERE of char
+  | CARACTERESPECIAL of char
   | CHAINE of string
+  | OCTAL of int
+  | HEXADECIMAL of int
+  | BINARY of int
   | VIDE
 (* Operateurs *)
   | NOUVEAU

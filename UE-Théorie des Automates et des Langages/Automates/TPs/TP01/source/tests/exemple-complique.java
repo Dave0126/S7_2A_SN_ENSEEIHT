@@ -1,8 +1,8 @@
 
 /* Cet exemple respecte la syntaxe (grammaire) de microjava, avec des
- * commentaires, des chaînes complexes, des réels bizarres...
+ * commentaires, des chaï¿½nes complexes, des rï¿½els bizarres...
  * Les constructions qui ne sont pas trait
- * Ce programme est sémantiquement faux (typage en particulier)
+ * Ce programme est sï¿½mantiquement faux (typage en particulier)
  */
 
 /* class Point {

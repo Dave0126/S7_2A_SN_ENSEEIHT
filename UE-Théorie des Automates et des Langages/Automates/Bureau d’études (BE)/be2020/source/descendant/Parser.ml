@@ -16,6 +16,12 @@ let accept expected stream =
     | _ -> Failure
 ;;
 
+let acceptIdent stream =
+  match (peekAtFirstToken stream) with
+    | (IdentToken _) -> (Success (advanceInStream stream))
+    | _ -> Failure
+;;
+
 (* Définition de la monade  qui est composée de : *)
 (* - le type de donnée monadique : parseResult  *)
 (* - la fonction : inject qui construit ce type à partir d'une liste de terminaux *)

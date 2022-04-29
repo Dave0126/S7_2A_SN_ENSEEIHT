@@ -29,11 +29,16 @@ type token =
   | TANTQUE
   | RETOUR
 (* Valeurs *)
+  | EXPONENT of string
   | ENTIER of int
   | FLOTTANT of float
   | BOOLEEN of bool
   | CARACTERE of char
+  | CARACTERESPECIAL of char
   | CHAINE of string
+  | OCTAL of int
+  | HEXADECIMAL of int
+  | BINARY of int
   | VIDE
 (* Operateurs *)
   | NOUVEAU
@@ -104,9 +109,14 @@ let printToken t =
 (* Valeurs *)
        | BOOLEEN b -> "booleen : " ^ (if b then "true" else "false")
        | CARACTERE c -> "caractere : '" ^ (escaped c) ^ "'"
+       | CARACTERESPECIAL c -> "caractere special : '\\" ^ (escaped c) ^ "'"
        | CHAINE s -> "chaine : " ^ s
        | ENTIER n -> "entier : " ^ string_of_int n
        | FLOTTANT f -> "flottant : " ^ string_of_float f
+       | HEXADECIMAL n -> "hexadecimal : " ^ string_of_int n
+       | OCTAL n -> "octal : " ^ string_of_int n
+       | BINARY n -> "binaire : " ^ string_of_int n
+       | EXPONENT f -> "ExponentPart : " ^ f
 (* Identificateurs *)
        | IDENT n -> "identificateur : " ^ n
        | TYPEIDENT t -> "identificateur de type : " ^ t

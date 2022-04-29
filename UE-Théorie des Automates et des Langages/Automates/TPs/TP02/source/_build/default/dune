@@ -1,7 +1,0 @@
-(ocamllex lexerJava)
-
-(menhir
- (modules parserJava))
-
-(executable
- (name mainJava))

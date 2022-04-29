@@ -118,19 +118,17 @@ let rec parseE stream =
   *)
   (print_endline "E");
   (match (peekAtFirstToken stream) with
-    (* regle #1 *)
+    (* regle #1  E -> fun ident -> E *)
     | FunctionToken -> inject stream >>= accept FunctionToken >>= acceptIdent >>= accept BodyToken >>= parseE
-    (* regle #2  E -> let ident = E in E*)
-    | LetToken -> inject stream >>= parseFF >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
-    (* regle #3  E -> letrec ident = E in E*)
-    | RecToken -> inject stream >>= parseFF >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
+    (* regle #2  E -> let ident = E in E *)
+    | LetToken -> inject stream >>= accept LetToken >>= acceptIdent >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
+    (* regle #3  E -> letrec ident = E in E *)
+    | RecToken -> inject stream >>= accept LecToken >>= acceptIdent >>= accept EqualToken >>= parseE >>= accept InToken >>= parseE
     (* regle #4 - E -> if E then E else E *)
     | IfToken -> inject stream >>= accept IfToken >>= parseE >>= accept ThenToken >>= parseE >>= accept ElseToken >>= parseE
     (* regle #5 *)
     | ((IdentToken _) | (NumberToken _) | TrueToken | FalseToken | MinusToken | LeftParenthesisToken ) ->
-        inject stream >>=
-        parseER >>=
-        parseEX
+        inject stream >>= parseER >>= parseEX
     | _ -> Failure)
 
 (* parseEX : inputStream -> parseResult *)

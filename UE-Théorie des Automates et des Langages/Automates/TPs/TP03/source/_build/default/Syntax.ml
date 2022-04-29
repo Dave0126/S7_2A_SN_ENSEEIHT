@@ -84,8 +84,7 @@ let rec parseE stream =
   (match (peekAtFirstToken stream) with
     (* regle #5  - E -> ER EX     | { -, number, ident, true, false, ( } *)
     (* Symboles directeurs *)
-    | (IdentToken _) | (NumberToken _) | TrueToken | FalseToken |
-        MinusToken | LeftParenthesisToken ->
+    | (IdentToken _) | (NumberToken _) | TrueToken | FalseToken | MinusToken | LeftParenthesisToken ->
       (* Regle *)
       (* Analyse ER *)
       (match (parseER stream) with
@@ -93,6 +92,33 @@ let rec parseE stream =
           (* En cas de succes, analyse EX *)
           parseEX next
         | _ -> Failure)
+  (*  #1  - E -> function ident fleche E { function } *)  
+    (*
+    | FunctionToken -> (match (accept FunctionToken stream) with
+      | (IdentToken _) -> (match (accept (IdentToken _) stream) with
+        | BodyToken -> (match (accept BodyToken) with
+          | Success next -> (parseE next)
+          | _ -> Failure)
+        | _ -> Failure)
+      | _ -> Failure)
+      *)
+  (* #2  - E -> if E then E else E { if } *)
+    | IfToken -> (match (accept IfToken stream) with
+          | Success next -> (match (parseE next) with
+            | Success next2 -> (match (peekAtFirstToken next2) with
+                | ThenToken -> (match (accept ThenToken next2) with
+                    | Success next3 -> (match (parseE next3) with
+                        | Success next4 -> (match (peekAtFirstToken next4) with
+                            | ElseToken -> (match (accept ElseToken next4) with
+                                | Success next5 -> (parseE next5)
+                                | _ -> Failure)
+                            | _ -> Failure)
+                        | _ -> Failure)
+                    | _ -> Failure)
+                | _ -> Failure)
+            | _ -> Failure)
+        | _ -> Failure)
+    
     | _ -> Failure)
 
 (* parseEX : inputStream -> parseResult *)
@@ -106,7 +132,7 @@ and parseEX stream =
           | Success next2 -> (parseEX next2)
           | _ -> Failure)
        | _ -> Failure)
-    (* regle #7  - EX ->          | { $, ) } *)
+    (* regle #7  - EX ->          | { $, ), then, else } *)
     | EOSToken | RightParenthesisToken | ThenToken | ElseToken -> (Success stream)
     | _ -> Failure)
 
