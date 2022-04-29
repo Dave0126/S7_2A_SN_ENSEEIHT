@@ -1,5 +1,6 @@
 open Tokens
 
+
 (* Type du résultat d'une analyse syntaxique *)
 type parseResult =
   | Success of inputStream
@@ -21,7 +22,14 @@ let accept expected stream =
 (* et avance dans l'analyse si c'est le cas *)
 let acceptPackageIdent stream =
   match (peekAtFirstToken stream) with
-    | UL_PACKAGE_IDENT _ ->
+    | UL_IDENT_PACKAGE _ ->
+      (Success (advanceInStream stream))
+    | _ -> Failure
+;;
+
+let acceptInterfaceIdent stream =
+  match (peekAtFirstToken stream) with
+    | UL_IDENT_INTERFACE _ ->
       (Success (advanceInStream stream))
     | _ -> Failure
 ;;
@@ -63,5 +71,117 @@ let (* rec *) parsePackage stream =
         (accept UL_LEFT_BRACE) >>=
         (accept UL_RIGHT_BRACE))
    | _ -> Failure)
+
+let rec parseSE stream = 
+  (print_string "SE -> ");
+  (match (peekAtFirstToken stream) with
+  | UL_RIGHT_BRACE -> 
+      ((print_endline "}");
+      (inject stream))
+  | UL_PACKAGE -> 
+      ((inject stream) >>=
+      (accept UL_PACKAGE) >>=
+      parseE >>=
+      parseSE)
+  | (UL_INTERFACE) -> 
+      ((inject stream) >>=
+      (accept UL_INTERFACE) >>=
+      parseE >>=
+      parseSE)
+  | _ -> Failure)
+
+let parseE stream =
+  (print_string "E -> ");
+  (match (peekAtFirstToken stream) with 
+  | UL_PACKAGE ->
+    ((inject stream) >>=
+    (accept UL_PACKAGE) >>=
+    parseP)
+  | UL_INTERFACE ->
+    ((inject stream) >>= 
+    (accept UL_INTERFACE) >>=
+    parseI)
+  | _ -> Failure)
+
+let parseI stream =
+  (print_string "I -> ");
+  (match (peekAtFirstToken stream) with 
+  | UL_INTERFACE ->
+    ((inject stream) >>= 
+    (accept UL_INTERFACE) >>=
+    acceptInterfaceIdent >>=
+    parseX >>=
+    (accept UL_LEFT_BRACE) >>=
+    parseSM >>=
+    (accept UL_RIGHT_BRACE))
+  | _ -> Failure)
+
+let parseX stream =
+  (print_string "X -> ");
+  (match (peekAtFirstToken stream) with 
+  | UL_LEFT_BRACE ->
+    ((print_endline "}");
+    (inject stream))
+  | UL_EXTENDS -> 
+    ((inject stream) >>=
+    (accept UL_EXTENDS) >>= 
+    parseQ >>=
+    acceptInterfaceIdent >>= 
+    parseSQ)
+  | _ -> Failure)
+
+let rec parseQ stream =
+  (print_string "Q -> ");
+  (match (peekAtFirstToken stream) with 
+  | UL_IDENT_INTERFACE ->
+    (inject stream)
+  | UL_IDENT_PACKAGE ->
+    ((inject stream) >>=
+    acceptPackageIdent >>=
+    (accept UL_DOT) >>=
+    parseQ)
+  | _ -> Failure)
+
+  let rec parseSQ stream =
+    (print_string "SQ -> ");
+    (match (peekAtFirstToken stream) with 
+    | UL_LEFT_BRACE ->
+      (inject stream)
+    | UL_COMMA ->
+      ((inject stream) >>=
+      (accept UL_COMMA) >>=
+      parseQ >>=
+      acceptInterfaceIdent >>=
+      parseSQ)
+    | _ -> Failure)
+
+let rec parseSM stream =
+  (print_string "SM -> ");
+  (match (peekAtFirstToken stream) with 
+  | UL_RIGHT_BRACE ->
+    (inject stream)
+  | (UL_BOOLEAN|UL_INT|UL_VOID|UL_IDENT_PACKAGE|UL_IDENT_INTERFACE) ->
+    ((inject stream) >>=
+    parseM >>=
+    parseSM)
+  | _ -> Failure)
+
+let rec parseM stream =
+  (print_string "M -> ");
+  (match (peekAtFirstToken stream) with 
+  | (UL_BOOLEAN|UL_INT|UL_VOID|UL_IDENT_PACKAGE|UL_IDENT_INTERFACE) ->
+    ((inject stream) >>=
+    parseT >>=
+    acceptPackageIdent >>= 
+    (accept UL_LEFT_PAREN) >>=
+    parseO >>=
+    (accept UL_RIGHT_PAREN) >>=
+    (accept UL_SEMICOLON))
+  | _ -> Failure)
+
+
+
+(* To be continue... *)
+
 
 ;;

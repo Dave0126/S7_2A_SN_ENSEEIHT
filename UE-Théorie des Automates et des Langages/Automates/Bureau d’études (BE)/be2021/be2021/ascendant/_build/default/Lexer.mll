@@ -22,22 +22,31 @@ let commentaire =
 rule lexer = parse
   | ['\n' '\t' ' ']+					{ (lexer lexbuf) }
   | commentaire						{ (lexer lexbuf) }
-  | "{"							{ UL_LEFT_BRACE }
-  | "}"							{ UL_RIGHT_BRACE }
-  | "package"						{ UL_PACKAGE }
-  | "interface"     { UL_INTERFACE}
-  | "extends"       { UL_EXTENDS}
+  | "{"							{ UL_ACCOUV }
+  | "}"							{ UL_ACCFER }
+  | "model"						{ UL_MODEL }
+  | "system"        { UL_SYSTEM}
+  | "block"         { UL_BLOCK}
+  | "flow"          { UL_FLOW}
+  | "from"          { UL_FROM}
+  | "to"            { UL_TO}
+  | "in"            { UL_IN}
+  | "out"           { UL_OUT}
   | "int"           { UL_INT}
+  | "float"         { UL_FLOAT}
   | "boolean"       { UL_BOOLEAN}
-  | "void"          { UL_VOID}
-  | "("             { UL_LEFT_PAREN}
-  | ")"             { UL_RIGHT_PAREN}
-  | ","             { UL_COMMA}
-  | ";"             { UL_SEMICOLON }
-  | "."             { UL_DOT}
-  | minuscule alphabet* as name                         { UL_IDENT_PACKAGE name }
-  | majuscule alphabet* as name                         { UL_IDENT_INTERFACE name }
+  | "("             { UL_PAROUV}
+  | ")"             { UL_PARFEM}
+  | "["             { UL_CROOUV}
+  | "]"             { UL_CROFEM}
+  | ";"             { UL_PTVIRG}
+  | ","             { UL_VIRG}
+  | ":"             { UL_TWOPT}
+  | "."             { UL_PT}
   | eof							{ UL_FIN }
+  | (majuscule)(minuscule|majuscule)*        as texte { (UL_IDENT texte)}
+  | (minuscule)(minuscule|majuscule)*        as texte { (UL_MINUIDENT texte)}
+  | ['1' - '9'] chiffre*    as texte { (ENTIER (int_of_string texte)) }
   | _ as texte				 		{ (print_string "Erreur lexicale : ");(print_char texte);(print_newline ()); raise LexicalError }
 
 {

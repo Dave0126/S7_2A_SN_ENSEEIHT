@@ -1,0 +1,43 @@
+type token =
+    UL_VIRG
+  | UL_TWOPT
+  | UL_TO
+  | UL_SYSTEM
+  | UL_PTVIRG
+  | UL_PT
+  | UL_PAROUV
+  | UL_PARFEM
+  | UL_OUT
+  | UL_MODEL
+  | UL_MINUIDENT of string
+  | UL_INT
+  | UL_IN
+  | UL_IDENT of string
+  | UL_FROM
+  | UL_FLOW
+  | UL_FLOAT
+  | UL_FIN
+  | UL_CROOUV
+  | UL_CROFEM
+  | UL_BOOLEAN
+  | UL_BLOCK
+  | UL_ACCOUV
+  | UL_ACCFER
+  | ENTIER of int
+val menhir_begin_marker : int
+val xv_types : unit
+val xv_systeme : unit
+val xv_sub_types_num_loop : unit
+val xv_sub_types_num : unit
+val xv_sub_types : unit
+val xv_sub_systeme_1 : unit
+val xv_sub_systeme : unit
+val xv_sub_parametres : unit
+val xv_sub_modele_1 : unit
+val xv_sub_modele : unit
+val xv_port : unit
+val xv_parametres : unit
+val xv_modele : unit
+val xv_flot : unit
+val xv_bloc : unit
+val menhir_end_marker : int

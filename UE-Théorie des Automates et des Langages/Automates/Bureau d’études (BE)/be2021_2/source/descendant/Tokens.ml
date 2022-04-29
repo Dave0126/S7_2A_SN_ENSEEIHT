@@ -1,12 +1,23 @@
 open List
 
 type token = 
+  | UL_ERREUR
+  | UL_LEFT_BRACE    
   | UL_RIGHT_BRACE
-  | UL_PACKAGE
-  | UL_LEFT_BRACE
-  | UL_PACKAGE_IDENT of (string)
-    | UL_FIN
-    | UL_ERREUR;;
+  | UL_LEFT_PAREN
+  | UL_RIGHT_PAREN 
+  | UL_DOT
+  | UL_COMMA 
+  | UL_SEMICOLON 
+  | UL_PACKAGE 
+  | UL_INTERFACE
+  | UL_EXTENDS 
+  | UL_BOOLEAN
+  | UL_INT 
+  | UL_VOID
+  | UL_IDENT_PACKAGE of (string)
+  | UL_IDENT_INTERFACE of (string)
+  | UL_FIN ;;
 
 type inputStream = token list;;
 
@@ -16,8 +27,19 @@ let string_of_token token =
      match token with
        | UL_LEFT_BRACE -> "{"
        | UL_RIGHT_BRACE -> "}"
+       | UL_LEFT_PAREN -> "("
+       | UL_RIGHT_PAREN -> ")"
+       | UL_DOT -> "."
+       | UL_COMMA -> ","
+       | UL_SEMICOLON -> ";"
        | UL_PACKAGE -> "package"
-       | UL_PACKAGE_IDENT n -> n
+       | UL_INTERFACE -> "interface"
+       | UL_EXTENDS -> "extends"
+       | UL_BOOLEAN -> "boolean"
+       | UL_INT -> "int"
+       | UL_VOID -> "void"
+       | UL_IDENT_PACKAGE n -> n
+       | UL_IDENT_INTERFACE n -> n
        | UL_FIN -> "EOF"
        | UL_ERREUR -> "Erreur Lexicale";;
 
@@ -46,3 +68,4 @@ let advanceInStream stream =
   (* après la fin de l'inputStream. *)
   | [] -> failwith "Impossible de consommer le premier element d'un inputStream vide"
   | _::q -> q;;
+

@@ -50,7 +50,43 @@ sub_package :
   | interface sub_package { (print_endline "sub_package : interface sub_package ") }
 
 interface:
-  {(print_endline "sub_package : sub_package1") }
+  UL_INTERFACE UL_IDENT_INTERFACE sub_interface UL_LEFT_BRACE pre_methode UL_RIGHT_BRACE {(print_endline "interface : UL_INTERFACE UL_IDENT_INTERFACE sub_interface UL_LEFT_BRACE methode UL_RIGHT_BRACE") }
+
+sub_interface:
+  /* empty */ {(print_endline "sub_interface : Empty ") }
+  | UL_EXTENDS pre_nomQualifie {(print_endline "sub_interface : UL_EXTENDS pre_nomQualifie ") }
+
+pre_nomQualifie :
+  nomQualifie {(print_endline "pre_nomQualifie : nomQualifie ") }
+  | nomQualifie UL_COMMA pre_nomQualifie {(print_endline "pre_nomQualifie : nomQualifie UL_COMMA pre_nomQualifie ") }
+
+pre_methode:
+  /* empty */ {(print_endline "pre_methode : empty ") }
+  | methode pre_methode {(print_endline "pre_methode : methode pre_methode ") }
+
+nomQualifie :
+  sub_nomQualifie UL_IDENT_INTERFACE {(print_endline "nomQualifie : sub_nomQualifie UL_IDENT_INTERFACE ") }
+
+sub_nomQualifie :
+  /* empty */ {(print_endline "sub_nomQualifie : empty ") }
+  | UL_IDENT_PACKAGE UL_DOT sub_nomQualifie  {(print_endline "sub_nomQualifie : UL_IDENT_PACKAGE UL_DOT sub_nomQualifie ") }
+
+ methode :
+  types UL_IDENT_PACKAGE UL_LEFT_PAREN sub_mothode UL_RIGHT_PAREN UL_SEMICOLON {(print_endline "methode : types UL_IDENT_PACKAGE UL_LEFT_PAREN sub_mothode UL_RIGHT_PAREN UL_SEMICOLON ") }
+
+sub_mothode :
+  /* empty */ {(print_endline "sub_mothode : empty ") }
+  | pre_types {(print_endline "sub_mothode : pre_types ") }
+
+pre_types :
+  types {(print_endline "pre_types : types ") }
+  | types UL_COMMA pre_types {(print_endline "pre_types : types UL_COMMA pre_types ") }
+
+types :
+  UL_BOOLEAN {(print_endline "types : BOOLEAN ") }
+  | UL_INT {(print_endline "types : INT ") }
+  | UL_VOID {(print_endline "types : VOID ") }
+  | nomQualifie {(print_endline "types : nomQualifie ") }
 
 %%
 
