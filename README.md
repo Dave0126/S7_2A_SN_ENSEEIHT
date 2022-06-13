@@ -1,6 +1,6 @@
 # Semester 7-2A-SN-ENSEEIHT
 ## INTRODUCTION
-这个仓库里的内容均为*Département Sciences du Numérique - E.N.S.E.E.I.H.T.* 2021~2022学年-第1学期的教学资料，其中包括所有科目的**Cours**、**TD**、**TP**、**Projet**以及**Examen**的Sujet、Slide、Source Code以及我个人的Rapport和部分笔记。希望能对你有所帮助。
+这个仓库里的内容均为[*Département Sciences du Numérique - E.N.S.E.E.I.H.T.* 2021~2022学年-第1学期](http://formations.enseeiht.fr/fr/offre-de-formations/diplome-d-ingenieur-FC_DI/diplome-D/ingenieur-enseeiht-informatique-et-telecommunications-program-n7i5-171/ingenieur-enseeiht-informatique-et-telecommunications-2eme-annee-subprogram-n7i52-181.html)的教学资料，其中包括所有科目的**Cours**、**TD**、**TP**、**Projet**以及**Examen**的Sujet、Slide、Source Code以及我个人的Rapport和部分笔记。希望能对你有所帮助。
 
 
 ### IMPORTANT: 
