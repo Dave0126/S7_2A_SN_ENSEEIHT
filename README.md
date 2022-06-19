@@ -7,19 +7,19 @@
 |-|Intergiciels|30%|Examen|<ul><li>- [x] </li></ul>|
 |-|Projet - Données Réparties|20%|Projet|<ul><li>- [x] </li></ul>|
 |UE - Théorie des Automates et des Langages, Théorie des Graphes|Automates|35%|Examen|<ul><li>- [x] </li></ul>|
-|-|Automates|15%|BE (Binômes)|<ul><li>- [x] </li></ul>|
+|-|BE - Automates|15%|BE (Binômes)|<ul><li>- [x] </li></ul>|
 |-|Théorie des Graphes|35%|Examen|<ul><li>- [x] </li></ul>|
-|-|Théorie des Graphes|15%|Projet (Individual)|<ul><li>- [x] </li></ul>|
-|UE - Programmation Fonction|Base de la Programmation Fonction|20%|BE (Individual)|0<ul><li>- [x] </li></ul>|
+|-|Projet - Théorie des Graphes|15%|Projet (Individual)|<ul><li>- [x] </li></ul>|
+|UE - Programmation Fonction|BE - Programmation Fonction|20%|BE (Individual)|<ul><li>- [x] </li></ul>|
 |-|Programmation Fonction Avancée|40%|Examen|<ul><li>- [x] </li></ul>|
-|-|Programmation Fonction|40%|Projet (Binômes)|<ul><li>- [x] </li></ul>|
+|-|Projet - Programmation Fonction|40%|Projet (Binômes)|<ul><li>- [x] </li></ul>|
 |UE - Génie du Logiciel et des Systèmes|Ingénierie dirigée par les modèles & Métaprogrammation et tests|40%|Examen|<ul><li>- [x] </li></ul>|
-|-|MiniProjet|30%|Mini-Projet (Binômes)|<ul><li>- [x] </li></ul>|
-|-|Projet|30%|Projet (Quadrinômes)|<ul><li>- [x] </li></ul>|
+|-|MiniProjet - IDM|30%|Mini-Projet (Binômes)|<ul><li>- [x] </li></ul>|
+|-|Projet - IDM|30%|Projet (Quadrinômes)|<ul><li>- [x] </li></ul>|
 |UE - Optimisation et Recherche Opérationnelle|Optimisation Numérique|25%|Examen|<ul><li>- [x] </li></ul>|
-|-|Optimisation Numérique|25%|Projet (Individual)|<ul><li>- [x] </li></ul>|
+|-|Projet - Optimisation Numérique|25%|Projet (Individual)|<ul><li>- [x] </li></ul>|
 |-|Recherche Opérationnelle|25%|Examen|<ul><li>- [x] </li></ul>|
-|-|Recherche Opérationnelle|25%|TPs (Binômes)|<ul><li>- [x] </li></ul>|
+|-|TP - Recherche Opérationnelle|25%|TPs (Binômes)|<ul><li>- [x] </li></ul>|
 
 
 ### INTRODUCTION
