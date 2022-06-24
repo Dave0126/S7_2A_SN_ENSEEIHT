@@ -1,3 +1,7 @@
+<div class="logo"><img src="logo.png" width="250px" align="right"></div>
+<br>
+<br>
+
 # Semester 7-2A-SN-ENSEEIHT
 
 ### 考试占比
