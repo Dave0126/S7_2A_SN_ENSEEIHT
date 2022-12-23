@@ -1,7 +1,6 @@
-[toc]
 # 1. Java的并发编程：线程的相关概念
 - 视频教程：[BiliBili-黑马程序员全面深入学习Java并发编程，JUC并发编程全套教程](https://www.bilibili.com/video/BV16J411h7Rd)
-- 笔记（Markdown）：[Gitee](https://gitee.com/gu_chun_bo/java-construct/blob/master/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/java%E5%B9%B6%E5%8F%911.md)
+- 博客（`LostNFound`）：[Java 并发多线程编程](https://lostnfound.top/2022/03/23/JUC-Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/)
 ### 1.0.1 进程与线程
 - 进程：当一个程序被运行，从磁盘加载这个程序的代码至内存，这时就开始了一个进程。进程可视为程序的一个实例。进程间相互独立
 - 线程：一个进程可分为一到多个线程。一个线程是一个指令流，将指令流中的一条条指令以一定的顺序交给cpu执行。线程存在于进程中
@@ -745,6 +744,16 @@ graph LR;
 
 
 # 5. 管程 Monitor
+
+---
+
+拓展阅读：
+
+- `Monitor` 底层原理：[关于 `ObjectMonitor` 的底层源码分析](https://lostnfound.top/2022/09/02/%E5%85%B3%E4%BA%8EObjectMonitor%E7%9A%84%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/)
+- `synchronized` 关键字的锁升级阶段：[乐观锁](https://lostnfound.top/2022/09/15/Java%E4%B8%AD%E7%9A%84%E9%94%81%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81/)
+
+---
+
 管程是一种高级同步机制，由于实现进程的互斥和同步。
 
 管程是一种特殊的软件模块，有这些部分组成：
@@ -1599,5 +1608,8 @@ class SumTask extends RecursiveTask<Long> {
 
 
 # 8. Transaction
-定义：  
+详情跳转至博客：[`LostNFound` - 事务 Transaction 简介](https://lostnfound.top/2022/04/11/%E4%BA%8B%E5%8A%A1transaction%E7%AE%80%E4%BB%8B/)
+
+定义：
+
 Suite d’opérations qui, exécutée seule a partir d’un état initial cohérent, aboutit a un état final cohérent
