@@ -15,15 +15,15 @@ t1.write(t1.read(y));
 #####  Exercise 1. Concurrent  execution
 
 ```java
-demande[i] = true;	// 1
-while (tour != i) {	// 2
-  while (demand[j]) {	// 3
-    // 阻塞;
-  }
-  tour <- i	// 4
-}	// 5
-// SECTION CRITIQUE	// 6
-demande[i] = false;	// 7
+demande[i] = true;			// 1
+while (tour != i) {			// 2
+    while (demand[j]) {		// 3
+        wait();				// 4
+    }						// 5
+    tour <- i;				// 6
+}							// 7
+/** SECTION CRITIQUE */		// 8
+demande[i] = false;			// 9
 ```
 
 1. 描述：算法并不会确保互斥地访问临界区。
@@ -33,17 +33,23 @@ demande[i] = false;	// 7
        participant T1
        participant T2
        
-       Note over T1 :1
-       Note over T1 :2
-       Note over T1 :3
-       Note over T2 :1
-       Note over T2 :2
-       Note over T2 :5
-       Note over T2 :6 // 临界区
-       Note over T1 :4
-       Note over T1 :2
-       Note over T1 :5
-       Note over T1 :6 // 临界区
+       Note over T1 :(1) demande[1]=true
+       Note over T1 :(2) tour=2
+       Note over T1 :(3) demande[2]=false
+       
+       T1 --> T2 : 此时, T2进程开始请求临界区
+       
+       Note over T2 :(1) demande[2]=true
+       Note over T2 :(2) tour=2
+       Note over T2 :(7)
+       
+       Note over T1 :(6) tour <- 1
+       Note over T1 :(2) tour=1
+       Note over T1 :(7)
+       
+       T1 --> T2 : 此时, T1和T2进程可以同时访问临界区
+       Note over T2 :(8) SECTION CRITIQUE
+       Note over T1 :(8) SECTION CRITIQUE
    ```
 
    
