@@ -17,12 +17,12 @@ t1.write(t1.read(y));
 ```java
 demande[i] = true;			// 1
 while (tour != i) {			// 2
-    while (demand[j]) {		// 3
+    while (demand[j]) {			// 3
         wait();				// 4
-    }						// 5
+    }					// 5
     tour <- i;				// 6
-}							// 7
-/** SECTION CRITIQUE */		// 8
+}					// 7
+/** SECTION CRITIQUE */			// 8
 demande[i] = false;			// 9
 ```
 
