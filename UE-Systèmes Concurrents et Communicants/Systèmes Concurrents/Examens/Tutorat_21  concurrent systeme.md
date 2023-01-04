@@ -61,21 +61,27 @@ demande[i] = false;			// 9
        participant T1
        participant T2
        
-       Note over T1 :1
-       Note over T1 :2
-       Note over T1 :3 (并没有完成)
-       Note over T2 :1
-       Note over T2 :2
-       Note over T2 :5
-       Note over T2 :6 // 临界区
-       Note over T2 :7
-       Note over T2 :1 // T2一直拥有权限，T1饥饿 ...
-       Note over T1 :3 (一直执行，等待T2的结束)
+       Note over T1 :(1) demande[1]=true
+       Note over T2 :(1) demande[2]=true
+       
+       Note over T1,T2 :(2) tour=2
+       
+       Note over T1 :(3) demande[2]=true
+       Note over T1 :(4) wait()
+       
+       Note over T2 :(7)
+       Note over T2 :(8) SECTION CRITIQUE
+       Note over T2 :(9) demande[2]=false
+       
+       Note over T2 :(1) demande[2]=true
+       Note over T2 :... ❓
+       
+       Note over T1 :(4) wait()
       
    ```
-
    
-
+   
+   
    
 
 ##### Exercise 2. 
